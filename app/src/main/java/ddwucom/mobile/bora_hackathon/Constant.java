@@ -2,6 +2,7 @@ package ddwucom.mobile.bora_hackathon;
 
 public class Constant {
     private static final String BASE_PATH = "/html/";
+
     public static final String CREATE_URL = BASE_PATH + "upload.php";
     public static final String READ = BASE_PATH + "read.php";
     public static final String UPDATE = BASE_PATH + "update.php";
