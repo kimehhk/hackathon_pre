@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String name = jsonObject.getString("name");
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, LoginResultActivity.class);
                                 intent.putExtra("user_id", user_id);
                                 intent.putExtra("password", password);
                                 intent.putExtra("name", name);
