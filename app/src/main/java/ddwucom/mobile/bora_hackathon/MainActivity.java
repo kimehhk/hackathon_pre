@@ -21,5 +21,5 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.customListView);
         listView.setAdapter(myAdapter);
     }
-    //제발
+    //수정
 }
