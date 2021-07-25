@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class BoardRequest extends StringRequest {
 
-    final static private String URL = "http://boragame.co.kr/read.php";
+    final static private String URL = "http://boragame.co.kr/upload.php";
     private Map<String, String> map;
 
     public BoardRequest(String post_id, String title, String context, String date, String user_id, Response.Listener<String> listener) {

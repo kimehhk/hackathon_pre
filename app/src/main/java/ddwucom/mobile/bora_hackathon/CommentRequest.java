@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class CommentRequest extends StringRequest {
 
-    final static private String URL = "http://boragame.co.kr/comment_read.php";
+    final static private String URL = "http://boragame.co.kr/comment_add.php";
     private Map<String, String> map;
 
     public CommentRequest(String comment_id, String content, String user_id, Response.Listener<String> listener) {
