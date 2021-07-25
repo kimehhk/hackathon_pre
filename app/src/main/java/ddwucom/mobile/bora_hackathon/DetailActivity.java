@@ -12,17 +12,21 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
-    Board board;
+    //Board board;
+    int board;
     EditText date;
     EditText title;
     EditText context;
@@ -31,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
     //ArrayList<Comment> commentList;
     List<Comment> comments;
 
-    final static private String URL = "http://boragame.co.kr/comment_read.php";
+    final static private String READ_URL = "http://boragame.co.kr/comment_read.php";
 
 
     @Override
@@ -39,16 +43,35 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        board = (Board) getIntent().getSerializableExtra("board");
+        board = (int) getIntent().getSerializableExtra("board");
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        DetailRequest detailRequest = new DetailRequest(board, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(DetailActivity.this);
+        queue.add(detailRequest);
+
+
+
+
 
         date = findViewById(R.id.et_boardDate);
         title = findViewById(R.id.et_boardTitle1);
         context = findViewById(R.id.et_boardContext1);
         listView = findViewById(R.id.customListView);
 
-        date.setText(board.getDate());
-        title.setText(board.getTitle());
-        context.setText(board.getContext());
+        //date.setText(board.getDate());
+        //title.setText(board.getTitle());
+        //context.setText(board.getContext());
 
         //commentList = new ArrayList();
         //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
@@ -81,9 +104,8 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
-
     private void getComments() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -95,7 +117,7 @@ public class DetailActivity extends AppCompatActivity {
 
                                 int comment_id = Integer.parseInt(object.getString("comment_id"));
                                 String content = object.getString("content");
-                                int post_id = Integer.parseInt(object.getString("user_id"));
+                                int post_id = Integer.parseInt(object.getString("post_id"));
 
                                 Comment comment = new Comment(comment_id, content, post_id);
                                 comments.add(comment);
