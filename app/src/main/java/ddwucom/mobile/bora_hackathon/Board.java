@@ -15,6 +15,11 @@ public class Board implements Serializable {
         this.date = date;
     }
 
+    public Board(String title, String context) {
+        this.title = title;
+        this.context = context;
+    }
+
     public long get_id() {
         return _id;
     }
