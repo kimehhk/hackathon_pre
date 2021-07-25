@@ -93,11 +93,11 @@ public class DetailActivity extends AppCompatActivity {
                             for (int i = 0; i<array.length(); i++) {
                                 JSONObject object = array.getJSONObject(i);
 
-                                long comment_id = Long.parseLong(object.getString("comment_id"));
+                                int comment_id = Integer.parseInt(object.getString("comment_id"));
                                 String content = object.getString("content");
-                                String user_id = object.getString("user_id");
+                                int post_id = Integer.parseInt(object.getString("user_id"));
 
-                                Comment comment = new Comment(comment_id, content, user_id);
+                                Comment comment = new Comment(comment_id, content, post_id);
                                 comments.add(comment);
                             }
                         } catch (Exception e) {

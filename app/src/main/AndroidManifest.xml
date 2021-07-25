@@ -21,8 +21,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
+<<<<<<< HEAD
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".LoginResultActivity"></activity>
+=======
+        <activity android:name=".BoardActivity"/>
+        <activity android:name=".BoardAddActivity"/>
+        <activity android:name=".BoardSearchActivity"/>
+>>>>>>> 5a6a2d5511bd6bd931deeb62efe91836690e6481
     </application>
 
 </manifest>

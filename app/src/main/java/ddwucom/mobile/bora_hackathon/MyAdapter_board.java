@@ -34,7 +34,7 @@ public class MyAdapter_board extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return myDataArrayList.get(position).get_id();
+        return myDataArrayList.get(position).getPost_id();
     }
 
     @Override

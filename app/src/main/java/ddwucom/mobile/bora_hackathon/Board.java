@@ -3,20 +3,26 @@ package ddwucom.mobile.bora_hackathon;
 import java.io.Serializable;
 
 public class Board implements Serializable {
-    long _id;
+    int post_id;
+    int user_id;
     String context;
     String title;
     String date;
 
-    public Board(long _id, String context, String title, String date) {
-        this._id = _id;
+    public Board(int post_id, int user_id, String context, String title, String date) {
+        this.post_id = post_id;
+        this.user_id = user_id;
         this.context = context;
         this.title = title;
         this.date = date;
     }
 
-    public long get_id() {
-        return _id;
+    public int getPost_id() {
+        return post_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 
     public String getContext() {
@@ -31,8 +37,12 @@ public class Board implements Serializable {
         return date;
     }
 
-    public void set_id(long _id) {
-        this._id = _id;
+    public void setPost_id(int post_id) {
+        this.post_id = post_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setContext(String context) {
@@ -49,7 +59,9 @@ public class Board implements Serializable {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(_id);
+        sb.append(post_id);
+        sb.append(".\t\t");
+        sb.append(user_id);
         sb.append(".\t\t");
         sb.append(context);
         sb.append(".\t\t");

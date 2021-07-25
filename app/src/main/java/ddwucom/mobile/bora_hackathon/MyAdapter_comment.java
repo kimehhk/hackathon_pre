@@ -39,7 +39,7 @@ public class MyAdapter_comment extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return myDataArrayList.get(position).get_id();
+        return myDataArrayList.get(position).getComment_id();
     }
 
     @Override
@@ -51,20 +51,17 @@ public class MyAdapter_comment extends BaseAdapter {
             convertView = layoutInflater.inflate(layout, parent, false);
             holder = new ViewHolder();
             holder.comment = (TextView)convertView.findViewById(R.id.et_boardContext);
-            holder.date = (TextView)convertView.findViewById(R.id.et_boardDate);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
         holder.comment.setText(myDataArrayList.get(pos).getComment());
-        holder.date.setText((myDataArrayList.get(pos).getDate()));
 
         return convertView;
     }
 
     static class ViewHolder {
         TextView comment;
-        TextView date;
     }
 }
