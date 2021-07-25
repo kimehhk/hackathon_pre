@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter_comment extends BaseAdapter {
     private Context context;
@@ -20,6 +21,11 @@ public class MyAdapter_comment extends BaseAdapter {
         this.layout = layout;
         this.myDataArrayList = myDataArrayList;
         layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public MyAdapter_comment(int layout, List<Comment> comments) {
+        this.layout = layout;
+        this.myDataArrayList = myDataArrayList;
     }
 
     @Override

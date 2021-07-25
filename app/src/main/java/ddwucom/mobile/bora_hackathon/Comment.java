@@ -1,17 +1,17 @@
 package ddwucom.mobile.bora_hackathon;
 
 public class Comment {
-    long _id;
+    String _id;
     String comment;
     String date;
 
-    public Comment(long _id, String comment, String date) {
+    public Comment(String _id, String comment, String date) {
         this._id = _id;
         this.comment = comment;
         this.date = date;
     }
 
-    public long get_id() {
+    public String get_id() {
         return _id;
     }
 
@@ -23,7 +23,7 @@ public class Comment {
         return date;
     }
 
-    public void set_id(long _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
@@ -45,4 +45,5 @@ public class Comment {
         sb.append(")");
         return sb.toString();
     }
+
 }
