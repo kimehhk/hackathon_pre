@@ -1,5 +1,6 @@
 package ddwucom.mobile.bora_hackathon;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,12 +12,17 @@ import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,7 +32,8 @@ public class BoardActivity extends AppCompatActivity {
     final int READ_CODE = 100;
     final int SEARCH_CODE = 200;
 
-    String data;
+    String rslt;
+    int postId;
 
     private MyAdapter_board myAdapter;
     private ListView listView;
@@ -35,29 +42,32 @@ public class BoardActivity extends AppCompatActivity {
     private static final String TAG_RESULT = "result";
     private static final String TAG_TITLE = "title";
     private static final String TAG_CONTEXT = "context";
+    private static final String TAG_POSTID = "post_id";
+    private static final String TAG_DATE = "date";
 
     JSONArray board = null;
-    ArrayList<HashMap<String, String>> dataList;
-    ListAdapter adapter;
+    //ArrayList<HashMap<String, String>> dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        //myAdapter = new MyAdapter_board(this, R.layout.custom_adapter_view, boardList);
         listView = (ListView)findViewById(R.id.customListView);
-        //listView.setAdapter(myAdapter);
-        boardList = new ArrayList<>();
-        dataList = new ArrayList<HashMap<String, String>>();
-        getData("http://boragame.dothome.co.kr/read.php");
+//        myAdapter = new MyAdapter_board(BoardActivity.this, R.layout.custom_adapter_view, boardList);
+//        listView.setAdapter(myAdapter);
+
+        boardList = new ArrayList<Board>();
+        //dataList = new ArrayList<HashMap<String, String>>();
+        getData d = new getData();
+        d.execute("http://boragame.dothome.co.kr/read.php","");
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Board board = boardList.get(position);
+
                 Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
-                intent.putExtra("board", board);
+                //intent.putExtra("post_id", postId);
                 startActivityForResult(intent, READ_CODE);
             }
         });
@@ -66,77 +76,112 @@ public class BoardActivity extends AppCompatActivity {
 
     protected void showList() {
         try {
-            JSONObject obj = new JSONObject(data);
+            JSONObject obj = new JSONObject(rslt);
             board = obj.getJSONArray(TAG_RESULT);
 
             for (int i = 0; i < board.length(); i++) {
                 JSONObject c = board.getJSONObject(i);
                 String title = c.getString(TAG_TITLE);
                 String context = c.getString(TAG_CONTEXT);
+                //postId = c.getInt(TAG_POSTID);
 
-                HashMap<String, String> data = new HashMap<String, String>();
+                //HashMap<String, String> data = new HashMap<String, String>();
+                Board data = new Board(title, context);
+                boardList.add(data);
+                //myAdapter.notifyDataSetChanged();
 
-                data.put(TAG_TITLE, title);
-                data.put(TAG_CONTEXT, context);
-
-                dataList.add(data);
             }
-            adapter = new SimpleAdapter(
-                    BoardActivity.this, dataList, R.layout.custom_adapter_view,
-                    new String[]{TAG_TITLE, TAG_CONTEXT},
-                    new int[]{R.id.boardTitle, R.id.boardContext}
-            );
+            myAdapter = new MyAdapter_board(BoardActivity.this, R.layout.custom_adapter_view, boardList);
+            listView.setAdapter(myAdapter);
 
-            listView.setAdapter(adapter);
         }catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
 
-    public void getData(String url) {
-        class GetDataJSON extends AsyncTask<String, Void, String> {
+    private class getData extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+        String errorString = null;
 
-            @Override
-            protected String doInBackground(String... params) {
+        @Override
+        protected  void onPreExecute() {
+            super.onPreExecute();
 
-                String uri = params[0];
-
-                BufferedReader bufferedReader = null;
-                try {
-                    URL url = new URL(uri);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-
-                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                }catch (Exception e) {
-                    return null;
-                }
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                data = result;
-                showList();
-            }
+            progressDialog = ProgressDialog.show(BoardActivity.this, "Please wait", null, true, true);
         }
-        GetDataJSON g = new GetDataJSON();
-        g.execute(url);
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+            rslt = result;
+            showList();
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+            String postParameters = "title=" + params[1];
+
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                //Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+                bufferedReader.close();
+
+                return sb.toString().trim();
+
+            } catch (Exception e) {
+                //Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+
     }
 
 //    protected void onResume() {
 //        super.onResume();
-////        boardList.clear();
-//////        boardList.addAll(boardDBManager.getAllBoard());
-////        myAdapter.notifyDataSetChanged();
-//        dataList.clear();
-//        adapter.notify();
+//        boardList.clear();
+////        boardList.addAll(boardDBManager.getAllBoard());
+//        myAdapter.notifyDataSetChanged();
 //    }
 
     public void onClick(View v) {

@@ -7,6 +7,7 @@ public class Board implements Serializable {
     String context;
     String title;
     String date;
+    int post_id;
 
     public Board(long _id, String context, String title, String date) {
         this._id = _id;
