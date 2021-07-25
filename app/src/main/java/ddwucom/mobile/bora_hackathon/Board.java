@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Board implements Serializable {
     int post_id;
-    int user_id;
+    String user_id;
     String context;
     String title;
     String date;
 
-    public Board(int post_id, int user_id, String context, String title, String date) {
+    public Board(int post_id, String user_id, String context, String title, String date) {
         this.post_id = post_id;
         this.user_id = user_id;
         this.context = context;
@@ -21,7 +21,7 @@ public class Board implements Serializable {
         return post_id;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
@@ -41,7 +41,7 @@ public class Board implements Serializable {
         this.post_id = post_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
