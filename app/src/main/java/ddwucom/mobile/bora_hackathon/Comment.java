@@ -1,17 +1,13 @@
 package ddwucom.mobile.bora_hackathon;
 
-import java.io.Serializable;
-
-public class Board implements Serializable {
+public class Comment {
     long _id;
-    String context;
-    String title;
+    String comment;
     String date;
 
-    public Board(long _id, String context, String title, String date) {
+    public Comment(long _id, String comment, String date) {
         this._id = _id;
-        this.context = context;
-        this.title = title;
+        this.comment = comment;
         this.date = date;
     }
 
@@ -19,12 +15,8 @@ public class Board implements Serializable {
         return _id;
     }
 
-    public String getContext() {
-        return context;
-    }
-
-    public String getTitle() {
-        return title;
+    public String getComment() {
+        return comment;
     }
 
     public String getDate() {
@@ -35,12 +27,8 @@ public class Board implements Serializable {
         this._id = _id;
     }
 
-    public void setContext(String context) {
-        this.context = context;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public void setDate(String date) {
@@ -51,9 +39,7 @@ public class Board implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append(_id);
         sb.append(".\t\t");
-        sb.append(context);
-        sb.append(".\t\t");
-        sb.append(title);
+        sb.append(comment);
         sb.append(".\t\t");
         sb.append(date);
         sb.append(")");

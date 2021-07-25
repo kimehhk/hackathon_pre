@@ -3,23 +3,28 @@ package ddwucom.mobile.bora_hackathon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private MyAdapter myAdapter;
+    private MyAdapter_board myAdapterBoard;
     private ListView listView;
     private ArrayList<Board> movieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board);
-
-        myAdapter = new MyAdapter(this, R.layout.custom_adapter_view, movieList);
-        listView = (ListView)findViewById(R.id.customListView);
-        listView.setAdapter(myAdapter);
+        setContentView(R.layout.activity_main);
     }
-    //수정
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_game:
+                break;
+            case R.id.button_board:
+                break;
+        }
+    }
 }
