@@ -19,7 +19,6 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -29,7 +28,7 @@ public class DetailActivity extends AppCompatActivity {
     EditText context;
     MyAdapter_comment myAdapter_comment;
     ListView listView;
-    ArrayList<Comment> commentList;
+    //ArrayList<Comment> commentList;
     List<Comment> comments;
 
     final static private String URL = "http://boragame.co.kr/comment_read.php";
@@ -51,9 +50,14 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(board.getTitle());
         context.setText(board.getContext());
 
-        commentList = new ArrayList();
-        myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
+        //commentList = new ArrayList();
+        //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
+        //listView.setAdapter(myAdapter_comment);
+
+        getComments();
+        myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, comments);
         listView.setAdapter(myAdapter_comment);
+
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -89,7 +93,7 @@ public class DetailActivity extends AppCompatActivity {
                             for (int i = 0; i<array.length(); i++) {
                                 JSONObject object = array.getJSONObject(i);
 
-                                String comment_id = object.getString("comment_id");
+                                long comment_id = Long.parseLong(object.getString("comment_id"));
                                 String content = object.getString("content");
                                 String user_id = object.getString("user_id");
 
@@ -100,14 +104,14 @@ public class DetailActivity extends AppCompatActivity {
 
                         }
 
-                        myAdapter_comment = new MyAdapter_comment(DetailActivity.this, comments);
-                        listView.setAdapter(myAdapter_comment);
+                       /* myAdapter_comment = new MyAdapter_comment(DetailActivity.this, comments);
+                        listView.setAdapter(myAdapter_comment);*/
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(DetailActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
-        })
+        });
     }
 }

@@ -7,16 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter_comment extends BaseAdapter {
     private Context context;
     private int layout;
-    private ArrayList<Comment> myDataArrayList;
+    private List<Comment> myDataArrayList;
     private LayoutInflater layoutInflater;
 
-    public MyAdapter_comment(Context context, int layout, ArrayList<Comment> myDataArrayList) {
+    public MyAdapter_comment(Context context, int layout, List<Comment> myDataArrayList) {
         this.context = context;
         this.layout = layout;
         this.myDataArrayList = myDataArrayList;
