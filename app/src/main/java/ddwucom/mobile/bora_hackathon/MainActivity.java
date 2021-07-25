@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_board);
 
         myAdapter = new MyAdapter(this, R.layout.custom_adapter_view, movieList);
         listView = (ListView)findViewById(R.id.customListView);
         listView.setAdapter(myAdapter);
     }
-    //제발
+    //수정
 }
