@@ -8,22 +8,19 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BoardRequest extends StringRequest {
+public class CommentRequest extends StringRequest {
 
-    final static private String URL = "http://boragame.co.kr/upload.php";
+    final static private String URL = "http://boragame.co.kr/comment_add.php";
     private Map<String, String> map;
 
-    public BoardRequest(String post_id, String title, String context, String date, String user_id, Response.Listener<String> listener) {
+    public CommentRequest(String comment_id, String content, String user_id, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
-        map.put("post_id", post_id);
-        map.put("title", title);
-        map.put("context", context);
-        map.put("date", date);
+        map.put("post_id", comment_id);
+        map.put("title", content);
         map.put("user_id", user_id);
     }
-
 
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
