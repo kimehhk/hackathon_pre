@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ddwucom.mobile.bora_hackathon">
 
-    <uses-permission android:name="android.permission.INTERNET" />  <!-- 인터넷 권한 선언 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BORA_hackathon"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".LoginActivity">
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,9 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginResultActivity">
-
-        </activity>
+        <activity android:name=".LoginResultActivity"></activity>
     </application>
 
 </manifest>
