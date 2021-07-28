@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ListView
-        android:id="@+id/customListView"
+        android:id="@+id/customListViewC"
         android:layout_width="419dp"
         android:layout_height="582dp"
         app:layout_constraintBottom_toTopOf="@+id/button_cancel"

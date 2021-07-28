@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/customListView"
+                android:id="@+id/customListViewC"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="0dp" />

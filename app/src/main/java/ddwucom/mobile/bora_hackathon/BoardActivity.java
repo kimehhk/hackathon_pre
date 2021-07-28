@@ -24,7 +24,7 @@ public class BoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_board);
 
         myAdapter = new MyAdapter_board(this, R.layout.custom_adapter_view, boardList);
-        listView = (ListView)findViewById(R.id.customListView);
+        listView = (ListView)findViewById(R.id.customListViewC);
         listView.setAdapter(myAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
