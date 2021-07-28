@@ -27,9 +27,9 @@ public class BoardActivity extends AppCompatActivity {
     final int SEARCH_CODE = 200;
 
     String rslt;
-    int postId;
 
     private ListView listView;
+    private ListAdapter adapter;
 
     private static final String TAG_RESULT = "result";
     private static final String TAG_TITLE = "title";
@@ -37,8 +37,8 @@ public class BoardActivity extends AppCompatActivity {
     private static final String TAG_POSTID = "post_id";
     private static final String TAG_DATE = "date";
 
-
     JSONArray jsonArray = null;
+
     ArrayList<HashMap<String, Object>> dataList;
 
     @Override
@@ -49,6 +49,7 @@ public class BoardActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.customListview);
 
         dataList = new ArrayList<HashMap<String, Object>>();
+
         getData("http://boragame.dothome.co.kr/board.php");
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,7 +57,7 @@ public class BoardActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
-                //intent.putExtra("post_id", postId);
+                intent.putExtra("post_id",dataList.get(position).get("post_id").toString());
                 startActivity(intent);
             }
         });
@@ -71,26 +72,29 @@ public class BoardActivity extends AppCompatActivity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject c = jsonArray.getJSONObject(i);
 
+                String post_id = c.getString(TAG_POSTID);
                 String title = c.getString(TAG_TITLE);
                 String context = c.getString(TAG_CONTEXT);
                 String date = c.getString(TAG_DATE);
 
                 HashMap<String, Object> data = new HashMap<String, Object>();
 
-
+                data.put(TAG_POSTID, post_id);
                 data.put(TAG_TITLE, title);
                 data.put(TAG_CONTEXT, context);
                 data.put(TAG_DATE, date);
 
                 dataList.add(data);
+
             }
-            ListAdapter adapter = new SimpleAdapter(
+            adapter = new SimpleAdapter(
                     BoardActivity.this, dataList, R.layout.custom_adapter_view,
                     new String[]{TAG_TITLE, TAG_CONTEXT, TAG_DATE},
                     new int[]{R.id.boardTitle, R.id.boardContent, R.id.boardDate}
             );
 
             listView.setAdapter(adapter);
+
         }catch (JSONException e) {
             e.printStackTrace();
         }
@@ -135,7 +139,6 @@ public class BoardActivity extends AppCompatActivity {
 
 //    protected void onResume() {
 //        super.onResume();
-////        boardList.clear();
 //////        boardList.addAll(boardDBManager.getAllBoard());
 ////        myAdapter.notifyDataSetChanged();
 //        dataList.clear();
