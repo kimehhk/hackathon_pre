@@ -8,11 +8,11 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="390dp"
+        android:layout_height="415dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
@@ -22,10 +22,10 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/customListView"
+                android:id="@+id/customListview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="0dp" />
+                android:layout_height="match_parent" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -40,9 +40,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_add"
+        android:id="@+id/btn_upload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onClick"
         android:text="글쓰기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -50,14 +52,14 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="상담센터"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_add" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload" />
 
     <ImageButton
         android:id="@+id/button_cancel"
