@@ -10,64 +10,59 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
-public class MyAdapter_board extends RecyclerView.Adapter<MyAdapter_board.CustomViewHolder> {
-   private ArrayList<Board> bList = null;
-   private Activity context = null;
-   private AdapterView.OnItemClickListener listener = null;
+public class MyAdapter_board extends BaseAdapter{
+    private Context context;
+    private int layout;
+    private ArrayList<Board> myDataArrayList;
+    private LayoutInflater layoutInflater;
 
-   public MyAdapter_board(Activity context, ArrayList<Board> list) {
-       this.context = context;
-       this.bList = list;
-   }
+    public MyAdapter_board(Context context, int layout, ArrayList<Board> myDataArrayList) {
+        this.context = context;
+        this.layout = layout;
+        this.myDataArrayList = myDataArrayList;
+        layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
 
-   public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
-       this.listener = listener;
-   }
+    @Override
+    public int getCount() {
+        return myDataArrayList.size();
+    }
 
-   class CustomViewHolder extends RecyclerView.ViewHolder {
-       protected TextView title;
-       protected TextView content;
-      //protected TextView date;
+    @Override
+    public Object getItem(int position) {
+        return myDataArrayList.get(position);
+    }
 
-       public CustomViewHolder(View view) {
-           super(view);
-           this.title = view.findViewById(R.id.boardTitle);
-           this.content = view.findViewById(R.id.boardContent);
+    @Override
+    public long getItemId(int position) {
+        return myDataArrayList.get(position).getPost_id();
+    }
 
-           view.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   int pos = getAdapterPosition();
-                   if (pos != RecyclerView.NO_POSITION) {
-                       //listener.onItemClick(CustomViewHolder.this, v, pos, getItemId());
-                   }
-               }
-           });
-       }
-   }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final int pos = position;
+        ViewHolder holder;
 
-   @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-       View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_adapter_view, null);
-       CustomViewHolder viewHolder = new CustomViewHolder(view) ;
+        if(convertView == null) {
+            convertView = layoutInflater.inflate(layout, parent, false);
+            holder = new ViewHolder();
+            holder.context = (TextView)convertView.findViewById(R.id.et_boardContext);
+            holder.title = (TextView)convertView.findViewById(R.id.et_boardTitle);
 
-       return viewHolder;
-   }
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder)convertView.getTag();
+        }
+        holder.context.setText(myDataArrayList.get(pos).getContext());
+        holder.title.setText((myDataArrayList.get(pos).getTitle()));
 
-   @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder viewHolder, int position) {
-       viewHolder.title.setText(bList.get(position).getTitle());
-       viewHolder.content.setText(bList.get(position).getContext());
-   }
+        return convertView;
+    }
 
-   @Override
-    public int getItemCount() {
-       return (null != bList ? bList.size() : 0);
-   }
-
+    static class ViewHolder {
+        TextView context;
+        TextView title;
+    }
 }
