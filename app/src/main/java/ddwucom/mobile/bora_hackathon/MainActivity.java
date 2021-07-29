@@ -1,5 +1,10 @@
 package ddwucom.mobile.bora_hackathon;
 
+<<<<<<< HEAD
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> 8a8ccec2b614856757437760457773d8ded89397
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_game:
                 break;
             case R.id.button_board:
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent = new Intent(this, BoardActivity.class);
                 startActivity(intent);
                 break;
         }
