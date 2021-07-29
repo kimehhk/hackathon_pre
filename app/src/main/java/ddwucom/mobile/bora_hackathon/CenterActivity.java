@@ -39,7 +39,6 @@ public class CenterActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        String address = "";
         switch (v.getId()) {
             case R.id.btn_centerCancel:
                 finish();

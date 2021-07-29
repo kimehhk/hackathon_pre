@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
-    
+
     private EditText et_id, et_pass, et_name;
     private Button btn_register;
 
@@ -25,13 +25,13 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        
+
         // 아이디 값 찾아주기
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
         et_name = findViewById(R.id.et_name);
         btn_register = findViewById(R.id.btn_register);
-        
+
         // 회원가입 버튼 클릭 시 수행
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

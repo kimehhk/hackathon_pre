@@ -1,7 +1,9 @@
+
 package ddwucom.mobile.bora_hackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_game:
                 break;
             case R.id.button_board:
+                Intent intent = new Intent(this, BoardActivity.class);
+                startActivity(intent);
                 break;
         }
     }

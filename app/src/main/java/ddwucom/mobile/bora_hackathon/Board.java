@@ -17,6 +17,13 @@ public class Board implements Serializable {
         this.date = date;
     }
 
+    public Board(int post_id, String title, String context, String date) {
+        this.post_id = post_id;
+        this.title = title;
+        this.context = context;
+        this.date = date;
+    }
+
     public int getPost_id() {
         return post_id;
     }

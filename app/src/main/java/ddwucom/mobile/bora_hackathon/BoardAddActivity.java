@@ -20,7 +20,7 @@ public class BoardAddActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_add:
+            case R.id.btn_upload:
                 break;
             case R.id.button_cancel:
                 finish();

@@ -25,12 +25,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        
+
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
-        
+
         // 회원가입 버튼을 클릭 시 수행
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
