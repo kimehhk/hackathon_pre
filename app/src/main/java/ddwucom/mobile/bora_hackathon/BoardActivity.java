@@ -157,7 +157,9 @@ public class BoardActivity extends AppCompatActivity {
             case R.id.btn_upload:
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
                 startActivity(intent);
-
+            case R.id.btn_center:
+                intent = new Intent(BoardActivity.this, CenterActivity.class);
+                startActivity(intent);
         }
     }
 }
