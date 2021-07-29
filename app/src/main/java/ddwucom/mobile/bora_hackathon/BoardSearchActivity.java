@@ -1,4 +1,3 @@
-
 package ddwucom.mobile.bora_hackathon;
 
 import android.content.Intent;
@@ -105,58 +104,58 @@ public class BoardSearchActivity extends AppCompatActivity {
 
     private class getData extends AsyncTask<String, Void, String> {
 
-        @Override
-        protected String doInBackground(String... params) {
-            String searchKeyword = params[0];
-            String serverURL = "http://boragame.dothome.co.kr/search.php";
-            String postParameters = "title=" + searchKeyword;
+            @Override
+            protected String doInBackground(String... params) {
+                String searchKeyword = params[0];
+                String serverURL = "http://boragame.dothome.co.kr/search.php";
+                String postParameters = "title=" + searchKeyword;
 
-            BufferedReader bufferedReader = null;
-            try {
-                URL url = new URL(serverURL);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                BufferedReader bufferedReader = null;
+                try {
+                    URL url = new URL(serverURL);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-                con.setReadTimeout(5000);
-                con.setConnectTimeout(5000);
-                con.setRequestMethod("POST");
-                con.setDoInput(true);
-                con.connect();
+                    con.setReadTimeout(5000);
+                    con.setConnectTimeout(5000);
+                    con.setRequestMethod("POST");
+                    con.setDoInput(true);
+                    con.connect();
 
-                OutputStream outputStream = con.getOutputStream();
-                outputStream.write(postParameters.getBytes("UTF-8"));
-                outputStream.flush();
-                outputStream.close();
+                    OutputStream outputStream = con.getOutputStream();
+                    outputStream.write(postParameters.getBytes("UTF-8"));
+                    outputStream.flush();
+                    outputStream.close();
 
-                int responseStatusCode = con.getResponseCode();
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = con.getInputStream();
+                    int responseStatusCode = con.getResponseCode();
+                    InputStream inputStream;
+                    if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                        inputStream = con.getInputStream();
+                    }
+                    else {
+                        inputStream = con.getErrorStream();
+                    }
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+
+                    StringBuilder sb = new StringBuilder();
+
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                }catch (Exception e) {
+                    return null;
                 }
-                else {
-                    inputStream = con.getErrorStream();
-                }
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+            }
 
-                StringBuilder sb = new StringBuilder();
-
-                bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                String json;
-                while ((json = bufferedReader.readLine()) != null) {
-                    sb.append(json + "\n");
-                }
-                return sb.toString().trim();
-            }catch (Exception e) {
-                return null;
+            @Override
+            protected void onPostExecute(String result) {
+                rslt = result;
+                showList();
             }
         }
-
-        @Override
-        protected void onPostExecute(String result) {
-            rslt = result;
-            showList();
-        }
-    }
 
 
 //    protected void onResume() {

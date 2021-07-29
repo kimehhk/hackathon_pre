@@ -16,58 +16,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MyAdapter_board extends RecyclerView.Adapter<MyAdapter_board.CustomViewHolder> {
-    private ArrayList<Board> bList = null;
-    private Activity context = null;
-    private AdapterView.OnItemClickListener listener = null;
+   private ArrayList<Board> bList = null;
+   private Activity context = null;
+   private AdapterView.OnItemClickListener listener = null;
 
-    public MyAdapter_board(Activity context, ArrayList<Board> list) {
-        this.context = context;
-        this.bList = list;
-    }
+   public MyAdapter_board(Activity context, ArrayList<Board> list) {
+       this.context = context;
+       this.bList = list;
+   }
 
-    public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
-        this.listener = listener;
-    }
+   public void setOnItemClickListener(AdapterView.OnItemClickListener listener) {
+       this.listener = listener;
+   }
 
-    class CustomViewHolder extends RecyclerView.ViewHolder {
-        protected TextView title;
-        protected TextView content;
-        //protected TextView date;
+   class CustomViewHolder extends RecyclerView.ViewHolder {
+       protected TextView title;
+       protected TextView content;
+      //protected TextView date;
 
-        public CustomViewHolder(View view) {
-            super(view);
-            this.title = view.findViewById(R.id.boardTitle);
-            this.content = view.findViewById(R.id.boardContent);
+       public CustomViewHolder(View view) {
+           super(view);
+           this.title = view.findViewById(R.id.boardTitle);
+           this.content = view.findViewById(R.id.boardContent);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int pos = getAdapterPosition();
-                    if (pos != RecyclerView.NO_POSITION) {
-                        //listener.onItemClick(CustomViewHolder.this, v, pos, getItemId());
-                    }
-                }
-            });
-        }
-    }
+           view.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   int pos = getAdapterPosition();
+                   if (pos != RecyclerView.NO_POSITION) {
+                       //listener.onItemClick(CustomViewHolder.this, v, pos, getItemId());
+                   }
+               }
+           });
+       }
+   }
 
-    @Override
+   @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_adapter_view, null);
-        CustomViewHolder viewHolder = new CustomViewHolder(view) ;
+       View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.custom_adapter_view, null);
+       CustomViewHolder viewHolder = new CustomViewHolder(view) ;
 
-        return viewHolder;
-    }
+       return viewHolder;
+   }
 
-    @Override
+   @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewHolder, int position) {
-        viewHolder.title.setText(bList.get(position).getTitle());
-        viewHolder.content.setText(bList.get(position).getContext());
-    }
+       viewHolder.title.setText(bList.get(position).getTitle());
+       viewHolder.content.setText(bList.get(position).getContext());
+   }
 
-    @Override
+   @Override
     public int getItemCount() {
-        return (null != bList ? bList.size() : 0);
-    }
+       return (null != bList ? bList.size() : 0);
+   }
 
 }
