@@ -51,8 +51,6 @@ public class BoardSearchActivity extends AppCompatActivity {
 
         dataList = new ArrayList<HashMap<String, Object>>();
 
-        //getData("http://boragame.dothome.co.kr/search.php");
-
         searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -108,7 +106,7 @@ public class BoardSearchActivity extends AppCompatActivity {
             protected String doInBackground(String... params) {
                 String searchKeyword = params[0];
                 String serverURL = "http://boragame.dothome.co.kr/search.php";
-                String postParameters = "title=" + searchKeyword;
+                String postParameters = "context=" + searchKeyword;
 
                 BufferedReader bufferedReader = null;
                 try {
