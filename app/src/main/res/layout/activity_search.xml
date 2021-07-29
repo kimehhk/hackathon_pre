@@ -6,15 +6,9 @@
     android:layout_height="match_parent">
 
     <ListView
-<<<<<<< HEAD
-        android:id="@+id/customListViewC"
-        android:layout_width="419dp"
-        android:layout_height="582dp"
-=======
         android:id="@+id/searchView"
         android:layout_width="402dp"
         android:layout_height="523dp"
->>>>>>> 8a8ccec2b614856757437760457773d8ded89397
         app:layout_constraintBottom_toTopOf="@+id/button_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"

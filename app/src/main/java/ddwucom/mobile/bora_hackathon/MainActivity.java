@@ -1,10 +1,5 @@
 package ddwucom.mobile.bora_hackathon;
 
-<<<<<<< HEAD
-=======
-import androidx.appcompat.app.AppCompatActivity;
-
->>>>>>> 8a8ccec2b614856757437760457773d8ded89397
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
