@@ -50,7 +50,7 @@ public class MyAdapter_comment extends BaseAdapter {
         if(convertView == null) {
             convertView = layoutInflater.inflate(layout, parent, false);
             holder = new ViewHolder();
-            holder.comment = (TextView)convertView.findViewById(R.id.et_comment);
+            holder.comment = (TextView)convertView.findViewById(R.id.comment);
 
             convertView.setTag(holder);
         } else {
