@@ -13,13 +13,14 @@ import java.util.ArrayList;
 public class BoardActivity extends AppCompatActivity {
     final int READ_CODE = 100;
     final int SEARCH_CODE = 200;
+    final int CENTER_CODE = 300;
 
     private MyAdapter_board myAdapter;
     private ListView listView;
     private ArrayList<Board> boardList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected  void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
@@ -50,6 +51,10 @@ public class BoardActivity extends AppCompatActivity {
             case R.id.button_search:
                 Intent intent = new Intent(BoardActivity.this, BoardSearchActivity.class);
                 startActivityForResult(intent, SEARCH_CODE);
+                break;
+            case R.id.button_center:
+                Intent intent1 = new Intent(BoardActivity.this, CenterActivity.class);
+                startActivityForResult(intent1, CENTER_CODE);
                 break;
             case R.id.button_cancel:
                 finish();
