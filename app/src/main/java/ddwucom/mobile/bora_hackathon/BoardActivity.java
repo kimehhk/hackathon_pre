@@ -163,7 +163,7 @@ public class BoardActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_search:
-                Intent intent = new Intent(BoardActivity.this, BoardSearchActivity.class);
+                Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
                 startActivityForResult(intent, SEARCH_CODE);
                 break;
             case R.id.button_cancel:
