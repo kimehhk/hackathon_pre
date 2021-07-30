@@ -3,11 +3,9 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,7 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -31,15 +29,13 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
     //Board board;
-    int board;
-    EditText date;
+    TextView date;
     TextView title;
     TextView context;
     //MyAdapter_comment myAdapter_comment;
     ListView listView;
     ArrayList commentList;
     List<Comment> comments;
-    //String content;
     ArrayAdapter myAdapter;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
@@ -54,28 +50,10 @@ public class DetailActivity extends AppCompatActivity {
         Intent board = getIntent();
         board.getStringExtra("post_id");
 
-        //board = 1;
 
-       /* Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        DetailRequest detailRequest = new DetailRequest(board, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(DetailActivity.this);
-        queue.add(detailRequest);*/
-
-
-
-        //date = findViewById(R.id.et_boardDate);
-        //title = findViewById(R.id.detailTitle);
-        //context = findViewById(R.id.boardDetail);
+        title = findViewById(R.id.tvTitleDetail);
+        date = findViewById(R.id.tvDateDetail);
+        context = findViewById(R.id.tvContextDetail);
         listView = findViewById(R.id.listView);
 
 
@@ -92,7 +70,6 @@ public class DetailActivity extends AppCompatActivity {
         commentList = new ArrayList();
 
         getComments();
-        //context.setHint(content);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -117,35 +94,26 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void getComments() {
-        //content = "hh";
         RequestQueue queue = Volley.newRequestQueue(this);
 
 
-        //StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
-                //new Response.Listener<String>() {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, READ_URL, null,
-                new Response.Listener<JSONArray>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
+                new Response.Listener<String>() {
+        //JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, READ_URL, null,
+                //new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-                    //public void onResponse(JSONObject response) {
-                        //Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
-                        //String content = null;
+                    //public void onResponse(JSONArray response) {
+                    public void onResponse(String response) {
                         try {
-                            //JSONArray array = new JSONArray(response);
-                            //String jsonResponse = "";
-                            //Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
-                            for (int i = 0; i < response.length(); i++) {
-                                //JSONObject object = (JSONObject) response.get(i);
-                                JSONObject object = response.getJSONObject(i);
+                            JSONArray array = new JSONArray(response);
+                            for (int i = 0; i < array.length(); i++) {
+                                JSONObject object = (JSONObject) array.get(i);
+                                //JSONObject object = response.getJSONObject(i);
 
                                 //String comment_id = object.getJSONArray("result").getString(0);
                                 String comment_id = object.getString("comment_id");
-                                Log.d("comment_id", comment_id);
                                 String content = object.getString("content");
                                 String post_id = object.getString("post_id");
-
-
-                                String l = String.valueOf(response.length());
 
                                 HashMap<String, String> data = new HashMap<String, String>();
 
@@ -153,9 +121,8 @@ public class DetailActivity extends AppCompatActivity {
                                 data.put("content", content);
                                 data.put("post_id", post_id);
 
-                                commentList.add(data.get("content"));
+                                commentList.add(content);
 
-                                Toast.makeText(DetailActivity.this, l, Toast.LENGTH_LONG).show();
                                 //Comment comment = new Comment(comment_id, content, post_id);
                                 //comments.add(comment);
                             }
@@ -182,7 +149,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        //queue.add(stringRequest);
-        queue.add(jsonArrayRequest);
+        queue.add(stringRequest);
+        //queue.add(jsonArrayRequest);
     }
 }
