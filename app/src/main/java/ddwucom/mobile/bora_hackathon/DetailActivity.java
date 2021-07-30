@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -38,7 +39,8 @@ public class DetailActivity extends AppCompatActivity {
     ListView listView;
     ArrayList commentList;
     List<Comment> comments;
-    String content;
+    //String content;
+    ArrayAdapter myAdapter;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
 
@@ -87,6 +89,8 @@ public class DetailActivity extends AppCompatActivity {
         //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
         //listView.setAdapter(myAdapter_comment);
 
+        commentList = new ArrayList();
+
         getComments();
         //context.setHint(content);
 
@@ -119,25 +123,29 @@ public class DetailActivity extends AppCompatActivity {
 
         //StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
                 //new Response.Listener<String>() {
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(READ_URL,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, READ_URL, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                    //public void onResponse(String response) {
+                    //public void onResponse(JSONObject response) {
                         //Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
                         //String content = null;
                         try {
                             //JSONArray array = new JSONArray(response);
-                            String jsonResponse = "";
-                            Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
+                            //String jsonResponse = "";
+                            //Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
                             for (int i = 0; i < response.length(); i++) {
-                                JSONObject object = (JSONObject) response.get(i);
+                                //JSONObject object = (JSONObject) response.get(i);
+                                JSONObject object = response.getJSONObject(i);
 
+                                //String comment_id = object.getJSONArray("result").getString(0);
                                 String comment_id = object.getString("comment_id");
                                 Log.d("comment_id", comment_id);
-                                content = object.getString("content");
+                                String content = object.getString("content");
                                 String post_id = object.getString("post_id");
 
+
+                                String l = String.valueOf(response.length());
 
                                 HashMap<String, String> data = new HashMap<String, String>();
 
@@ -147,19 +155,20 @@ public class DetailActivity extends AppCompatActivity {
 
                                 commentList.add(data.get("content"));
 
-                                Toast.makeText(DetailActivity.this, "hii", Toast.LENGTH_LONG).show();
+                                Toast.makeText(DetailActivity.this, l, Toast.LENGTH_LONG).show();
                                 //Comment comment = new Comment(comment_id, content, post_id);
                                 //comments.add(comment);
                             }
-                            ArrayAdapter myAdapter = new ArrayAdapter(
+                            myAdapter = new ArrayAdapter(
                                     DetailActivity.this, android.R.layout.simple_list_item_1,
                                     commentList);
 
                             listView.setAdapter(myAdapter);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            String error = String.valueOf(response.length());
-                            Toast.makeText(DetailActivity.this, error, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),
+                                    "Error is " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                     //myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
