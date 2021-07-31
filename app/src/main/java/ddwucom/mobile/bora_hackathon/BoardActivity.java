@@ -57,7 +57,7 @@ public class BoardActivity extends AppCompatActivity {
 
         dataList = new ArrayList<HashMap<String, Object>>();
 
-        //getData("http://boragame.dothome.co.kr/board.php");
+        getData("http://boragame.dothome.co.kr/board.php");
 
         listView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -156,13 +156,13 @@ public class BoardActivity extends AppCompatActivity {
         g.execute(url);
     }
 
-    protected void onResume() {
-        super.onResume();
-        dataList.clear();
-//        ((SimpleAdapter)listView.getAdapter()).notifyDataSetChanged();
-        getData("http://boragame.dothome.co.kr/board.php");
-
-    }
+//    protected void onResume() {
+//        super.onResume();
+//        dataList.clear();
+////        ((SimpleAdapter)listView.getAdapter()).notifyDataSetChanged();
+//        getData("http://boragame.dothome.co.kr/board.php");
+//
+//    }
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -177,10 +177,10 @@ public class BoardActivity extends AppCompatActivity {
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
                 //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
-            case R.id.btn_center:
-                intent = new Intent(BoardActivity.this, CenterActivity.class);
-                //startActivityForResult(intent, CENTER_CODE);
-                startActivity(intent);
+//            case R.id.btn_center:
+//                intent = new Intent(BoardActivity.this, CenterActivity.class);
+//                //startActivityForResult(intent, CENTER_CODE);
+//                startActivity(intent);
         }
     }
 }
