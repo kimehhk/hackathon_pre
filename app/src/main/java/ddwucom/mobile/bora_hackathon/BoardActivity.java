@@ -74,6 +74,9 @@ public class BoardActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
                 intent.putExtra("post_id",dataList.get(position).get("post_id").toString());
+                intent.putExtra("title", dataList.get(position).get("title").toString());
+                intent.putExtra("context", dataList.get(position).get("context").toString());
+                intent.putExtra("date", dataList.get(position).get("date").toString());
                 startActivity(intent);
             }
         });
