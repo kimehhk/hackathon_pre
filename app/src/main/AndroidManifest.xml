@@ -25,7 +25,7 @@
         <activity android:name=".BoardActivity"/>
         <activity android:name=".BoardAddActivity"/>
         <activity android:name=".BoardSearchActivity"/>
-<!--        <activity android:name=".CenterActivity"/>-->
+        <activity android:name=".CenterActivity"/>
     </application>
 
 </manifest>
