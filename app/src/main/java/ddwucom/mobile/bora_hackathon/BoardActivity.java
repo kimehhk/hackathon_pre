@@ -27,8 +27,9 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class BoardActivity extends AppCompatActivity {
-    final int READ_CODE = 100;
+    final int ADD_CODE = 100;
     final int SEARCH_CODE = 200;
+    final int CENTER_CODE = 300;
 
     String rslt;
 
@@ -51,7 +52,7 @@ public class BoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        listView = (ListView)findViewById(R.id.customListview);
+        listView = (ListView)findViewById(R.id.list);
         ScrollView scrollView = findViewById(R.id.boardScrollView);
 
         dataList = new ArrayList<HashMap<String, Object>>();
@@ -71,7 +72,7 @@ public class BoardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(BoardActivity.this, LoginResultActivity.class);
+                Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
                 intent.putExtra("post_id",dataList.get(position).get("post_id").toString());
                 startActivity(intent);
             }
@@ -163,7 +164,7 @@ public class BoardActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_search:
-                Intent intent = new Intent(BoardActivity.this, DetailActivity.class);
+                Intent intent = new Intent(BoardActivity.this, BoardSearchActivity.class);
                 startActivityForResult(intent, SEARCH_CODE);
                 break;
             case R.id.button_cancel:
@@ -171,9 +172,11 @@ public class BoardActivity extends AppCompatActivity {
                 break;
             case R.id.btn_upload:
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
+                //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
             case R.id.btn_center:
                 intent = new Intent(BoardActivity.this, CenterActivity.class);
+                //startActivityForResult(intent, CENTER_CODE);
                 startActivity(intent);
         }
     }
