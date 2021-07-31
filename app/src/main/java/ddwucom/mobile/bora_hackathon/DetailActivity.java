@@ -57,7 +57,14 @@ public class DetailActivity extends AppCompatActivity {
         context = findViewById(R.id.tvContextDetail);
         listView = findViewById(R.id.listView);
 
-
+/*
+<<<<<<< HEAD
+=======
+        date = findViewById(R.id.et_boardDate);
+        title = findViewById(R.id.et_boardTitle1);
+        context = findViewById(R.id.et_boardContext1);
+        listView = findViewById(R.id.searchView);
+>>>>>>> c2c223a6bfa425a3cc2f363daf161b04190fa35c*/
 
         //date.setText(board.getDate());
         //title.setText(board.getTitle());
