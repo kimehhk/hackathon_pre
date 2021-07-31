@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity {
     EditText comment;
     //MyAdapter_comment myAdapter_comment;
     ListView listView;
-    ArrayList commentList;
+    ArrayList commentList = null;
     List<Comment> comments;
     ArrayAdapter myAdapter;
     String board_post_id;
@@ -108,6 +108,7 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.btn_commentAdd:
                 String str = comment.getText().toString().trim();
                 addComment(board_post_id, str);
+                comment.setText(null);
                 break;
         }
     }
@@ -132,7 +133,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-//                params.put("comment_id", "8");
+
                 params.put("content", str);
                 params.put("post_id", board_post_id);
                 return params;
@@ -197,7 +198,8 @@ public class DetailActivity extends AppCompatActivity {
                                 data.put("content", content);
                                 data.put("post_id", post_id);
 
-                                commentList.add(content);
+                                if(post_id.equals(board_post_id))
+                                    commentList.add(content);
 
                                 //Comment comment = new Comment(comment_id, content, post_id);
                                 //comments.add(comment);
