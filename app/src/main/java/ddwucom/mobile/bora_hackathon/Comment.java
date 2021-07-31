@@ -5,10 +5,10 @@ public class Comment {
     int post_id;
     String comment;
 
-    public Comment(int comment_id, int post_id, String comment) {
+    public Comment(int comment_id, String comment, int post_id) {
         this.comment_id = comment_id;
-        this.post_id = post_id;
         this.comment = comment;
+        this.post_id = post_id;
     }
 
     public int getComment_id() {

@@ -7,19 +7,24 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MyAdapter_comment extends BaseAdapter {
     private Context context;
     private int layout;
-    private ArrayList<Comment> myDataArrayList;
+    private List<Comment> myDataArrayList;
     private LayoutInflater layoutInflater;
 
-    public MyAdapter_comment(Context context, int layout, ArrayList<Comment> myDataArrayList) {
+    public MyAdapter_comment(Context context, int layout, List<Comment> myDataArrayList) {
         this.context = context;
         this.layout = layout;
         this.myDataArrayList = myDataArrayList;
         layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public MyAdapter_comment(int layout, List<Comment> comments) {
+        this.layout = layout;
+        this.myDataArrayList = myDataArrayList;
     }
 
     @Override
@@ -45,14 +50,14 @@ public class MyAdapter_comment extends BaseAdapter {
         if(convertView == null) {
             convertView = layoutInflater.inflate(layout, parent, false);
             holder = new ViewHolder();
-            holder.comment = (TextView)convertView.findViewById(R.id.et_boardContext);
+            holder.comment = (TextView)convertView.findViewById(R.id.comment);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
-        holder.comment.setText(myDataArrayList.get(pos).getComment());
-
+        //holder.comment.setText(myDataArrayList.get(pos).getComment());
+        holder.comment.setText("hi");
         return convertView;
     }
 
