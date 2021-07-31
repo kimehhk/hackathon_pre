@@ -42,6 +42,9 @@ public class DetailActivity extends AppCompatActivity {
     List<Comment> comments;
     ArrayAdapter myAdapter;
     String board_post_id;
+    String board_title;
+    String board_context;
+    String board_date;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
     final static private String DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
@@ -56,6 +59,9 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent board = getIntent();
         board_post_id = board.getStringExtra("post_id");
+        board_title = board.getStringExtra("title");
+        board_date = board.getStringExtra("date");
+        board_context = board.getStringExtra("context");
 
         title = findViewById(R.id.tvTitleDetail);
         date = findViewById(R.id.tvDateDetail);
@@ -63,10 +69,9 @@ public class DetailActivity extends AppCompatActivity {
         comment = findViewById(R.id.et_commentAdd);
         listView = findViewById(R.id.listView);
 
-        //date.setText(board.getDate());
-        //title.setText(board.getTitle());
-        //context.setText(board.getContext());
-
+        date.setText(board_date);
+        title.setText(board_title);
+        context.setText(board_context);
 
         //commentList = new ArrayList();
         //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
@@ -87,7 +92,7 @@ public class DetailActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteComment(board_post_id);
+                                deleteComment("1");
                             }
                         })
                         .setNegativeButton("취소", null)
@@ -157,7 +162,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("post_id", board_post_id);
+                params.put("comment_id", id);
                 return params;
             }
         };
@@ -167,7 +172,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public void getComments() {
         RequestQueue queue = Volley.newRequestQueue(this);
-
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
                 new Response.Listener<String>() {
