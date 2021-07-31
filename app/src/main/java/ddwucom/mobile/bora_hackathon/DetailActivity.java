@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,17 +40,17 @@ public class DetailActivity extends AppCompatActivity {
     ListView listView;
     ArrayList commentList = null;
     List<Comment> comments;
-    ArrayAdapter myAdapter;
+    //ArrayAdapter myAdapter;
+    SimpleAdapter myAdapter;
     String board_post_id;
     String board_title;
     String board_context;
     String board_date;
+    ArrayList<HashMap<String,String>> list;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
     final static private String DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
     final static private String ADD_URL = "http://boragame.dothome.co.kr/comment_add.php";
-
-    //ArrayList<HashMap<String, Object>> commentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +73,11 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(board_title);
         context.setText(board_context);
 
-        //commentList = new ArrayList();
+        commentList = new ArrayList();
+        list = new ArrayList<HashMap<String, String>>();
+
         //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
         //listView.setAdapter(myAdapter_comment);
-
-        commentList = new ArrayList();
 
         getComments();
 
@@ -181,6 +181,7 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     //public void onResponse(JSONArray response) {
                     public void onResponse(String response) {
+
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -197,16 +198,21 @@ public class DetailActivity extends AppCompatActivity {
                                 data.put("comment_id", comment_id);
                                 data.put("content", content);
                                 data.put("post_id", post_id);
+                                data.put("id", "익명");
 
-                                if(post_id.equals(board_post_id))
-                                    commentList.add(content);
+                                if(post_id.equals(board_post_id)) {
+                                    //commentList.add(content);
+                                    list.add(data);
+                                }
 
                                 //Comment comment = new Comment(comment_id, content, post_id);
                                 //comments.add(comment);
                             }
-                            myAdapter = new ArrayAdapter(
-                                    DetailActivity.this, android.R.layout.simple_list_item_1,
-                                    commentList);
+                            //myAdapter = new ArrayAdapter(
+                            myAdapter = new SimpleAdapter(
+                                    DetailActivity.this, list, android.R.layout.simple_list_item_2,
+                                    new String[] {"id","content"}, new int[] {android.R.id.text1, android.R.id.text2});
+                                    //commentList);
 
                             listView.setAdapter(myAdapter);
                         } catch (Exception e) {
