@@ -11,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -174,7 +175,11 @@ public class BoardActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_upload:
+                Intent gIntent = getIntent();
+                String user_id = gIntent.getStringExtra("user_id");
+
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
+                intent.putExtra("user_id", user_id);
                 //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
 //            case R.id.btn_center:

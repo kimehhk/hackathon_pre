@@ -132,7 +132,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("comment_id", "8");
+//                params.put("comment_id", "8");
                 params.put("content", str);
                 params.put("post_id", board_post_id);
                 return params;
