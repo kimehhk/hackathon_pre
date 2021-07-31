@@ -59,10 +59,6 @@ public class BoardAddActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 String user_id = intent.getStringExtra("user_id");
 
-//                Toast.makeText(BoardAddActivity.this,title + " " + context + " " + date + " " + user_id, Toast.LENGTH_SHORT).show();
-
-//                addPost(title, context, date, user_id);
-
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -90,35 +86,4 @@ public class BoardAddActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void addPost(String title, String context, String date, String user_id) {
-//        StringRequest request = new StringRequest(Request.Method.POST, UPLOAD_URL,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        if (response.equalsIgnoreCase("Data Inserted")) {
-//                            Toast.makeText(BoardAddActivity.this, "글 등록 성공", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(BoardAddActivity.this, "글 등록 실패", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(BoardAddActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        }){
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<>();
-//                params.put("title", title);
-//                params.put("context", context);
-//                params.put("date", date);
-//                params.put("user_id", user_id);
-//                return params;
-//            }
-//        };
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        queue.add(request);
-//    }
 }
