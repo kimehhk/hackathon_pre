@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, BoardActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.button_login:
+                Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent1);
         }
     }
 }

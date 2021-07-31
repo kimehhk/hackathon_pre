@@ -9,7 +9,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BoardAddActivity extends AppCompatActivity {
     EditText et_boardTitle;
@@ -29,14 +39,16 @@ public class BoardAddActivity extends AppCompatActivity {
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String post_id = String.valueOf(1);
+
                 // EditText에 현재 입력되어있는 값을 가져옴.
                 String title = et_boardTitle.getText().toString();
                 String context = et_boardContext.getText().toString();
 
                 Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
+
+                int month = c.get(Calendar.MONTH) + 1;
+
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 String date = year + "-" + month + "-" + day;
@@ -44,8 +56,41 @@ public class BoardAddActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 String user_id = intent.getStringExtra("user_id");
 
-                Toast.makeText(BoardAddActivity.this, post_id + " " + title + " " + context + " " + date + " " + user_id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(BoardAddActivity.this,title + " " + context + " " + date + " " + user_id, Toast.LENGTH_SHORT).show();
+
+                addPost(title, context, date, user_id);
             }
         });
+    }
+
+    private void addPost(String title, String context, String date, String user_id) {
+        StringRequest request = new StringRequest(Request.Method.POST, UPLOAD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("Data Inserted")) {
+                            Toast.makeText(BoardAddActivity.this, "글 등록 성공", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(BoardAddActivity.this, "글 등록 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(BoardAddActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("title", title);
+                params.put("context", context);
+                params.put("date", date);
+                params.put("user_id", user_id);
+                return params;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(BoardAddActivity.this);
+        queue.add(request);
     }
 }
