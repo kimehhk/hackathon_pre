@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,20 +28,24 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DetailActivity extends AppCompatActivity {
     //Board board;
     TextView date;
     TextView title;
     TextView context;
+    EditText comment;
     //MyAdapter_comment myAdapter_comment;
     ListView listView;
     ArrayList commentList;
     List<Comment> comments;
     ArrayAdapter myAdapter;
+    String board_post_id;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
     final static private String DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
+    final static private String ADD_URL = "http://boragame.dothome.co.kr/comment_add.php";
 
     //ArrayList<HashMap<String, Object>> commentList;
 
@@ -49,22 +55,13 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent board = getIntent();
-        board.getStringExtra("post_id");
-
+        board_post_id = board.getStringExtra("post_id");
 
         title = findViewById(R.id.tvTitleDetail);
         date = findViewById(R.id.tvDateDetail);
         context = findViewById(R.id.tvContextDetail);
+        comment = findViewById(R.id.et_commentAdd);
         listView = findViewById(R.id.listView);
-
-/*
-<<<<<<< HEAD
-=======
-        date = findViewById(R.id.et_boardDate);
-        title = findViewById(R.id.et_boardTitle1);
-        context = findViewById(R.id.et_boardContext1);
-        listView = findViewById(R.id.searchView);
->>>>>>> c2c223a6bfa425a3cc2f363daf161b04190fa35c*/
 
         //date.setText(board.getDate());
         //title.setText(board.getTitle());
@@ -90,7 +87,7 @@ public class DetailActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                deleteComment(board_post_id);
                             }
                         })
                         .setNegativeButton("취소", null)
@@ -99,6 +96,73 @@ public class DetailActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_commentAdd:
+                String str = comment.getText().toString().trim();
+                addComment(board_post_id, str);
+                break;
+        }
+    }
+
+    private void addComment(String board_post_id, String str) {
+        StringRequest request = new StringRequest(Request.Method.POST, ADD_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("Data Inserted")) {
+                            Toast.makeText(DetailActivity.this, "댓글 입력 성공", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DetailActivity.this, "댓글 입력 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("comment_id", "8");
+                params.put("content", str);
+                params.put("post_id", board_post_id);
+                return params;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+    }
+
+    private void deleteComment(String id) {
+        StringRequest request = new StringRequest(Request.Method.POST, DEL_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("Data Deleted")) {
+                            Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DetailActivity.this, "댓글 삭제 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("post_id", board_post_id);
+                return params;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
     }
 
     public void getComments() {
@@ -161,5 +225,7 @@ public class DetailActivity extends AppCompatActivity {
         //queue.add(jsonArrayRequest);
     }
 
+
+    
 
 }
