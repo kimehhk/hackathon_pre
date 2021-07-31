@@ -39,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
     ArrayAdapter myAdapter;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
+    final static private String DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
 
     //ArrayList<HashMap<String, Object>> commentList;
 
@@ -152,4 +153,6 @@ public class DetailActivity extends AppCompatActivity {
         queue.add(stringRequest);
         //queue.add(jsonArrayRequest);
     }
+
+
 }
