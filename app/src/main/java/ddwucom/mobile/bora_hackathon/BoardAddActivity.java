@@ -39,13 +39,16 @@ public class BoardAddActivity extends AppCompatActivity {
         button_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // EditText에 현재 입력되어있는 값을 가져옴.
                 String title = et_boardTitle.getText().toString();
                 String context = et_boardContext.getText().toString();
 
                 Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
+
                 int month = c.get(Calendar.MONTH) + 1;
+
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 String date = year + "-" + month + "-" + day;
