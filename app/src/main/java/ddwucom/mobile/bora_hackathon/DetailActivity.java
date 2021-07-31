@@ -31,7 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         date = findViewById(R.id.et_boardDate);
         title = findViewById(R.id.et_boardTitle1);
         context = findViewById(R.id.et_boardContext1);
-        listView = findViewById(R.id.customListView);
+        listView = findViewById(R.id.searchView);
 
         date.setText(board.getDate());
         title.setText(board.getTitle());

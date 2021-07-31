@@ -3,10 +3,13 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +23,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class BoardActivity extends AppCompatActivity {
-    final int READ_CODE = 100;
+    final int ADD_CODE = 100;
     final int SEARCH_CODE = 200;
+    final int CENTER_CODE = 300;
 
     String rslt;
 
     private ListView listView;
-    private ListAdapter adapter;
+    private SimpleAdapter adapter;
+    private HashMap<String, Object> data;
 
     private static final String TAG_RESULT = "result";
     private static final String TAG_TITLE = "title";
@@ -46,11 +52,21 @@ public class BoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        listView = (ListView)findViewById(R.id.customListview);
+        listView = (ListView)findViewById(R.id.list);
+        ScrollView scrollView = findViewById(R.id.boardScrollView);
 
         dataList = new ArrayList<HashMap<String, Object>>();
 
-        getData("http://boragame.dothome.co.kr/board.php");
+        //getData("http://boragame.dothome.co.kr/board.php");
+
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scrollView.requestDisallowInterceptTouchEvent(true);
+
+                return false;
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,7 +93,7 @@ public class BoardActivity extends AppCompatActivity {
                 String context = c.getString(TAG_CONTEXT);
                 String date = c.getString(TAG_DATE);
 
-                HashMap<String, Object> data = new HashMap<String, Object>();
+                data = new HashMap<>();
 
                 data.put(TAG_POSTID, post_id);
                 data.put(TAG_TITLE, title);
@@ -137,13 +153,13 @@ public class BoardActivity extends AppCompatActivity {
         g.execute(url);
     }
 
-//    protected void onResume() {
-//        super.onResume();
-//////        boardList.addAll(boardDBManager.getAllBoard());
-////        myAdapter.notifyDataSetChanged();
-//        dataList.clear();
-//        adapter.notify();
-//    }
+    protected void onResume() {
+        super.onResume();
+        dataList.clear();
+//        ((SimpleAdapter)listView.getAdapter()).notifyDataSetChanged();
+        getData("http://boragame.dothome.co.kr/board.php");
+
+    }
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -156,9 +172,11 @@ public class BoardActivity extends AppCompatActivity {
                 break;
             case R.id.btn_upload:
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
+                //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
             case R.id.btn_center:
                 intent = new Intent(BoardActivity.this, CenterActivity.class);
+                //startActivityForResult(intent, CENTER_CODE);
                 startActivity(intent);
         }
     }
