@@ -39,7 +39,7 @@ public class MyAdapter_comment extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return myDataArrayList.get(position).getComment_id();
+        return Long.parseLong(myDataArrayList.get(position).getComment_id());
     }
 
     @Override

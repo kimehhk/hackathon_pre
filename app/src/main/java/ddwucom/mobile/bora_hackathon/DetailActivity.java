@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView title;
     TextView context;
     EditText comment;
-    //MyAdapter_comment myAdapter_comment;
+    MyAdapter_comment myAdapter_comment;
     ListView listView;
     ArrayList commentList = null;
     List<Comment> comments;
@@ -67,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
         date = findViewById(R.id.tvDateDetail);
         context = findViewById(R.id.tvContextDetail);
         comment = findViewById(R.id.et_commentAdd);
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView_custom);
 
         date.setText(board_date);
         title.setText(board_title);
@@ -181,7 +181,9 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     //public void onResponse(JSONArray response) {
                     public void onResponse(String response) {
-
+                        String comment_id;
+                        String content;
+                        String post_id;
                         try {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -189,9 +191,9 @@ public class DetailActivity extends AppCompatActivity {
                                 //JSONObject object = response.getJSONObject(i);
 
                                 //String comment_id = object.getJSONArray("result").getString(0);
-                                String comment_id = object.getString("comment_id");
-                                String content = object.getString("content");
-                                String post_id = object.getString("post_id");
+                                comment_id = object.getString("comment_id");
+                                content = object.getString("content");
+                                post_id = object.getString("post_id");
 
                                 HashMap<String, String> data = new HashMap<String, String>();
 
@@ -202,19 +204,22 @@ public class DetailActivity extends AppCompatActivity {
 
                                 if(post_id.equals(board_post_id)) {
                                     //commentList.add(content);
-                                    list.add(data);
+                                    //list.add(data);
+                                    Comment comment = new Comment(comment_id, content, post_id);
+                                    comments.add(comment);
                                 }
 
-                                //Comment comment = new Comment(comment_id, content, post_id);
-                                //comments.add(comment);
                             }
+                            myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
+                            listView.setAdapter(myAdapter_comment);
+
                             //myAdapter = new ArrayAdapter(
-                            myAdapter = new SimpleAdapter(
-                                    DetailActivity.this, list, android.R.layout.simple_list_item_2,
-                                    new String[] {"id","content"}, new int[] {android.R.id.text1, android.R.id.text2});
+                            ///myAdapter = new SimpleAdapter(
+                                    ///DetailActivity.this, list, android.R.layout.simple_list_item_2,
+                                    ///new String[] {"id","content"}, new int[] {android.R.id.text1, android.R.id.text2});
                                     //commentList);
 
-                            listView.setAdapter(myAdapter);
+                            ///listView.setAdapter(myAdapter);
                         } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
