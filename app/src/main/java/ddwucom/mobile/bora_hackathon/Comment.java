@@ -1,5 +1,7 @@
 package ddwucom.mobile.bora_hackathon;
 
+import java.util.HashMap;
+
 public class Comment {
     String comment_id;
     String post_id;
@@ -10,6 +12,14 @@ public class Comment {
         this.comment = comment;
         this.post_id = post_id;
     }
+
+    public Comment(HashMap<String, String> data) {
+        this.comment_id = data.get("comment_id");
+        this.comment = data.get("comment");
+        this.post_id = data.get("post_id");
+    }
+
+
 
     public String getComment_id() {
         return comment_id;

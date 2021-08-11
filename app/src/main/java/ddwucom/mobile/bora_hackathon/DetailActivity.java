@@ -74,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
         context.setText(board_context);
 
         commentList = new ArrayList();
-        list = new ArrayList<HashMap<String, String>>();
+        //list = new ArrayList<HashMap<String, String>>();
 
         //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
         //listView.setAdapter(myAdapter_comment);
@@ -184,7 +184,10 @@ public class DetailActivity extends AppCompatActivity {
                         String comment_id;
                         String content;
                         String post_id;
+                        //Comment comment = new Comment(comment_id, content, post_id);
                         try {
+                            HashMap<String, String> data = new HashMap<String, String>();
+
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject object = (JSONObject) array.get(i);
@@ -195,20 +198,21 @@ public class DetailActivity extends AppCompatActivity {
                                 content = object.getString("content");
                                 post_id = object.getString("post_id");
 
-                                HashMap<String, String> data = new HashMap<String, String>();
+                                //HashMap<String, String> data = new HashMap<String, String>();
+                                //data = new HashMap<String, String>();
 
-                                data.put("comment_id", comment_id);
-                                data.put("content", content);
-                                data.put("post_id", post_id);
-                                data.put("id", "익명");
+                                //data.put("id", "익명");
 
                                 if(post_id.equals(board_post_id)) {
                                     //commentList.add(content);
                                     //list.add(data);
-                                    Comment comment = new Comment(comment_id, content, post_id);
-                                    comments.add(comment);
+                                    data.put("comment_id", comment_id);
+                                    data.put("content", content);
+                                    data.put("post_id", post_id);
                                 }
-
+                                //Comment comment = new Comment(comment_id, content, post_id);
+                                Comment comment = new Comment(data);
+                                comments.add(comment);
                             }
                             myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
                             listView.setAdapter(myAdapter_comment);
