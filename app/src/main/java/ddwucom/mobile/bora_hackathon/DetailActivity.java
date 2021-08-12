@@ -248,9 +248,6 @@ public class DetailActivity extends AppCompatActivity {
                                 content = object.getString("content");
                                 post_id = object.getString("post_id");
 
-                                //HashMap<String, String> data = new HashMap<String, String>();
-                                //data = new HashMap<String, String>();
-
                                 data = new HashMap<String, String>();
 
                                 if(post_id.equals(board_post_id)) {
@@ -265,26 +262,18 @@ public class DetailActivity extends AppCompatActivity {
                                 //Comment comment = new Comment(data);
                                 //comments.add(comment);
                             }
-                            //myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
-                            //listView.setAdapter(myAdapter_comment);
-
-                            ////myAdapter_commentHash = new MyAdapter_commentHash(DetailActivity.this, R.layout.custom_adapter_view_comment, list);
-                            ////listView.setAdapter(myAdapter_commentHash);
-
                         } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
                                     "Error is " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
-                        //Toast.makeText(getApplicationContext(), Integer.toString(list.size()), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), Integer.toString(list.size()), Toast.LENGTH_LONG).show();
 
                         myAdapter_commentHash = new MyAdapter_commentHash(DetailActivity.this, R.layout.custom_adapter_view_comment, list);
                         listView.setAdapter(myAdapter_commentHash);
                     }
 
-                    //myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
-                    //listView.setAdapter(myAdapter_comment);
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
