@@ -3,6 +3,9 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -36,7 +39,8 @@ public class DetailActivity extends AppCompatActivity {
     TextView title;
     TextView context;
     EditText comment;
-    //MyAdapter_comment myAdapter_comment;
+    MyAdapter_comment myAdapter_comment;
+    MyAdapter_commentHash myAdapter_commentHash;
     ListView listView;
     ArrayList commentList = null;
     List<Comment> comments;
@@ -46,11 +50,13 @@ public class DetailActivity extends AppCompatActivity {
     String board_title;
     String board_context;
     String board_date;
+    HashMap<String, String> data;
     ArrayList<HashMap<String,String>> list;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
-    final static private String DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
+    final static private String COMMENT_DEL_URL = "http://boragame.dothome.co.kr/comment_del.php";
     final static private String ADD_URL = "http://boragame.dothome.co.kr/comment_add.php";
+    final static private String POST_DEL_URL = "http://boragame.dothome.co.kr/post_del.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,17 +73,14 @@ public class DetailActivity extends AppCompatActivity {
         date = findViewById(R.id.tvDateDetail);
         context = findViewById(R.id.tvContextDetail);
         comment = findViewById(R.id.et_commentAdd);
-        listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView_custom);
 
         date.setText(board_date);
         title.setText(board_title);
         context.setText(board_context);
 
         commentList = new ArrayList();
-        list = new ArrayList<HashMap<String, String>>();
-
-        //myAdapter_comment = new MyAdapter_comment(this, R.layout.custom_adapter_view_comment, commentList);
-        //listView.setAdapter(myAdapter_comment);
+        //list = new ArrayList<HashMap<String, String>>();
 
         getComments();
 
@@ -113,6 +116,55 @@ public class DetailActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_board, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.menu_update:
+                return true;
+            case R.id.menu_delete:
+                deletePost(board_post_id);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void deletePost(String post_id) {
+        StringRequest request = new StringRequest(Request.Method.POST, POST_DEL_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equalsIgnoreCase("Data Deleted")) {
+                            Toast.makeText(DetailActivity.this, "글 삭제 성공", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(DetailActivity.this, "글 삭제 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("post_id", post_id);
+                return params;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+    }
+
     private void addComment(String board_post_id, String str) {
         StringRequest request = new StringRequest(Request.Method.POST, ADD_URL,
                 new Response.Listener<String>() {
@@ -144,7 +196,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void deleteComment(String id) {
-        StringRequest request = new StringRequest(Request.Method.POST, DEL_URL,
+        StringRequest request = new StringRequest(Request.Method.POST, COMMENT_DEL_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -173,7 +225,6 @@ public class DetailActivity extends AppCompatActivity {
 
     public void getComments() {
         RequestQueue queue = Volley.newRequestQueue(this);
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, READ_URL,
                 new Response.Listener<String>() {
         //JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, READ_URL, null,
@@ -181,51 +232,48 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     //public void onResponse(JSONArray response) {
                     public void onResponse(String response) {
-
+                        String comment_id;
+                        String content;
+                        String post_id;
+                        //Comment comment = new Comment(comment_id, content, post_id);
                         try {
+                            list = new ArrayList<>();
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject object = (JSONObject) array.get(i);
                                 //JSONObject object = response.getJSONObject(i);
 
                                 //String comment_id = object.getJSONArray("result").getString(0);
-                                String comment_id = object.getString("comment_id");
-                                String content = object.getString("content");
-                                String post_id = object.getString("post_id");
+                                comment_id = object.getString("comment_id");
+                                content = object.getString("content");
+                                post_id = object.getString("post_id");
 
-                                HashMap<String, String> data = new HashMap<String, String>();
-
-                                data.put("comment_id", comment_id);
-                                data.put("content", content);
-                                data.put("post_id", post_id);
-                                data.put("id", "익명");
+                                data = new HashMap<String, String>();
 
                                 if(post_id.equals(board_post_id)) {
                                     //commentList.add(content);
+                                    //list.add(data);
+                                    data.put("comment_id", comment_id);
+                                    data.put("content", content);
+                                    data.put("post_id", post_id);
                                     list.add(data);
                                 }
-
                                 //Comment comment = new Comment(comment_id, content, post_id);
+                                //Comment comment = new Comment(data);
                                 //comments.add(comment);
                             }
-                            //myAdapter = new ArrayAdapter(
-                            myAdapter = new SimpleAdapter(
-                                    DetailActivity.this, list, android.R.layout.simple_list_item_2,
-                                    new String[] {"id","content"}, new int[] {android.R.id.text1, android.R.id.text2});
-                                    //commentList);
-
-                            listView.setAdapter(myAdapter);
                         } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(),
                                     "Error is " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
+                        Toast.makeText(getApplicationContext(), Integer.toString(list.size()), Toast.LENGTH_LONG).show();
+
+                        myAdapter_commentHash = new MyAdapter_commentHash(DetailActivity.this, R.layout.custom_adapter_view_comment, list);
+                        listView.setAdapter(myAdapter_commentHash);
                     }
-                    //myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
-                    //listView.setAdapter(myAdapter_comment);
-                   /* myAdapter_comment = new MyAdapter_comment(DetailActivity.this, comments);
-                    listView.setAdapter(myAdapter_comment);*/
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
