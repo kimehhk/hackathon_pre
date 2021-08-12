@@ -37,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView context;
     EditText comment;
     MyAdapter_comment myAdapter_comment;
+    MyAdapter_commentHash myAdapter_commentHash;
     ListView listView;
     ArrayList commentList = null;
     List<Comment> comments;
@@ -46,6 +47,7 @@ public class DetailActivity extends AppCompatActivity {
     String board_title;
     String board_context;
     String board_date;
+    HashMap<String, String> data;
     ArrayList<HashMap<String,String>> list;
 
     final static private String READ_URL = "http://boragame.dothome.co.kr/comment_read.php";
@@ -186,7 +188,7 @@ public class DetailActivity extends AppCompatActivity {
                         String post_id;
                         //Comment comment = new Comment(comment_id, content, post_id);
                         try {
-                            HashMap<String, String> data = new HashMap<String, String>();
+                            list = new ArrayList<>();
 
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
@@ -203,19 +205,25 @@ public class DetailActivity extends AppCompatActivity {
 
                                 //data.put("id", "익명");
 
+                                data = new HashMap<String, String>();
+
                                 if(post_id.equals(board_post_id)) {
                                     //commentList.add(content);
                                     //list.add(data);
                                     data.put("comment_id", comment_id);
                                     data.put("content", content);
                                     data.put("post_id", post_id);
+                                    list.add(data);
                                 }
                                 //Comment comment = new Comment(comment_id, content, post_id);
-                                Comment comment = new Comment(data);
-                                comments.add(comment);
+                                //Comment comment = new Comment(data);
+                                //comments.add(comment);
                             }
-                            myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
-                            listView.setAdapter(myAdapter_comment);
+                            //myAdapter_comment = new MyAdapter_comment(DetailActivity.this, R.layout.custom_adapter_view_comment, comments);
+                            //listView.setAdapter(myAdapter_comment);
+
+                            myAdapter_commentHash = new MyAdapter_commentHash(DetailActivity.this, R.layout.custom_adapter_view_comment, list);
+                            listView.setAdapter(myAdapter_commentHash);
 
                             //myAdapter = new ArrayAdapter(
                             ///myAdapter = new SimpleAdapter(
