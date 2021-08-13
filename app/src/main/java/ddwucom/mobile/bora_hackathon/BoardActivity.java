@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +21,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class BoardActivity extends AppCompatActivity {
@@ -43,6 +39,7 @@ public class BoardActivity extends AppCompatActivity {
     private static final String TAG_CONTEXT = "context";
     private static final String TAG_POSTID = "post_id";
     private static final String TAG_DATE = "date";
+    private String user_id;
 
     JSONArray jsonArray = null;
 
@@ -58,7 +55,7 @@ public class BoardActivity extends AppCompatActivity {
 
         dataList = new ArrayList<HashMap<String, Object>>();
 
-        getData("http://boragame.dothome.co.kr/board.php");
+//        getData("http://boragame.dothome.co.kr/board.php");
 
         listView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -78,6 +75,7 @@ public class BoardActivity extends AppCompatActivity {
                 intent.putExtra("title", dataList.get(position).get("title").toString());
                 intent.putExtra("context", dataList.get(position).get("context").toString());
                 intent.putExtra("date", dataList.get(position).get("date").toString());
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
@@ -157,13 +155,11 @@ public class BoardActivity extends AppCompatActivity {
         g.execute(url);
     }
 
-//    protected void onResume() {
-//        super.onResume();
-//        dataList.clear();
-////        ((SimpleAdapter)listView.getAdapter()).notifyDataSetChanged();
-//        getData("http://boragame.dothome.co.kr/board.php");
-//
-//    }
+    protected void onResume() {
+        super.onResume();
+        dataList.clear();
+        getData("http://boragame.dothome.co.kr/board.php");
+    }
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -176,7 +172,7 @@ public class BoardActivity extends AppCompatActivity {
                 break;
             case R.id.btn_upload:
                 Intent gIntent = getIntent();
-                String user_id = gIntent.getStringExtra("user_id");
+                user_id = gIntent.getStringExtra("user_id");
 
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
                 intent.putExtra("user_id", user_id);

@@ -9,20 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 public class BoardAddActivity extends AppCompatActivity {
     EditText et_boardTitle;
@@ -70,7 +64,7 @@ public class BoardAddActivity extends AppCompatActivity {
 //                                Intent intent = new Intent(BoardAddActivity.this, BoardActivity.class);
 //                                startActivity(intent);
                             } else { // 회원등록에 실패한 경우
-                                Toast.makeText(BoardAddActivity.this, "글 등록에에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(BoardAddActivity.this, "글 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
