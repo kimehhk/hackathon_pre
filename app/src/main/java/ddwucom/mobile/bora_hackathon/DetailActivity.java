@@ -131,6 +131,7 @@ public class DetailActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_delete:
                 deletePost(board_post_id);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
