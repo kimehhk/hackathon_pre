@@ -182,10 +182,10 @@ public class BoardActivity extends AppCompatActivity {
                 intent.putExtra("user_id", user_id);
                 //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
-//            case R.id.btn_center:
-//                intent = new Intent(BoardActivity.this, CenterActivity.class);
-//                //startActivityForResult(intent, CENTER_CODE);
-//                startActivity(intent);
+            case R.id.btn_center:
+                intent = new Intent(BoardActivity.this, CenterActivity.class);
+                //startActivityForResult(intent, CENTER_CODE);
+                startActivity(intent);
         }
     }
 }
