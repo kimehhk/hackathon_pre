@@ -29,6 +29,7 @@
             android:layout_weight="1"
             android:onClick="onClick"
             android:text="게시판" />
+
     </LinearLayout>
 
     <Button
