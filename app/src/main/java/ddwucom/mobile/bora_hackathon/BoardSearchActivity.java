@@ -60,7 +60,6 @@ public class BoardSearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     protected void showList() {
@@ -97,7 +96,6 @@ public class BoardSearchActivity extends AppCompatActivity {
         }catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     private class getData extends AsyncTask<String, Void, String> {
@@ -135,7 +133,6 @@ public class BoardSearchActivity extends AppCompatActivity {
                     InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
 
                     StringBuilder sb = new StringBuilder();
-
                     bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
 
                     String json;
@@ -154,15 +151,6 @@ public class BoardSearchActivity extends AppCompatActivity {
                 showList();
             }
         }
-
-
-//    protected void onResume() {
-//        super.onResume();
-//////        boardList.addAll(boardDBManager.getAllBoard());
-////        myAdapter.notifyDataSetChanged();
-//        dataList.clear();
-//        adapter.notify();
-//    }
 
     public void onClick(View v) {
         switch (v.getId()) {
