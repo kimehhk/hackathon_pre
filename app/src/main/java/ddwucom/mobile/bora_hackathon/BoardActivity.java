@@ -43,6 +43,7 @@ public class BoardActivity extends AppCompatActivity {
     private static final String TAG_CONTEXT = "context";
     private static final String TAG_POSTID = "post_id";
     private static final String TAG_DATE = "date";
+    private String user_id;
 
     JSONArray jsonArray = null;
 
@@ -78,6 +79,7 @@ public class BoardActivity extends AppCompatActivity {
                 intent.putExtra("title", dataList.get(position).get("title").toString());
                 intent.putExtra("context", dataList.get(position).get("context").toString());
                 intent.putExtra("date", dataList.get(position).get("date").toString());
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
@@ -175,7 +177,7 @@ public class BoardActivity extends AppCompatActivity {
                 break;
             case R.id.btn_upload:
                 Intent gIntent = getIntent();
-                String user_id = gIntent.getStringExtra("user_id");
+                user_id = gIntent.getStringExtra("user_id");
 
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
                 intent.putExtra("user_id", user_id);

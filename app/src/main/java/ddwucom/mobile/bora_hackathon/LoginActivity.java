@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 String user_id = et_id.getText().toString();
                 String password = et_pass.getText().toString();
 
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -59,9 +61,11 @@ public class LoginActivity extends AppCompatActivity {
                                 String name = jsonObject.getString("name");
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                                Intent intent1 = new Intent(LoginActivity.this, BoardActivity.class);
+                                Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                                 intent1.putExtra("user_id", user_id);
+                                intent1.putExtra("name", name);
                                 startActivity(intent1);
+                                //finish();
                             } else { // 로그인에 실패한 경우
                                 Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
                                 return;
