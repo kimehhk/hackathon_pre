@@ -7,13 +7,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,22 +32,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DetailActivity extends AppCompatActivity {
-    //Board board;
     TextView date;
     TextView title;
     TextView context;
     EditText comment;
-    MyAdapter_comment myAdapter_comment;
+    //MyAdapter_comment myAdapter_comment;
     MyAdapter_commentHash myAdapter_commentHash;
     ListView listView;
     ArrayList commentList = null;
-    List<Comment> comments;
+    //List<Comment> comments;
     //ArrayAdapter myAdapter;
-    SimpleAdapter myAdapter;
     String board_post_id;
     String board_title;
     String board_context;
@@ -95,7 +94,7 @@ public class DetailActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteComment("1");
+                                deleteComment(String.valueOf(id));
                             }
                         })
                         .setNegativeButton("취소", null)
@@ -105,6 +104,24 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static void setListViewHeightBasedOnChildren(@NonNull ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -236,7 +253,6 @@ public class DetailActivity extends AppCompatActivity {
                         String comment_id;
                         String content;
                         String post_id;
-                        //Comment comment = new Comment(comment_id, content, post_id);
                         try {
                             list = new ArrayList<>();
                             JSONArray array = new JSONArray(response);
@@ -269,10 +285,9 @@ public class DetailActivity extends AppCompatActivity {
                                     "Error is " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
                         }
-                        Toast.makeText(getApplicationContext(), Integer.toString(list.size()), Toast.LENGTH_LONG).show();
-
                         myAdapter_commentHash = new MyAdapter_commentHash(DetailActivity.this, R.layout.custom_adapter_view_comment, list);
                         listView.setAdapter(myAdapter_commentHash);
+                        setListViewHeightBasedOnChildren(listView);
                     }
 
                 }, new Response.ErrorListener() {
