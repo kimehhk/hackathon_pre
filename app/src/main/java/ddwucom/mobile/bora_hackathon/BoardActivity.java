@@ -11,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,7 +58,7 @@ public class BoardActivity extends AppCompatActivity {
 
         dataList = new ArrayList<HashMap<String, Object>>();
 
-        //getData("http://boragame.dothome.co.kr/board.php");
+        getData("http://boragame.dothome.co.kr/board.php");
 
         listView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -80,6 +81,7 @@ public class BoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     protected void showList() {
@@ -96,23 +98,27 @@ public class BoardActivity extends AppCompatActivity {
                 String date = c.getString(TAG_DATE);
 
                 data = new HashMap<>();
+
                 data.put(TAG_POSTID, post_id);
                 data.put(TAG_TITLE, title);
                 data.put(TAG_CONTEXT, context);
                 data.put(TAG_DATE, date);
 
                 dataList.add(data);
+
             }
             adapter = new SimpleAdapter(
                     BoardActivity.this, dataList, R.layout.custom_adapter_view,
                     new String[]{TAG_TITLE, TAG_CONTEXT, TAG_DATE},
                     new int[]{R.id.boardTitle, R.id.boardContent, R.id.boardDate}
             );
+
             listView.setAdapter(adapter);
 
         }catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
 
     public void getData(String url) {
@@ -120,6 +126,7 @@ public class BoardActivity extends AppCompatActivity {
 
             @Override
             protected String doInBackground(String... params) {
+
                 String uri = params[0];
 
                 BufferedReader bufferedReader = null;
@@ -142,22 +149,21 @@ public class BoardActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                if (result != null) {
-                    rslt = result;
-                    showList();
-                }
+                rslt = result;
+                showList();
             }
         }
         GetDataJSON g = new GetDataJSON();
         g.execute(url);
     }
 
-    protected void onResume() {
-        super.onResume();
-        dataList.clear();
-        getData("http://boragame.dothome.co.kr/board.php");
-
-    }
+//    protected void onResume() {
+//        super.onResume();
+//        dataList.clear();
+////        ((SimpleAdapter)listView.getAdapter()).notifyDataSetChanged();
+//        getData("http://boragame.dothome.co.kr/board.php");
+//
+//    }
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -169,11 +175,17 @@ public class BoardActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_upload:
+                Intent gIntent = getIntent();
+                String user_id = gIntent.getStringExtra("user_id");
+
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
+                intent.putExtra("user_id", user_id);
+                //startActivityForResult(intent, ADD_CODE);
                 startActivity(intent);
-            case R.id.btn_center:
-                intent = new Intent(BoardActivity.this, CenterActivity.class);
-                startActivity(intent);
+//            case R.id.btn_center:
+//                intent = new Intent(BoardActivity.this, CenterActivity.class);
+//                //startActivityForResult(intent, CENTER_CODE);
+//                startActivity(intent);
         }
     }
 }

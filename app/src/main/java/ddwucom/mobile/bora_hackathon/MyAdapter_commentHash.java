@@ -9,43 +9,35 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class MyAdapter_comment<dataList> extends BaseAdapter {
+public class MyAdapter_commentHash extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<Comment> myDataArrayList;
+    //private List<Comment> myDataArrayList;
     private LayoutInflater layoutInflater;
-    private HashMap<String, String> data;
     private ArrayList<HashMap<String, String>> dataList;
 
-    public MyAdapter_comment(Context context, int layout, List<Comment> myDataArrayList) {
-        this.context = context;
-        this.layout = layout;
-        this.myDataArrayList = myDataArrayList;
-        layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    public MyAdapter_comment(Context context, int layout, ArrayList<HashMap<String, String>> dataList) {
+    public MyAdapter_commentHash(Context context, int layout, ArrayList<HashMap<String, String>> dataList) {
         this.context = context;
         this.layout = layout;
         this.dataList = dataList;
         layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+
     @Override
     public int getCount() {
-        return myDataArrayList.size();
+        return dataList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return myDataArrayList.get(position);
+        return dataList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return Long.parseLong(myDataArrayList.get(position).getComment_id());
+        return Long.parseLong(dataList.get(position).get("comment_id"));
     }
 
     @Override
@@ -63,7 +55,7 @@ public class MyAdapter_comment<dataList> extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
         //holder.comment.setText(myDataArrayList.get(pos).getComment());
-        holder.comment.setText("hi");
+        holder.comment.setText(dataList.get(pos).get("content"));
         return convertView;
     }
 
