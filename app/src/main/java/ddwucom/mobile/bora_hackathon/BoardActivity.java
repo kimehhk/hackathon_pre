@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -175,14 +176,22 @@ public class BoardActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_upload:
-                intent = new Intent(BoardActivity.this, BoardAddActivity.class);
-                intent.putExtra("user_id", user_id);
-                //startActivityForResult(intent, ADD_CODE);
-                startActivity(intent);
+                if (user_id == null) {
+                    Toast.makeText(BoardActivity.this, "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else {
+                    intent = new Intent(BoardActivity.this, BoardAddActivity.class);
+                    intent.putExtra("user_id", user_id);
+                    //startActivityForResult(intent, ADD_CODE);
+                    startActivity(intent);
+                    break;
+                }
             case R.id.btn_center:
                 intent = new Intent(BoardActivity.this, CenterActivity.class);
                 //startActivityForResult(intent, CENTER_CODE);
                 startActivity(intent);
+                break;
         }
     }
 }

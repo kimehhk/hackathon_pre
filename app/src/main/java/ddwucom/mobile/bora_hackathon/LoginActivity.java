@@ -60,14 +60,14 @@ public class LoginActivity extends AppCompatActivity {
                                 String password = jsonObject.getString("password");
                                 String name = jsonObject.getString("name");
 
-                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_SHORT).show();
                                 Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                                 intent1.putExtra("user_id", user_id);
                                 intent1.putExtra("name", name);
                                 startActivity(intent1);
                                 //finish();
                             } else { // 로그인에 실패한 경우
-                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
