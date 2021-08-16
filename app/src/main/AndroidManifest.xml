@@ -3,7 +3,9 @@
     package="ddwucom.mobile.bora_hackathon">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BORA_hackathon"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetailActivity"></activity>
+        <activity
+            android:name=".GameActivity"
+            android:exported="true" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +26,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity"></activity>
-
-        <activity android:name=".BoardActivity"/>
-        <activity android:name=".BoardAddActivity"/>
-        <activity android:name=".BoardSearchActivity"/>
-        <activity android:name=".CenterActivity"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".BoardActivity" />
+        <activity android:name=".BoardAddActivity" />
+        <activity android:name=".BoardSearchActivity" />
+        <activity android:name=".CenterActivity" />
     </application>
 
 </manifest>
