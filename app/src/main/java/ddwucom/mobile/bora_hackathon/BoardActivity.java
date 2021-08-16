@@ -54,6 +54,8 @@ public class BoardActivity extends AppCompatActivity {
         ScrollView scrollView = findViewById(R.id.boardScrollView);
 
         dataList = new ArrayList<HashMap<String, Object>>();
+        Intent gIntent = getIntent();
+        user_id = gIntent.getStringExtra("user_id");
 
 //        getData("http://boragame.dothome.co.kr/board.php");
 
@@ -162,18 +164,17 @@ public class BoardActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
+        Intent intent;
+
         switch (v.getId()) {
             case R.id.button_search:
-                Intent intent = new Intent(BoardActivity.this, BoardSearchActivity.class);
+                intent = new Intent(BoardActivity.this, BoardSearchActivity.class);
                 startActivityForResult(intent, SEARCH_CODE);
                 break;
             case R.id.button_cancel:
                 finish();
                 break;
             case R.id.btn_upload:
-                Intent gIntent = getIntent();
-                user_id = gIntent.getStringExtra("user_id");
-
                 intent = new Intent(BoardActivity.this, BoardAddActivity.class);
                 intent.putExtra("user_id", user_id);
                 //startActivityForResult(intent, ADD_CODE);
