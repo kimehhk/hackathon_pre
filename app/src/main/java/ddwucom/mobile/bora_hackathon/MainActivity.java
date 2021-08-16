@@ -54,8 +54,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.login:
-                Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent1);
+                if (id == null) {
+                    Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent1);
+                }
                 break;
             case R.id.register:
                 Intent intent2 = new Intent(MainActivity.this, RegisterActivity.class);
