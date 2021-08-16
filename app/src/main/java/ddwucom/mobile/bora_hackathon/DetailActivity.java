@@ -49,6 +49,7 @@ public class DetailActivity extends AppCompatActivity {
     String board_title;
     String board_context;
     String board_date;
+    String user_idNow;
     HashMap<String, String> data;
     ArrayList<HashMap<String,String>> list;
 
@@ -67,6 +68,7 @@ public class DetailActivity extends AppCompatActivity {
         board_title = board.getStringExtra("title");
         board_date = board.getStringExtra("date");
         board_context = board.getStringExtra("context");
+        user_idNow = board.getStringExtra("user_id");
 
         title = findViewById(R.id.tvTitleDetail);
         date = findViewById(R.id.tvDateDetail);
@@ -94,7 +96,7 @@ public class DetailActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                deleteComment(String.valueOf(id));
+                                deleteComment(String.valueOf(id), user_idNow);
                             }
                         })
                         .setNegativeButton("취소", null)
@@ -127,7 +129,7 @@ public class DetailActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_commentAdd:
                 String str = comment.getText().toString().trim();
-                addComment(board_post_id, str);
+                addComment(board_post_id, user_idNow, str);
                 comment.setText(null);
                 break;
         }
@@ -147,7 +149,7 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.menu_update:
                 return true;
             case R.id.menu_delete:
-                deletePost(board_post_id);
+                deletePost(board_post_id, user_idNow);
                 finish();
                 return true;
         }
@@ -155,7 +157,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    private void deletePost(String post_id) {
+    private void deletePost(String post_id, String user) {
         StringRequest request = new StringRequest(Request.Method.POST, POST_DEL_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -176,6 +178,7 @@ public class DetailActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("post_id", post_id);
+                params.put("user_id", user);
                 return params;
             }
         };
@@ -183,7 +186,7 @@ public class DetailActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    private void addComment(String board_post_id, String str) {
+    private void addComment(String board_post_id, String user_idNow, String str) {
         StringRequest request = new StringRequest(Request.Method.POST, ADD_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -204,6 +207,7 @@ public class DetailActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
 
+                params.put("user_id", user_idNow);
                 params.put("content", str);
                 params.put("post_id", board_post_id);
                 return params;
@@ -213,7 +217,7 @@ public class DetailActivity extends AppCompatActivity {
         queue.add(request);
     }
 
-    private void deleteComment(String id) {
+    private void deleteComment(String id, String user) {
         StringRequest request = new StringRequest(Request.Method.POST, COMMENT_DEL_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -234,6 +238,7 @@ public class DetailActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("comment_id", id);
+                params.put("user_id", user);
                 return params;
             }
         };
