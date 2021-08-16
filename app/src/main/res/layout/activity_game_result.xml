@@ -6,10 +6,11 @@
 
     <Button
         android:id="@+id/button_game_exit"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:gravity="center"
+        android:onClick="onClick"
         android:text="확인"
         android:textIsSelectable="false"
         android:textSize="48sp"
@@ -23,7 +24,7 @@
     <ImageView
         android:id="@+id/img_game_result"
         android:layout_width="match_parent"
-        android:layout_height="597dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
