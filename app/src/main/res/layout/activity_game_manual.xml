@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/img_game_manual"
         android:layout_width="match_parent"
-        android:layout_height="597dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,18 +16,14 @@
         app:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <Button
-        android:id="@+id/btn_game_ok"
-        android:layout_width="match_parent"
+        android:id="@+id/btn_gameMaunual_ok"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="32dp"
+        android:onClick="onClick"
         android:text="확인"
-        android:textIsSelectable="false"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_game_manual"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintTop_toBottomOf="@+id/img_game_manual" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
