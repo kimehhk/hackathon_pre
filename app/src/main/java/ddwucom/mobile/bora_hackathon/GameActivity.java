@@ -3,6 +3,7 @@ package ddwucom.mobile.bora_hackathon;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +20,6 @@ public class GameActivity extends AppCompatActivity {
         etName_first = findViewById(R.id.et_game_user_firstname);
         etName_last = findViewById(R.id.et_game_user_lastname);
 
-
     }
 
     public void onClick(View v) {
@@ -28,7 +28,11 @@ public class GameActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_game_username);
                 break;
             case R.id.btn_gameName_ok:
-                setContentView(R.layout.activity_game_ment);
+                etName_first = findViewById(R.id.et_game_user_firstname);
+                etName_last = findViewById(R.id.et_game_user_lastname);
+                if(etName_first == null)
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_LONG).show();
+                //setContentView(R.layout.activity_game_ment);
                 break;
             case R.id.button_game_exit:
                 finish();
