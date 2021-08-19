@@ -42,7 +42,7 @@ public class DetailActivity extends AppCompatActivity {
     //MyAdapter_comment myAdapter_comment;
     MyAdapter_commentHash myAdapter_commentHash;
     ListView listView;
-    ArrayList commentList = null;
+    //ArrayList commentList = null;
     //List<Comment> comments;
     //ArrayAdapter myAdapter;
     String board_post_id;
@@ -80,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(board_title);
         context.setText(board_context);
 
-        commentList = new ArrayList();
+        //commentList = new ArrayList();
         //list = new ArrayList<HashMap<String, String>>();
 
         getComments();
@@ -173,6 +173,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Deleted")) {
                             Toast.makeText(DetailActivity.this, "글 삭제 성공", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                         else if(response.equalsIgnoreCase("user_id unmatched")) {
                             Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
@@ -206,6 +207,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Inserted")) {
                             Toast.makeText(DetailActivity.this, "댓글 입력 성공", Toast.LENGTH_SHORT).show();
+                            onResume();
                         } else {
                             Toast.makeText(DetailActivity.this, "댓글 입력 실패", Toast.LENGTH_SHORT).show();
                         }
@@ -237,6 +239,7 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Deleted")) {
                             Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
+                            onResume();
                         } else if(response.equalsIgnoreCase("user_id unmatched")) {
                             Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
                         }
@@ -322,7 +325,16 @@ public class DetailActivity extends AppCompatActivity {
         //queue.add(jsonArrayRequest);
     }
 
+    protected void onResume() {
+        super.onResume();
+        getComments();
+    }
 
+
+    protected void onPause() {
+        super.onPause();
+        getComments();
+    }
     
 
 }
