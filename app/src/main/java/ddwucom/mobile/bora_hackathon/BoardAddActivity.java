@@ -41,42 +41,48 @@ public class BoardAddActivity extends AppCompatActivity {
                 String title = et_boardTitle.getText().toString();
                 String context = et_boardContext.getText().toString();
 
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
+                if (title.length() == 0) {
+                    Toast.makeText(BoardAddActivity.this, " 제목을 입력하세요", Toast.LENGTH_SHORT).show();
+                } else if (context.length() == 0) {
+                    Toast.makeText(BoardAddActivity.this, " 내용을 입력하세요", Toast.LENGTH_SHORT).show();
+                } else {
+                    Calendar c = Calendar.getInstance();
+                    int year = c.get(Calendar.YEAR);
 
-                int month = c.get(Calendar.MONTH) + 1;
+                    int month = c.get(Calendar.MONTH) + 1;
 
-                int day = c.get(Calendar.DAY_OF_MONTH);
+                    int day = c.get(Calendar.DAY_OF_MONTH);
 
-                String date = year + "-" + month + "-" + day;
+                    String date = year + "-" + month + "-" + day;
 
-                Intent intent = getIntent();
-                String user_id = intent.getStringExtra("user_id");
+                    Intent intent = getIntent();
+                    String user_id = intent.getStringExtra("user_id");
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if (success) { //회원등록에 성공한 경우
-                                Toast.makeText(BoardAddActivity.this, "글 등록에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intent(BoardAddActivity.this, BoardActivity.class);
-//                                startActivity(intent);
-                            } else { // 회원등록에 실패한 경우
-                                Toast.makeText(BoardAddActivity.this, "글 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                                return;
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success) { //회원등록에 성공한 경우
+                                    Toast.makeText(BoardAddActivity.this, "글 등록에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                    //                                Intent intent = new Intent(BoardAddActivity.this, BoardActivity.class);
+                                    //                                startActivity(intent);
+                                } else { // 회원등록에 실패한 경우
+                                    Toast.makeText(BoardAddActivity.this, "글 등록에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
-                    }
-                };
-                // 서버로 Volley를 이용해서 요청을 함.
-                BoardRequest boardRequest = new BoardRequest(title, context, date, user_id, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(BoardAddActivity.this);
-                queue.add(boardRequest);
-                finish();
+                    };
+                    // 서버로 Volley를 이용해서 요청을 함.
+                    BoardRequest boardRequest = new BoardRequest(title, context, date, user_id, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(BoardAddActivity.this);
+                    queue.add(boardRequest);
+                    finish();
+                }
             }
         });
     }
