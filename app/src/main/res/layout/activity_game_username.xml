@@ -35,7 +35,6 @@
         android:ems="10"
         android:hint="이름"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
         app:layout_constraintStart_toStartOf="@+id/et_game_user_lastname"
         app:layout_constraintTop_toBottomOf="@+id/et_game_user_lastname"
         tools:ignore="TouchTargetSizeCheck" />

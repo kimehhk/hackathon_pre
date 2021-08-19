@@ -125,12 +125,21 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
+    /*if(comment == null)
+                    Toast.makeText(DetailActivity.this, "댓글을 입력하세요", Toast.LENGTH_SHORT).show();
+                else {*/
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_commentAdd:
-                String str = comment.getText().toString().trim();
-                addComment(board_post_id, user_idNow, str);
-                comment.setText(null);
+                if(user_idNow == null)
+                    Toast.makeText(DetailActivity.this, "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+                else if(comment.getText().toString().equals(""))
+                    Toast.makeText(DetailActivity.this, "댓글을 입력하세요", Toast.LENGTH_SHORT).show();
+                else {
+                    String str = comment.getText().toString().trim();
+                    addComment(board_post_id, user_idNow, str);
+                    comment.setText(null);
+                }
                 break;
         }
     }
@@ -164,7 +173,11 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Deleted")) {
                             Toast.makeText(DetailActivity.this, "글 삭제 성공", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }
+                        else if(response.equalsIgnoreCase("user_id unmatched")) {
+                            Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
                             Toast.makeText(DetailActivity.this, "글 삭제 실패", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -224,7 +237,10 @@ public class DetailActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Deleted")) {
                             Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
-                        } else {
+                        } else if(response.equalsIgnoreCase("user_id unmatched")) {
+                            Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
                             Toast.makeText(DetailActivity.this, "댓글 삭제 실패", Toast.LENGTH_SHORT).show();
                         }
                     }
