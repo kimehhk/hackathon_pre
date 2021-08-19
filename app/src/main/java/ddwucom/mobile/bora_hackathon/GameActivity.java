@@ -70,9 +70,6 @@ public class GameActivity extends AppCompatActivity {
                 }
                 startActivity(intent);
                 break;
-            case R.id.button_game_exit:
-                finish();
-                break;
         }
     }
 }
