@@ -175,7 +175,7 @@ public class DetailActivity extends AppCompatActivity {
                             Toast.makeText(DetailActivity.this, "글 삭제 성공", Toast.LENGTH_SHORT).show();
                         }
                         else if(response.equalsIgnoreCase("user_id unmatched")) {
-                            Toast.makeText(DetailActivity.this, "삭제 실패 - 다른 유저의 댓글입니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Toast.makeText(DetailActivity.this, "글 삭제 실패", Toast.LENGTH_SHORT).show();
@@ -238,7 +238,7 @@ public class DetailActivity extends AppCompatActivity {
                         if (response.equalsIgnoreCase("Data Deleted")) {
                             Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
                         } else if(response.equalsIgnoreCase("user_id unmatched")) {
-                            Toast.makeText(DetailActivity.this, "유저 아이디 unmatched", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             Toast.makeText(DetailActivity.this, "댓글 삭제 실패", Toast.LENGTH_SHORT).show();
