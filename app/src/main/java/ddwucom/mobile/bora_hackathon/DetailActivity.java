@@ -206,8 +206,8 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Inserted")) {
-                            Toast.makeText(DetailActivity.this, "댓글 입력 성공", Toast.LENGTH_SHORT).show();
                             onResume();
+                            Toast.makeText(DetailActivity.this, "댓글 입력 성공", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(DetailActivity.this, "댓글 입력 실패", Toast.LENGTH_SHORT).show();
                         }
@@ -238,8 +238,8 @@ public class DetailActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("Data Deleted")) {
-                            Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
                             onResume();
+                            Toast.makeText(DetailActivity.this, "댓글 삭제 성공", Toast.LENGTH_SHORT).show();
                         } else if(response.equalsIgnoreCase("user_id unmatched")) {
                             Toast.makeText(DetailActivity.this, "삭제 권한이 없습니다", Toast.LENGTH_SHORT).show();
                         }
