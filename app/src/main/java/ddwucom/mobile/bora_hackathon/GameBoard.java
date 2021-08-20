@@ -40,7 +40,8 @@ public class GameBoard extends AppCompatActivity {
     public void data_insert() {
         String girl_name = "여주";
         String boy_name = "남주";
-        String full_name = last_name + first_name;
+        //String full_name = last_name + first_name;
+        String full_name = "나";
 
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
@@ -66,15 +67,35 @@ public class GameBoard extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_game_next:
                 if (i == Mdata.size()) {
-                    setContentView(R.layout.activity_game_result);
+                    switch (sex) {
+                        case "man":
+                            setContentView(R.layout.activity_game_result_m);
+                            break;
+                        case "woman":
+                            setContentView(R.layout.activity_game_result_w);
+                            break;
+                    }
+                    /*if (sex.equals("man"))
+                        setContentView(R.layout.activity_game_result);
+                    else
+                        setContentView(R.layout.activity_game_result_w);*/
                     break;
                 }
                 name.setText(Mdata.get(i++));
                 ment.setText(Mdata.get(i++));
                 break;
+            case R.id.button_game_center:
+                Intent intent = new Intent(this, CenterActivity.class);
+                startActivity(intent);
+                break;
             case R.id.button_game_exit:
                 finish();
                 break;
         }
+    }
+
+    public void onStop() {
+        super.onStop();
+        finish();
     }
 }
