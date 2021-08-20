@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,11 +54,11 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
             Mdata.add(boy_name);
-            Mdata.add("갑자기 타투?" + first_name + "(이) 타투하고 싶어? 후회하지 않을까?");
+            Mdata.add("갑자기 타투? " + first_name + "(이) 타투하고 싶어? 후회하지 않을까?");
             Mdata.add(full_name);
             Mdata.add("에이 내가 내 몸에 원하는 거 남기는데 그게 무슨 상관이야~");
             Mdata.add(boy_name);
-            Mdata.add("난 지금 타투 없는 " + first_name + "(이)가 더 좋은데...\n타투 없는게 훨씬 예뻐 " + first_name + "야(아)! 다시 한 번 생각해봐ㅎㅎ");
+            Mdata.add("난 지금 타투 없는 " + first_name + "(이)가 더 좋은데...\n타투 없는게 훨씬 예뻐 " + first_name + "야(아)!\n다시 한 번 생각해봐ㅎㅎ");
         }
     }
 
