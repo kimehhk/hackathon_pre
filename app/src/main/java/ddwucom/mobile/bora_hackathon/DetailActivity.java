@@ -185,7 +185,10 @@ public class DetailActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                if(user_idNow == null)
+                    Toast.makeText(DetailActivity.this, "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -215,7 +218,10 @@ public class DetailActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                if(user_idNow == null)
+                    Toast.makeText(DetailActivity.this, "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -250,7 +256,10 @@ public class DetailActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                if(user_idNow == null)
+                    Toast.makeText(DetailActivity.this, "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(DetailActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }){
             @Override
