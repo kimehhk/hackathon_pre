@@ -1,12 +1,18 @@
 package ddwucom.mobile.bora_hackathon;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class GameBoard extends AppCompatActivity {
@@ -31,6 +37,8 @@ public class GameBoard extends AppCompatActivity {
 
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
+        ImageView image = findViewById(R.id.game_image);
+        image.setImageResource(R.drawable.main);
 
         data_insert();
         name.setText(Mdata.get(i++));
