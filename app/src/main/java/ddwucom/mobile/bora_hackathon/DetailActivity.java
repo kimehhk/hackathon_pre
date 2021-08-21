@@ -125,9 +125,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    /*if(comment == null)
-                    Toast.makeText(DetailActivity.this, "댓글을 입력하세요", Toast.LENGTH_SHORT).show();
-                else {*/
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_commentAdd:
@@ -140,6 +137,9 @@ public class DetailActivity extends AppCompatActivity {
                     addComment(board_post_id, user_idNow, str);
                     comment.setText(null);
                 }
+                break;
+            case R.id.btn_cancel:
+                finish();
                 break;
         }
     }
