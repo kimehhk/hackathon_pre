@@ -20,9 +20,8 @@
 
     <ImageButton
         android:id="@+id/btn_gameName_ok"
-        android:layout_width="450dp"
+        android:layout_width="400dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
         android:background="@drawable/decidebuttonimage"
         android:onClick="onClick"
         android:text="확인"
