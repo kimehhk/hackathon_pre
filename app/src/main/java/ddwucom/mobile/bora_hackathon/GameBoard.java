@@ -2,32 +2,26 @@ package ddwucom.mobile.bora_hackathon;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class GameBoard extends AppCompatActivity {
     TextView ment;
     TextView name;
     ImageView image;
+
     ArrayList<String> Mdata;
     int i;
     int ch;
+    int percent;
 
     String sex;
     String first_name;
@@ -44,6 +38,7 @@ public class GameBoard extends AppCompatActivity {
         setContentView(R.layout.activity_game_board);
         i = 0;
         ch = 0;
+        percent = 0;
 
         Intent intent = getIntent();
         sex = intent.getStringExtra("sex");
@@ -63,7 +58,6 @@ public class GameBoard extends AppCompatActivity {
     public void data_insert() {
         String girl_name = "여주";
         String boy_name = "남주";
-        //String full_name = last_name + first_name;
         String full_name = "나";
 
         Mdata = new ArrayList<String>();
@@ -285,22 +279,21 @@ public class GameBoard extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_game_next:
                 if (i == Mdata.size()) {
-                    switch (sex) {
-                        case "man":
-                            setContentView(R.layout.activity_game_result_m);
-                            break;
-                        case "woman":
-                            setContentView(R.layout.activity_game_result_w);
-                            break;
+                    if (percent == 0) {
+                        percent = 1;
+                    } else if (percent == 100) {
+                        percent = 99;
                     }
+                    Intent r = new Intent(GameBoard.this, GameResult.class);
+                    r.putExtra("sex", sex);
+                    r.putExtra("percent", Integer.toString(percent));
+                    startActivity(r);
                     break;
                 }
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
                     i++;
                     ment.setText("");
-//                    AlertDialog.Builder oDialog = new AlertDialog.Builder(this,
-//                            android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
                     AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
                     switch (sex) {
                         case "man":
@@ -310,6 +303,11 @@ public class GameBoard extends AppCompatActivity {
                                     .setItems(mItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            if (which == 0) {
+                                                percent += 20;
+                                            } else if (which == 1) {
+                                                percent += 10;
+                                            }
                                             ment.setText(mItems[which]);
                                             Mdata.set(i + 1, wRes[which].toString());
                                         }
@@ -320,11 +318,15 @@ public class GameBoard extends AppCompatActivity {
                         case "woman":
                             final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
                             final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-
                             oDialog.setTitle("나의 답변")
                                     .setItems(wItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            if (which == 0) {
+                                                percent += 20;
+                                            } else if (which == 1) {
+                                                percent += 10;
+                                            }
                                             ment.setText(wItems[which]);
                                             Mdata.set(i + 1, mRes[which].toString());
                                         }
@@ -337,13 +339,6 @@ public class GameBoard extends AppCompatActivity {
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
-                break;
-            case R.id.button_game_center:
-                Intent intent = new Intent(this, CenterActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.button_game_exit:
-                finish();
                 break;
         }
     }

@@ -24,7 +24,6 @@
         android:id="@+id/button_game_center"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/centerbuttonimage"
         android:gravity="center"
         android:onClick="onClick"
@@ -34,18 +33,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_game_result"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/img_game_result"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="320dp"
+    <TextView
+        android:id="@+id/w_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:onClick="onClick"
+        android:text="결과 보기 click"
+        android:textColor="#FF5722"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:mipmap/sym_def_app_icon" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
