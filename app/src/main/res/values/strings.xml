@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BORA</string>
+    <string name="choice1">남주 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려</string>
+    <string name="choice2">음...그런가? 다시 한 번 생각해볼게</string>
+    <string name="choice3">나 타투 너무 멋있어 보이는데... 내 생각엔 나 타투하면 더 예뻐질 것 같아</string>
 </resources>
