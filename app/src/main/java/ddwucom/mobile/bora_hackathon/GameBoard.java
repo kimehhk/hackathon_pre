@@ -71,7 +71,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("당연한 소리를 하고 그래");
             Mdata.add(girl_name);
-            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
+            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 너무한 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -169,7 +169,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("너무 친절하게 대해서 그 사람이 오해한 거 아냐?");
             Mdata.add(full_name);
-            Mdata.add("난 알바생이니까 그냥 친절하게 대했지...");
+            Mdata.add("난 손님이시니까 그냥 친절하게 대했지...");
             Mdata.add(boy_name);
             Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
@@ -211,7 +211,7 @@ public class GameBoard extends AppCompatActivity {
         m_choice.add("내가 매일 그러는 것도 아니고 너도 연락에 너무 집착하는 것 같아");
         m_choice.add("내가 예민했네 미안해 여주야 화풀어");
         m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
-        m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
+        m_choice.add("늦을 것 같을 때 미리 연락 좀 해달라는게 예민한거야?");
         m_choice.add("그래 내가 대출받아서 살게");
         m_choice.add("물론 있으면 좋겠지만... 알겠어 일단 노력해볼게");
         m_choice.add("나도 아직 학생이잖아 현실적으로 차는 못 살 것 같아");
@@ -226,7 +226,7 @@ public class GameBoard extends AppCompatActivity {
         w_response.add("역시 우리 " + first_name + "(이) 최고~ 앞으로 무조건 칼답해!");
         w_response.add("응 주의 좀 해줘 부탁할게~");
         w_response.add("내가 이상하단거야? 몰라 나는 연락 안 되면 불안하니까 어떻게든 빨리 답장해줘");
-        w_response.add("알았어 맛있는 거 먹으러 가자");
+        w_response.add("알았어 앞으론 그러지마 이제 맛있는 거 먹으러 가자");
         w_response.add(first_name + "(이)가 나한테 그럴리가 없는데 어쩐지~ 다크써클이 심해졌다 했어.");
         w_response.add("아니 알았어.. 다음부터는 꼭 연락할게");
         w_response.add("좋아!! 빨리 사서 매일매일 여행 가자~");
