@@ -320,8 +320,7 @@ public class GameBoard extends AppCompatActivity {
                         case "woman":
                             final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
                             final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-                            oDialog = new AlertDialog.Builder(this,
-                                    android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
+
                             oDialog.setTitle("나의 답변")
                                     .setItems(wItems, new DialogInterface.OnClickListener() {
                                         @Override
