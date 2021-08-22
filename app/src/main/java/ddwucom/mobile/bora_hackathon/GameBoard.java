@@ -2,30 +2,30 @@ package ddwucom.mobile.bora_hackathon;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckedTextView;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import java.io.ByteArrayOutputStream;
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class GameBoard extends AppCompatActivity {
     TextView ment;
     TextView name;
     ImageView image;
+    ImageView img_resultW;
+    ImageView img_resultM;
+    ArrayList<String> bgData;
     ArrayList<String> Mdata;
+    ConstraintLayout gameBoardLayout;
+
     int i;
     int ch;
 
@@ -42,7 +42,11 @@ public class GameBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
-        i = 0;
+
+        //gameBoardLayout = findViewById(R.id.gameBoard_layout);
+        //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
+
+        i = 1;
         ch = 0;
 
         Intent intent = getIntent();
@@ -53,7 +57,15 @@ public class GameBoard extends AppCompatActivity {
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
-        image.setImageResource(R.drawable.main);
+        img_resultW = findViewById(R.id.img_game_result_w);
+        img_resultM = findViewById(R.id.img_game_result_m);
+        //image.setImageResource(R.drawable.restaurant_w);
+        //image.setImageResource(R.drawable.main);
+        //grGlide.with(this)
+
+        Glide.with(this)
+                .load(R.drawable.cafe_w)
+                .into(image);
 
         data_insert();
         name.setText(Mdata.get(i++));
@@ -66,8 +78,10 @@ public class GameBoard extends AppCompatActivity {
         //String full_name = last_name + first_name;
         String full_name = "나";
 
+        bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
+            Mdata.add("background1");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
             Mdata.add(full_name);
@@ -83,6 +97,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background2");
             Mdata.add(full_name);
             Mdata.add("여주야 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
@@ -96,6 +111,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background3");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 조금만 쉬었다가 가자 나 발이 너무 아파");
             Mdata.add(full_name);
@@ -111,6 +127,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background4");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 여자는 누구야? 왜 너 sns에 댓글을 달아?");
             Mdata.add(full_name);
@@ -126,6 +143,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background5");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 냄새 뭐야 혹시 담배 폈어?");
             Mdata.add(full_name);
@@ -142,6 +160,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add("response");
 
         } else {
+            Mdata.add("background1");
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
             Mdata.add(boy_name);
@@ -155,6 +174,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background2");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 립스틱은 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른색 같아");
             Mdata.add(full_name);
@@ -170,6 +190,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background3");
             Mdata.add(full_name);
             Mdata.add("남주야 나 카페 알바하는데 아까 어떤 손님이 알바 끝나고 뭐하냐고 물어보더니 남자친구 있다고 했는데도 계속 번호 달라고 하다가 가셨어\n나 좀 무서운데 퇴근할 때 데리러 와주면 안 될까?");
             Mdata.add(boy_name);
@@ -183,6 +204,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background4");
             Mdata.add(full_name);
             Mdata.add("오랜만에 올렸는데 좋아요 많이 받았네 기분 좋다");
             Mdata.add(boy_name);
@@ -196,6 +218,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background5");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 너무 늦었다 내일 일어나서 과제 마무리하는 걸로 하고 이제 자자 너무 피곤해보여");
             Mdata.add(full_name);
@@ -288,13 +311,63 @@ public class GameBoard extends AppCompatActivity {
                     switch (sex) {
                         case "man":
                             setContentView(R.layout.activity_game_result_m);
+                            Glide.with(this)
+                                    .load(R.drawable.gameresult_w)
+                                    .into(img_resultW);
                             break;
                         case "woman":
                             setContentView(R.layout.activity_game_result_w);
+                            Glide.with(this)
+                                    .load(R.drawable.gameresult_m)
+                                    .into(img_resultM);
                             break;
                     }
                     break;
                 }
+
+                if (Mdata.get(i).equals("background2")) {
+                    Toast.makeText(getApplicationContext(), "case2", Toast.LENGTH_SHORT).show();
+                }
+                switch (Mdata.get(i++)) {
+                   case "background1":
+                       //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
+                       //image.setImageResource(R.drawable.restaurant_w);
+                       Toast.makeText(getApplicationContext(), "case1", Toast.LENGTH_SHORT).show();
+                       break;
+                   case "background2":
+                       Glide.with(this)
+                               .load(R.drawable.cafe_w)
+                               .into(image);
+                       //image.setImageResource(R.drawable.cafe_w);
+                       //gameBoardLayout.setBackgroundResource(R.drawable.cafe_w);
+                       break;
+                   case "background3":
+                       Glide.with(this)
+                               .load(R.drawable.main)
+                               .into(image);
+                       //image.setImageResource(R.drawable.room_w);
+                       //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
+                       break;
+                    case "background4":
+                        Glide.with(this)
+                                .load(R.drawable.cafe_w)
+                                .into(image);
+                        //image.setImageResource(R.drawable.room_w);
+                        //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
+                        break;
+                    case "background5":
+                        Glide.with(this)
+                                .load(R.drawable.main)
+                                .into(image);
+                        //image.setImageResource(R.drawable.room_w);
+                        //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
+                        break;
+                    default:
+                        //Toast.makeText(getApplicationContext(), "default", Toast.LENGTH_SHORT).show();
+                        i--;
+                        break;
+                }
+
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
                     i++;

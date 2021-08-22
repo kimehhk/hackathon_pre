@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gameresult_w">
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/button_game_exit"
@@ -24,7 +23,6 @@
         android:id="@+id/button_game_center"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/centerbuttonimage"
         android:gravity="center"
         android:onClick="onClick"
@@ -34,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_game_result" />
+        tools:layout_editor_absoluteY="400dp" />
 
     <ImageView
-        android:id="@+id/img_game_result"
+        android:id="@+id/img_game_result_m"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="320dp"

@@ -19,13 +19,16 @@
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/custom_adapter_view_center.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/menu/menu_game_usersex.xml" value="0.25364583333333335" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_center.xml" value="0.13333333333333333" />
-        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_detail.xml" value="0.13958333333333334" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_detail_simple.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game.xml" value="0.10625" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_board.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_choice.xml" value="0.10625" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_manual.xml" value="0.10625" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_ment.xml" value="0.10625" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_result.xml" value="0.10625" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_result_m.xml" value="0.17916666666666667" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_result_w.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_username.xml" value="0.10625" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/custom_adapter_view_comment.xml" value="0.22" />
