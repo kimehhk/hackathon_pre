@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -17,11 +20,18 @@ public class GameActivity extends AppCompatActivity {
     RadioButton btn_w;
     String first_name;
     String last_name;
+    ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_manual);
+        setContentView(R.layout.activity_game_username);
+
+        img = findViewById(R.id.game_nameBg);
+        Glide.with(this)
+                .load(R.drawable.gamebackground)
+                .into(img);
+                //.override(200, 200);
     }
 
     public void user_setting() {
@@ -38,9 +48,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_gameMaunual_ok:
-                setContentView(R.layout.activity_game_username);
-                break;
             case R.id.btn_gameName_ok:
                 user_setting();
 

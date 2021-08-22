@@ -328,14 +328,14 @@ public class GameBoard extends AppCompatActivity {
                        break;
                    case "background2":
                        Glide.with(this)
-                               .load(R.drawable.cafe_w)
+                               .load(R.drawable.restaurant_w)
                                .into(image);
                        //image.setImageResource(R.drawable.cafe_w);
                        //gameBoardLayout.setBackgroundResource(R.drawable.cafe_w);
                        break;
                    case "background3":
                        Glide.with(this)
-                               .load(R.drawable.main)
+                               .load(R.drawable.room_w)
                                .into(image);
                        //image.setImageResource(R.drawable.room_w);
                        //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
@@ -349,7 +349,7 @@ public class GameBoard extends AppCompatActivity {
                         break;
                     case "background5":
                         Glide.with(this)
-                                .load(R.drawable.main)
+                                .load(R.drawable.restaurant_w)
                                 .into(image);
                         //image.setImageResource(R.drawable.room_w);
                         //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
