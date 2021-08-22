@@ -20,14 +20,13 @@ public class GameBoard extends AppCompatActivity {
     TextView ment;
     TextView name;
     ImageView image;
-    ImageView img_resultW;
-    ImageView img_resultM;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
 
     int i;
     int ch;
+    int percent;
 
     String sex;
     String first_name;
@@ -48,6 +47,7 @@ public class GameBoard extends AppCompatActivity {
 
         i = 1;
         ch = 0;
+        percent = 0;
 
         Intent intent = getIntent();
         sex = intent.getStringExtra("sex");
@@ -57,8 +57,6 @@ public class GameBoard extends AppCompatActivity {
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
-        img_resultW = findViewById(R.id.img_game_result_w);
-        img_resultM = findViewById(R.id.img_game_result_m);
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
         //grGlide.with(this)
@@ -75,7 +73,6 @@ public class GameBoard extends AppCompatActivity {
     public void data_insert() {
         String girl_name = "여주";
         String boy_name = "남주";
-        //String full_name = last_name + first_name;
         String full_name = "나";
 
         bgData = new ArrayList<String>();
@@ -308,20 +305,15 @@ public class GameBoard extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_game_next:
                 if (i == Mdata.size()) {
-                    switch (sex) {
-                        case "man":
-                            setContentView(R.layout.activity_game_result_m);
-                            Glide.with(this)
-                                    .load(R.drawable.gameresult_w)
-                                    .into(img_resultW);
-                            break;
-                        case "woman":
-                            setContentView(R.layout.activity_game_result_w);
-                            Glide.with(this)
-                                    .load(R.drawable.gameresult_m)
-                                    .into(img_resultM);
-                            break;
+                    if (percent == 0) {
+                        percent = 1;
+                    } else if (percent == 100) {
+                        percent = 99;
                     }
+                    Intent r = new Intent(GameBoard.this, GameResult.class);
+                    r.putExtra("sex", sex);
+                    r.putExtra("percent", Integer.toString(percent));
+                    startActivity(r);
                     break;
                 }
 
@@ -372,8 +364,6 @@ public class GameBoard extends AppCompatActivity {
                 if (Mdata.get(i).equals("choice")) {
                     i++;
                     ment.setText("");
-//                    AlertDialog.Builder oDialog = new AlertDialog.Builder(this,
-//                            android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
                     AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
                     switch (sex) {
                         case "man":
@@ -383,6 +373,11 @@ public class GameBoard extends AppCompatActivity {
                                     .setItems(mItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            if (which == 0) {
+                                                percent += 20;
+                                            } else if (which == 1) {
+                                                percent += 10;
+                                            }
                                             ment.setText(mItems[which]);
                                             Mdata.set(i + 1, wRes[which].toString());
                                         }
@@ -393,11 +388,15 @@ public class GameBoard extends AppCompatActivity {
                         case "woman":
                             final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
                             final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-
                             oDialog.setTitle("나의 답변")
                                     .setItems(wItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            if (which == 0) {
+                                                percent += 20;
+                                            } else if (which == 1) {
+                                                percent += 10;
+                                            }
                                             ment.setText(wItems[which]);
                                             Mdata.set(i + 1, mRes[which].toString());
                                         }
@@ -410,13 +409,6 @@ public class GameBoard extends AppCompatActivity {
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
-                break;
-            case R.id.button_game_center:
-                Intent intent = new Intent(this, CenterActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.button_game_exit:
-                finish();
                 break;
         }
     }

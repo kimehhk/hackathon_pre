@@ -32,6 +32,7 @@
         <activity android:name=".BoardSearchActivity" />
         <activity android:name=".CenterActivity" />
         <activity android:name=".GameBoard" />
+        <activity android:name=".GameResult"/>
     </application>
 
 </manifest>
