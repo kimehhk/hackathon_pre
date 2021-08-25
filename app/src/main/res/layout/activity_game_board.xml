@@ -27,20 +27,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/ch_name"
+        android:layout_width="40dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="448dp"
+        android:background="#0FFFFFFF"
+        android:gravity="center_horizontal"
+        android:text="남주"
+        app:layout_constraintStart_toStartOf="@id/game_image"
+        app:layout_constraintTop_toTopOf="@id/game_image" />
+
+    <TextView
         android:id="@+id/et_game_ment"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/game_image"
         app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/game_image"
         app:layout_constraintTop_toBottomOf="@+id/ch_name" />
 
     <ImageButton
@@ -49,25 +62,13 @@
         android:layout_height="49dp"
         android:layout_marginStart="300dp"
         android:layout_marginLeft="300dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="66dp"
         android:onClick="onClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.673"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_game_ment"
+        app:layout_constraintTop_toTopOf="@+id/et_game_ment"
         app:srcCompat="@android:drawable/ic_media_play"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/ch_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="400dp"
-        android:background="#0FFFFFFF"
-        android:text="남주"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
