@@ -80,6 +80,9 @@ public class DetailActivity extends AppCompatActivity {
         title.setText(board_title);
         context.setText(board_context);
 
+
+
+
         //commentList = new ArrayList();
         //list = new ArrayList<HashMap<String, String>>();
 
