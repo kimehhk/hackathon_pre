@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +19,7 @@ public class GameBoard extends AppCompatActivity {
     TextView ment;
     TextView name;
     ImageView image;
+    ImageView characterImg;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -57,12 +57,13 @@ public class GameBoard extends AppCompatActivity {
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
+        characterImg = findViewById(R.id.character_img);
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
         //grGlide.with(this)
 
         Glide.with(this)
-                .load(R.drawable.cafe_w)
+                .load(R.drawable.cafe)
                 .into(image);
 
         data_insert();
@@ -317,45 +318,42 @@ public class GameBoard extends AppCompatActivity {
                     break;
                 }
 
-                if (Mdata.get(i).equals("background2")) {
-                    Toast.makeText(getApplicationContext(), "case2", Toast.LENGTH_SHORT).show();
+                if (sex.equals("man")) {
+                    Glide.with(this)
+                            .load(R.drawable.woman)
+                            .into(characterImg);
+                } else {
+                    Glide.with(this)
+                            .load(R.drawable.man)
+                            .into(characterImg);
                 }
+
                 switch (Mdata.get(i++)) {
                    case "background1":
                        //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
                        //image.setImageResource(R.drawable.restaurant_w);
-                       Toast.makeText(getApplicationContext(), "case1", Toast.LENGTH_SHORT).show();
                        break;
                    case "background2":
                        Glide.with(this)
-                               .load(R.drawable.restaurant_w)
+                               .load(R.drawable.restaurant)
                                .into(image);
-                       //image.setImageResource(R.drawable.cafe_w);
-                       //gameBoardLayout.setBackgroundResource(R.drawable.cafe_w);
                        break;
                    case "background3":
                        Glide.with(this)
-                               .load(R.drawable.room_w)
+                               .load(R.drawable.room)
                                .into(image);
-                       //image.setImageResource(R.drawable.room_w);
-                       //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
                        break;
                     case "background4":
                         Glide.with(this)
-                                .load(R.drawable.cafe_w)
+                                .load(R.drawable.cafe)
                                 .into(image);
-                        //image.setImageResource(R.drawable.room_w);
-                        //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
                         break;
                     case "background5":
                         Glide.with(this)
-                                .load(R.drawable.restaurant_w)
+                                .load(R.drawable.restaurant)
                                 .into(image);
-                        //image.setImageResource(R.drawable.room_w);
-                        //gameBoardLayout.setBackgroundResource(R.drawable.room_w);
                         break;
                     default:
-                        //Toast.makeText(getApplicationContext(), "default", Toast.LENGTH_SHORT).show();
                         i--;
                         break;
                 }
