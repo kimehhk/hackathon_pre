@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -17,8 +19,11 @@ public class GameBoard extends AppCompatActivity {
     TextView ment;
     TextView name;
     ImageView image;
-
+    ImageView characterImg;
+    ArrayList<String> bgData;
     ArrayList<String> Mdata;
+    ConstraintLayout gameBoardLayout;
+
     int i;
     int ch;
     int percent;
@@ -36,7 +41,11 @@ public class GameBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
-        i = 0;
+
+        //gameBoardLayout = findViewById(R.id.gameBoard_layout);
+        //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
+
+        i = 1;
         ch = 0;
         percent = 0;
 
@@ -48,7 +57,24 @@ public class GameBoard extends AppCompatActivity {
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
-        image.setImageResource(R.drawable.main);
+        characterImg = findViewById(R.id.character_img);
+        //image.setImageResource(R.drawable.restaurant_w);
+        //image.setImageResource(R.drawable.main);
+        //grGlide.with(this)
+
+        Glide.with(this)
+                .load(R.drawable.cafe)
+                .into(image);
+
+        if (sex.equals("man")) {
+            Glide.with(this)
+                    .load(R.drawable.woman)
+                    .into(characterImg);
+        } else {
+            Glide.with(this)
+                    .load(R.drawable.man)
+                    .into(characterImg);
+        }
 
         data_insert();
         name.setText(Mdata.get(i++));
@@ -60,25 +86,26 @@ public class GameBoard extends AppCompatActivity {
         String boy_name = "남주";
         String full_name = "나";
 
+        bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-//            Mdata.add(girl_name);
-//            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
-//            Mdata.add(full_name);
-//            Mdata.add("미안해 수업 중이었어.");
-//            Mdata.add(girl_name);
-//            Mdata.add("나한테 관심이 있긴 한거지?");
-//            Mdata.add(full_name);
-//            Mdata.add("당연한 소리를 하고 그래");
-//            Mdata.add(girl_name);
-//            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 너무한 거 아니야?");
-            Mdata.add("");
-            Mdata.add("sns");
+            Mdata.add("background1");
+            Mdata.add(girl_name);
+            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
+            Mdata.add(full_name);
+            Mdata.add("미안해 수업 중이었어.");
+            Mdata.add(girl_name);
+            Mdata.add("나한테 관심이 있긴 한거지?");
+            Mdata.add(full_name);
+            Mdata.add("당연한 소리를 하고 그래");
+            Mdata.add(girl_name);
+            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background2");
             Mdata.add(full_name);
             Mdata.add("여주야 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
@@ -92,6 +119,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background3");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 조금만 쉬었다가 가자 나 발이 너무 아파");
             Mdata.add(full_name);
@@ -107,6 +135,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background4");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 여자는 누구야? 왜 너 sns에 댓글을 달아?");
             Mdata.add(full_name);
@@ -122,6 +151,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
+            Mdata.add("background5");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 냄새 뭐야 혹시 담배 폈어?");
             Mdata.add(full_name);
@@ -138,6 +168,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add("response");
 
         } else {
+            Mdata.add("background1");
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
             Mdata.add(boy_name);
@@ -151,6 +182,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background2");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 립스틱은 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른색 같아");
             Mdata.add(full_name);
@@ -166,12 +198,13 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background3");
             Mdata.add(full_name);
             Mdata.add("남주야 나 카페 알바하는데 아까 어떤 손님이 알바 끝나고 뭐하냐고 물어보더니 남자친구 있다고 했는데도 계속 번호 달라고 하다가 가셨어\n나 좀 무서운데 퇴근할 때 데리러 와주면 안 될까?");
             Mdata.add(boy_name);
             Mdata.add("너무 친절하게 대해서 그 사람이 오해한 거 아냐?");
             Mdata.add(full_name);
-            Mdata.add("난 손님이시니까 그냥 친절하게 대했지...");
+            Mdata.add("난 알바생이니까 그냥 친절하게 대했지...");
             Mdata.add(boy_name);
             Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
@@ -179,6 +212,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background4");
             Mdata.add(full_name);
             Mdata.add("오랜만에 올렸는데 좋아요 많이 받았네 기분 좋다");
             Mdata.add(boy_name);
@@ -192,6 +226,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
+            Mdata.add("background5");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 너무 늦었다 내일 일어나서 과제 마무리하는 걸로 하고 이제 자자 너무 피곤해보여");
             Mdata.add(full_name);
@@ -213,7 +248,7 @@ public class GameBoard extends AppCompatActivity {
         m_choice.add("내가 매일 그러는 것도 아니고 너도 연락에 너무 집착하는 것 같아");
         m_choice.add("내가 예민했네 미안해 여주야 화풀어");
         m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
-        m_choice.add("늦을 것 같을 때 미리 연락 좀 해달라는게 예민한거야?");
+        m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
         m_choice.add("그래 내가 대출받아서 살게");
         m_choice.add("물론 있으면 좋겠지만... 알겠어 일단 노력해볼게");
         m_choice.add("나도 아직 학생이잖아 현실적으로 차는 못 살 것 같아");
@@ -228,7 +263,7 @@ public class GameBoard extends AppCompatActivity {
         w_response.add("역시 우리 " + first_name + "(이) 최고~ 앞으로 무조건 칼답해!");
         w_response.add("응 주의 좀 해줘 부탁할게~");
         w_response.add("내가 이상하단거야? 몰라 나는 연락 안 되면 불안하니까 어떻게든 빨리 답장해줘");
-        w_response.add("알았어 앞으론 그러지마 이제 맛있는 거 먹으러 가자");
+        w_response.add("알았어 맛있는 거 먹으러 가자");
         w_response.add(first_name + "(이)가 나한테 그럴리가 없는데 어쩐지~ 다크써클이 심해졌다 했어.");
         w_response.add("아니 알았어.. 다음부터는 꼭 연락할게");
         w_response.add("좋아!! 빨리 사서 매일매일 여행 가자~");
@@ -292,11 +327,38 @@ public class GameBoard extends AppCompatActivity {
                     startActivity(r);
                     break;
                 }
-                name.setText(Mdata.get(i++));
-                if (Mdata.get(i).equals("sns")) {
 
-                    i++;
+                switch (Mdata.get(i++)) {
+                   case "background1":
+                       //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
+                       //image.setImageResource(R.drawable.restaurant_w);
+                       break;
+                   case "background2":
+                       Glide.with(this)
+                               .load(R.drawable.restaurant)
+                               .into(image);
+                       break;
+                   case "background3":
+                       Glide.with(this)
+                               .load(R.drawable.room)
+                               .into(image);
+                       break;
+                    case "background4":
+                        Glide.with(this)
+                                .load(R.drawable.cafe)
+                                .into(image);
+                        break;
+                    case "background5":
+                        Glide.with(this)
+                                .load(R.drawable.restaurant)
+                                .into(image);
+                        break;
+                    default:
+                        i--;
+                        break;
                 }
+
+                name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
                     i++;
                     ment.setText("");
@@ -349,8 +411,8 @@ public class GameBoard extends AppCompatActivity {
         }
     }
 
-//    public void onStop() {
-//        super.onStop();
-//        finish();
-//    }
+    public void onStop() {
+        super.onStop();
+        finish();
+    }
 }

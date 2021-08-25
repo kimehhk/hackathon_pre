@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
     android:layout_height="match_parent"
-    android:background="@drawable/gameresult_m"
     android:onClick="onClick">
 
     <ImageButton
@@ -25,6 +25,7 @@
         android:id="@+id/button_game_center"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginBottom="292dp"
         android:background="@drawable/centerbuttonimage"
         android:gravity="center"
         android:onClick="onClick"
@@ -35,6 +36,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_game_result_w"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/m_result"
