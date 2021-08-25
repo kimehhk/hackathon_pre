@@ -66,6 +66,16 @@ public class GameBoard extends AppCompatActivity {
                 .load(R.drawable.cafe)
                 .into(image);
 
+        if (sex.equals("man")) {
+            Glide.with(this)
+                    .load(R.drawable.woman)
+                    .into(characterImg);
+        } else {
+            Glide.with(this)
+                    .load(R.drawable.man)
+                    .into(characterImg);
+        }
+
         data_insert();
         name.setText(Mdata.get(i++));
         ment.setText(Mdata.get(i++));
@@ -316,16 +326,6 @@ public class GameBoard extends AppCompatActivity {
                     r.putExtra("percent", Integer.toString(percent));
                     startActivity(r);
                     break;
-                }
-
-                if (sex.equals("man")) {
-                    Glide.with(this)
-                            .load(R.drawable.woman)
-                            .into(characterImg);
-                } else {
-                    Glide.with(this)
-                            .load(R.drawable.man)
-                            .into(characterImg);
                 }
 
                 switch (Mdata.get(i++)) {
