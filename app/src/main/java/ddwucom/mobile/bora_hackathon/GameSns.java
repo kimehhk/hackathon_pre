@@ -1,10 +1,13 @@
 package ddwucom.mobile.bora_hackathon;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -21,28 +24,30 @@ public class GameSns extends AppCompatActivity {
         next = 0;
 
         ImageView image = findViewById(R.id.sns_image);
+        ImageView sns_result = findViewById(R.id.m_sns_result);
 
         Glide.with(this)
                 .load(R.drawable.sns_m)
                 .into(image);
-
+//        Glide.with(this)
+//                .load(R.drawable.sns_m)
+//                .into(sns_result);
+//
 //        Intent intent = getIntent();
 //        sex = intent.getStringExtra("sex");
-//
+
 //        switch (sex) {
 //            case "man" :
 //                Glide.with(this)
 //                        .load(R.drawable.sns_m)
 //                        .into(image);
 //                break;
-////            case "woman" :
-////                Glide.with(this)
-////                        .load(R.drawable.sns_m)
-////                        .into(image);
-////                break;
+//            case "woman" :
+//                Glide.with(this)
+//                        .load(R.drawable.sns_w)
+//                        .into(image);
+//                break;
 //        }
-//        percent = Integer.getInteger(intent.getStringExtra("percent"));
-
     }
 
     public void onClick(View v) {
@@ -55,15 +60,6 @@ public class GameSns extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.sns_image:
                 next++;
-//                switch (sex) {
-//                    case "man":
-//                        TextView text1 = findViewById(R.id.text1);
-//                        TextView text2 = findViewById(R.id.text2);
-//                        break;
-//                    case "woman":
-//
-//                        break;
-//                }
                 switch (next) {
                     case 1:
                         text1.setVisibility(v.INVISIBLE);
@@ -85,6 +81,7 @@ public class GameSns extends AppCompatActivity {
                         break;
                     default:
                         finish();
+                        break;
                 }
                 break;
 

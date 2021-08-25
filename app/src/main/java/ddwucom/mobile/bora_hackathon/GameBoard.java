@@ -20,6 +20,9 @@ public class GameBoard extends AppCompatActivity {
     TextView name;
     ImageView image;
     ImageView characterImg;
+    ImageView sns_result;
+    ImageView choice;
+    ImageView response;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -27,6 +30,8 @@ public class GameBoard extends AppCompatActivity {
     int i;
     int ch;
     int percent;
+    int s;
+    int where;
 
     String sex;
     String first_name;
@@ -48,6 +53,8 @@ public class GameBoard extends AppCompatActivity {
         i = 1;
         ch = 0;
         percent = 0;
+        where = 0;
+        s = 0;
 
         Intent intent = getIntent();
         sex = intent.getStringExtra("sex");
@@ -58,6 +65,9 @@ public class GameBoard extends AppCompatActivity {
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
         characterImg = findViewById(R.id.character_img);
+        choice = findViewById(R.id.sns_choice);
+        response = findViewById(R.id.sns_response);
+        sns_result = findViewById(R.id.m_sns_result);
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
         //grGlide.with(this)
@@ -65,6 +75,9 @@ public class GameBoard extends AppCompatActivity {
         Glide.with(this)
                 .load(R.drawable.cafe)
                 .into(image);
+//        Glide.with(this)
+//                .load(R.drawable.sns_m)
+//                .into(sns_result);
 
         if (sex.equals("man")) {
             Glide.with(this)
@@ -105,15 +118,15 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
-            Mdata.add("background2");
-            Mdata.add(full_name);
-            Mdata.add("여주야 왜 이렇게 늦었어? ");
-            Mdata.add(girl_name);
-            Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
-            Mdata.add(full_name);
-            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아 \n다음부터는 미리 연락 좀 해줘");
-            Mdata.add(girl_name);
-            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 \n내가 사과도 했는데 너무 예민한 거 아니야?");
+            Mdata.add("sns");
+//            Mdata.add(full_name);
+//            Mdata.add("여주야 왜 이렇게 늦었어? ");
+//            Mdata.add(girl_name);
+//            Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
+//            Mdata.add(full_name);
+//            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아 \n다음부터는 미리 연락 좀 해줘");
+//            Mdata.add(girl_name);
+//            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 \n내가 사과도 했는데 너무 예민한 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -198,15 +211,15 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
-            Mdata.add("background3");
-            Mdata.add(full_name);
-            Mdata.add("남주야 나 카페 알바하는데 아까 어떤 손님이 알바 끝나고 뭐하냐고 물어보더니 남자친구 있다고 했는데도 계속 번호 달라고 하다가 가셨어\n나 좀 무서운데 퇴근할 때 데리러 와주면 안 될까?");
-            Mdata.add(boy_name);
-            Mdata.add("너무 친절하게 대해서 그 사람이 오해한 거 아냐?");
-            Mdata.add(full_name);
-            Mdata.add("난 알바생이니까 그냥 친절하게 대했지...");
-            Mdata.add(boy_name);
-            Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
+            Mdata.add("sns");
+//            Mdata.add(full_name);
+//            Mdata.add("남주야 나 카페 알바하는데 아까 어떤 손님이 알바 끝나고 뭐하냐고 물어보더니 남자친구 있다고 했는데도 계속 번호 달라고 하다가 가셨어\n나 좀 무서운데 퇴근할 때 데리러 와주면 안 될까?");
+//            Mdata.add(boy_name);
+//            Mdata.add("너무 친절하게 대해서 그 사람이 오해한 거 아냐?");
+//            Mdata.add(full_name);
+//            Mdata.add("난 알바생이니까 그냥 친절하게 대했지...");
+//            Mdata.add(boy_name);
+//            Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
@@ -334,13 +347,9 @@ public class GameBoard extends AppCompatActivity {
                        //image.setImageResource(R.drawable.restaurant_w);
                        break;
                    case "background2":
-//                       Glide.with(this)
-//                               .load(R.drawable.restaurant)
-//                               .into(image);
-                       Intent sns = new Intent(GameBoard.this, GameSns.class);
-                       sns.putExtra("sex", sex);
-                       sns.putExtra("percent", Integer.toString(percent));
-                       startActivity(sns);
+                       Glide.with(this)
+                               .load(R.drawable.restaurant)
+                               .into(image);
                        break;
                    case "background3":
                        Glide.with(this)
@@ -357,11 +366,16 @@ public class GameBoard extends AppCompatActivity {
                                 .load(R.drawable.restaurant)
                                 .into(image);
                         break;
+                    case "sns" :
+                        //s = 1;
+                        Intent sns = new Intent(GameBoard.this, GameSns.class);
+                        sns.putExtra("sex", sex);
+                        startActivity(sns);
+                        break;
                     default:
                         i--;
                         break;
                 }
-
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
                     i++;
@@ -375,17 +389,48 @@ public class GameBoard extends AppCompatActivity {
                                     .setItems(mItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            //where = which;
                                             if (which == 0) {
                                                 percent += 20;
                                             } else if (which == 1) {
                                                 percent += 10;
                                             }
+//                                            if (s == 0) {
+//                                                ment.setText(mItems[which]);
+//                                                Mdata.set(i + 1, wRes[which].toString());
+//                                            }
                                             ment.setText(mItems[which]);
                                             Mdata.set(i + 1, wRes[which].toString());
                                         }
                                     })
                                     .setCancelable(false)
                                     .show();
+//                            if (s == 1) {
+//                                if (where == 0) {
+//                                    Glide.with(this)
+//                                            .load(R.drawable.m_choice1)
+//                                            .into(choice);
+////                                    Glide.with(this)
+////                                            .load(R.drawable.w_response1)
+////                                            .into(response);
+//                                } else if (where == 1) {
+//                                    Glide.with(this)
+//                                            .load(R.drawable.m_choice2)
+//                                            .into(choice);
+////                                    Glide.with(this)
+////                                            .load(R.drawable.w_response2)
+////                                            .into(response);
+//                                } else {
+//                                    Glide.with(this)
+//                                            .load(R.drawable.m_choice3)
+//                                            .into(choice);
+////                                    Glide.with(this)
+////                                            .load(R.drawable.w_response3)
+////                                            .into(response);
+//                                }
+//                                s = 0;
+//                                setContentView(R.layout.activity_m_sns_result);
+//                            }
                             break;
                         case "woman":
                             final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
@@ -411,6 +456,9 @@ public class GameBoard extends AppCompatActivity {
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
+                break;
+            case R.id.m_sns_result:
+                finish();
                 break;
         }
     }

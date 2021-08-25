@@ -59,16 +59,18 @@ public class GameResult extends AppCompatActivity {
     }
 
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.m_result:
                 m_result.setText("당신은 데이트 폭력 위험에\n약 " + percent + "% 노출되어있습니다.");
                 break;
             case R.id.button_game_center:
-                Intent intent = new Intent(this, CenterActivity.class);
+                intent = new Intent(this, CenterActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_game_exit:
-                finish();
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 break;
         }
     }
