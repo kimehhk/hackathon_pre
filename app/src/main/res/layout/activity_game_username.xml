@@ -3,14 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gamebackground">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/game_nameBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="88dp"
         android:text="성별을 골라주세요"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -20,8 +30,8 @@
 
     <ImageButton
         android:id="@+id/btn_gameName_ok"
-        android:layout_width="450dp"
-        android:layout_height="150dp"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/decidebuttonimage"
         android:onClick="onClick"
@@ -30,19 +40,17 @@
         app:layout_constraintStart_toStartOf="@+id/et_game_user_firstname"
         app:layout_constraintTop_toBottomOf="@+id/et_game_user_firstname" />
 
-    <EditText
-        android:id="@+id/et_game_user_firstname"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
+        android:layout_marginTop="88dp"
+        android:text="성과 이름을 입력해 주세요"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/et_game_user_lastname"
-        app:layout_constraintTop_toBottomOf="@+id/et_game_user_lastname"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_game_user_sex" />
 
     <EditText
         android:id="@+id/et_game_user_lastname"
@@ -60,17 +68,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
-        android:id="@+id/textView4"
+    <EditText
+        android:id="@+id/et_game_user_firstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="성과 이름을 입력해 주세요"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="textPersonName"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_game_user_sex" />
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/et_game_user_lastname"
+        app:layout_constraintTop_toBottomOf="@+id/et_game_user_lastname"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <RadioGroup
         android:id="@+id/btn_game_user_sex"
