@@ -62,16 +62,18 @@ public class GameBoard extends AppCompatActivity {
 
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-            Mdata.add(girl_name);
-            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
-            Mdata.add(full_name);
-            Mdata.add("미안해 수업 중이었어.");
-            Mdata.add(girl_name);
-            Mdata.add("나한테 관심이 있긴 한거지?");
-            Mdata.add(full_name);
-            Mdata.add("당연한 소리를 하고 그래");
-            Mdata.add(girl_name);
-            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 너무한 거 아니야?");
+//            Mdata.add(girl_name);
+//            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
+//            Mdata.add(full_name);
+//            Mdata.add("미안해 수업 중이었어.");
+//            Mdata.add(girl_name);
+//            Mdata.add("나한테 관심이 있긴 한거지?");
+//            Mdata.add(full_name);
+//            Mdata.add("당연한 소리를 하고 그래");
+//            Mdata.add(girl_name);
+//            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 너무한 거 아니야?");
+            Mdata.add("");
+            Mdata.add("sns");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -291,6 +293,10 @@ public class GameBoard extends AppCompatActivity {
                     break;
                 }
                 name.setText(Mdata.get(i++));
+                if (Mdata.get(i).equals("sns")) {
+
+                    i++;
+                }
                 if (Mdata.get(i).equals("choice")) {
                     i++;
                     ment.setText("");
@@ -343,8 +349,8 @@ public class GameBoard extends AppCompatActivity {
         }
     }
 
-    public void onStop() {
-        super.onStop();
-        finish();
-    }
+//    public void onStop() {
+//        super.onStop();
+//        finish();
+//    }
 }
