@@ -334,9 +334,13 @@ public class GameBoard extends AppCompatActivity {
                        //image.setImageResource(R.drawable.restaurant_w);
                        break;
                    case "background2":
-                       Glide.with(this)
-                               .load(R.drawable.restaurant)
-                               .into(image);
+//                       Glide.with(this)
+//                               .load(R.drawable.restaurant)
+//                               .into(image);
+                       Intent sns = new Intent(GameBoard.this, GameSns.class);
+                       sns.putExtra("sex", sex);
+                       sns.putExtra("percent", Integer.toString(percent));
+                       startActivity(sns);
                        break;
                    case "background3":
                        Glide.with(this)
@@ -411,8 +415,8 @@ public class GameBoard extends AppCompatActivity {
         }
     }
 
-    public void onStop() {
-        super.onStop();
-        finish();
-    }
+//    public void onStop() {
+//        super.onStop();
+//        finish();
+//    }
 }

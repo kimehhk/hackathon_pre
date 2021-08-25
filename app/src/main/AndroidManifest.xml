@@ -33,6 +33,7 @@
         <activity android:name=".CenterActivity" />
         <activity android:name=".GameBoard" />
         <activity android:name=".GameResult"/>
+        <activity android:name=".GameSns"/>
     </application>
 
 </manifest>
