@@ -95,7 +95,7 @@ public class GameBoard extends AppCompatActivity {
         if (sex.equals("man")) {
             Mdata.add("background2");
             Mdata.add(full_name);
-            Mdata.add("여주야 왜 이렇게 늦었어? ");
+            Mdata.add("아영아 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
             Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
             Mdata.add(full_name);
@@ -247,7 +247,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add("response");
         }
         m_choice = new ArrayList<String>();
-        m_choice.add("내가 예민했네 미안해 여주야 화풀어");
+        m_choice.add("내가 예민했네 미안해 아영아 화풀어");
         m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
         m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
         m_choice.add("미안해 앞으로 5분에 한번씩 카톡 확인할게.");
@@ -281,19 +281,19 @@ public class GameBoard extends AppCompatActivity {
         w_response.add("그래도 나랑 만날 때만큼은 금연해줬으면 좋겠어 남들은 다 하던데 좀 더 노력해봐");
 
         w_choice = new ArrayList<String>();
-        w_choice.add("남주 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려");
+        w_choice.add("다온이 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려");
         w_choice.add("음...그런가? 다시 한 번 생각해볼게");
         w_choice.add("난 타투 너무 멋있어 보이는데... 내가 하고싶음 하는 거지 뭐 말리지마~");
-        w_choice.add("역시 우리 남주 너무 세심해 고마워 남주");
+        w_choice.add("역시 우리 다온이 너무 세심해 고마워 다온아");
         w_choice.add("치.. 알겠어");
         w_choice.add("나랑 잘 맞는다고 해서 이거 산건데.. 산거니까 일단 바를래");
-        w_choice.add("미안해 남주야 내가 더 조심할게");
+        w_choice.add("미안해 다온아. 내가 더 조심할게");
         w_choice.add("아...그런건가?");
         w_choice.add("나는 일 하는 알바생인데 손님한테 친절하게 대해야지 화를 낼 수는 없잖아");
-        w_choice.add("알았어 남주야 그럼 그냥 삭제할게");
+        w_choice.add("알았어 다온아 그럼 그냥 삭제할게");
         w_choice.add("이게 그렇게 노출이 심한가...?");
         w_choice.add("나는 이 사진 너무 마음에 드는데? 안 지울래");
-        w_choice.add("역시 우리 남주는 내 미래까지 걱정해주네 알았어 자자");
+        w_choice.add("역시 우리 다온이는 내 미래까지 걱정해주네 알았어 자자");
         w_choice.add("그래도 먹고 살려면 취직은 해야하지 않을까?");
         w_choice.add("아니야 난 나중에 꼭 내가 하고 싶은 일 하면서 살거야");
 
