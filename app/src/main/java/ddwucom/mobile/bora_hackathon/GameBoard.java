@@ -21,8 +21,6 @@ public class GameBoard extends AppCompatActivity {
     ImageView image;
     ImageView characterImg;
     ImageView sns_result;
-    ImageView choice;
-    ImageView response;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -65,8 +63,6 @@ public class GameBoard extends AppCompatActivity {
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
         characterImg = findViewById(R.id.character_img);
-        choice = findViewById(R.id.sns_choice);
-        response = findViewById(R.id.sns_response);
         sns_result = findViewById(R.id.m_sns_result);
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
@@ -76,7 +72,7 @@ public class GameBoard extends AppCompatActivity {
                 .load(R.drawable.cafe)
                 .into(image);
 //        Glide.with(this)
-//                .load(R.drawable.sns_m)
+//                .load(R.drawable.m1)
 //                .into(sns_result);
 
         if (sex.equals("man")) {
@@ -367,7 +363,7 @@ public class GameBoard extends AppCompatActivity {
                                 .into(image);
                         break;
                     case "sns" :
-                        //s = 1;
+                        s = 1;
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);
                         startActivity(sns);
@@ -389,7 +385,7 @@ public class GameBoard extends AppCompatActivity {
                                     .setItems(mItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            //where = which;
+                                            where = which;
                                             if (which == 0) {
                                                 percent += 20;
                                             } else if (which == 1) {
@@ -408,25 +404,18 @@ public class GameBoard extends AppCompatActivity {
 //                            if (s == 1) {
 //                                if (where == 0) {
 //                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice1)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response1)
-////                                            .into(response);
+//                                            .load(R.drawable.m1)
+//                                            .into(sns_result);
+//
 //                                } else if (where == 1) {
 //                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice2)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response2)
-////                                            .into(response);
+//                                            .load(R.drawable.m2)
+//                                            .into(sns_result);
+//
 //                                } else {
 //                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice3)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response3)
-////                                            .into(response);
+//                                            .load(R.drawable.m3)
+//                                            .into(sns_result);
 //                                }
 //                                s = 0;
 //                                setContentView(R.layout.activity_m_sns_result);
