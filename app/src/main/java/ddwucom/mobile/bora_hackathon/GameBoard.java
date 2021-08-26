@@ -386,6 +386,7 @@ public class GameBoard extends AppCompatActivity {
                                                 percent += 10;
                                             }
                                             if (s == 1) {
+                                                s = 0;
                                                 Mdata.set(i + 1, "");
                                                 Intent sns = new Intent(GameBoard.this, SnsResult.class);
                                                 sns.putExtra("sex", sex);
@@ -413,6 +414,7 @@ public class GameBoard extends AppCompatActivity {
                                                 percent += 10;
                                             }
                                             if (s == 1) {
+                                                s = 0;
                                                 Mdata.set(i + 1, "");
                                                 Intent sns = new Intent(GameBoard.this, SnsResult.class);
                                                 sns.putExtra("sex", sex);
