@@ -93,7 +93,7 @@ public class GameBoard extends AppCompatActivity {
         bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-            Mdata.add("background2");
+            Mdata.add("restaurant");
             Mdata.add(full_name);
             Mdata.add("아영아 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
@@ -120,10 +120,10 @@ public class GameBoard extends AppCompatActivity {
 //            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
-            Mdata.add(girl_name);
-            Mdata.add("response");
+//            Mdata.add(girl_name);
+//            Mdata.add("response");
 
-            Mdata.add("background3");
+            Mdata.add("cafe");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 조금만 쉬었다가 가자 나 발이 너무 아파");
             Mdata.add(full_name);
@@ -139,7 +139,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
-            Mdata.add("background4");
+            Mdata.add("room");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 여자는 누구야? 왜 너 sns에 댓글을 달아?");
             Mdata.add(full_name);
@@ -155,7 +155,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("response");
 
-            Mdata.add("background5");
+            Mdata.add("restaurant");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 냄새 뭐야 혹시 담배 폈어?");
             Mdata.add(full_name);
@@ -172,7 +172,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add("response");
 
         } else {
-            Mdata.add("background1");
+            Mdata.add("cafe");
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
             Mdata.add(boy_name);
@@ -186,7 +186,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
-            Mdata.add("background2");
+            Mdata.add("restaurant");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 립스틱은 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른색 같아");
             Mdata.add(full_name);
@@ -213,10 +213,10 @@ public class GameBoard extends AppCompatActivity {
 //            Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
             Mdata.add("choice");
-            Mdata.add(boy_name);
-            Mdata.add("response");
+//            Mdata.add(boy_name);
+//            Mdata.add("response");
 
-            Mdata.add("background4");
+            Mdata.add("cafe");
             Mdata.add(full_name);
             Mdata.add("오랜만에 올렸는데 좋아요 많이 받았네 기분 좋다");
             Mdata.add(boy_name);
@@ -230,7 +230,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(boy_name);
             Mdata.add("response");
 
-            Mdata.add("background5");
+            Mdata.add("room");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 너무 늦었다 내일 일어나서 과제 마무리하는 걸로 하고 이제 자자 너무 피곤해보여");
             Mdata.add(full_name);
@@ -333,35 +333,46 @@ public class GameBoard extends AppCompatActivity {
                 }
 
                 switch (Mdata.get(i++)) {
-                   case "background1":
-                       //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
-                       //image.setImageResource(R.drawable.restaurant_w);
-                       break;
-                   case "background2":
+                   case "restaurant":
+                       characterImg.setVisibility(v.VISIBLE);
+                       name.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.restaurant)
                                .into(image);
                        break;
-                   case "background3":
+                   case "room":
+                       characterImg.setVisibility(v.VISIBLE);
+                       name.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
                                .into(image);
                        break;
-                    case "background4":
+                    case "cafe":
+                        characterImg.setVisibility(v.VISIBLE);
+                        name.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
                                 .into(image);
                         break;
-                    case "background5":
-                        Glide.with(this)
-                                .load(R.drawable.restaurant)
-                                .into(image);
-                        break;
                     case "sns" :
+                        characterImg.setVisibility(v.GONE);
+                        name.setVisibility(v.INVISIBLE);
                         s = 1;
+
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);
                         startActivity(sns);
+
+                        if (sex.equals("man")) {
+                            Glide.with(this)
+                                    .load(R.drawable.sns_m)
+                                    .into(image);
+                        } else {
+                            Glide.with(this)
+                                    .load(R.drawable.sns_w)
+                                    .into(image);
+                        }
+
                         break;
                     default:
                         i--;
@@ -387,11 +398,14 @@ public class GameBoard extends AppCompatActivity {
                                             }
                                             if (s == 1) {
                                                 s = 0;
-                                                Mdata.set(i + 1, "");
+                                                image.setVisibility(v.INVISIBLE);
                                                 Intent sns = new Intent(GameBoard.this, SnsResult.class);
                                                 sns.putExtra("sex", sex);
                                                 sns.putExtra("which", Integer.toString(which));
                                                 startActivity(sns);
+//                                                Glide.with(v)
+//                                                        .load(R.drawable.cafe)
+//                                                        .into(image);
                                             } else {
                                                 ment.setText(mItems[which]);
                                                 Mdata.set(i + 1, wRes[which].toString());
@@ -415,11 +429,12 @@ public class GameBoard extends AppCompatActivity {
                                             }
                                             if (s == 1) {
                                                 s = 0;
-                                                Mdata.set(i + 1, "");
+                                                image.setVisibility(v.INVISIBLE);
                                                 Intent sns = new Intent(GameBoard.this, SnsResult.class);
                                                 sns.putExtra("sex", sex);
                                                 sns.putExtra("which", Integer.toString(which));
                                                 startActivity(sns);
+
                                             } else {
                                                 ment.setText(wItems[which]);
                                                 Mdata.set(i + 1, mRes[which].toString());
@@ -431,9 +446,11 @@ public class GameBoard extends AppCompatActivity {
                             break;
                     }
                     ch += 3;
+
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
+                image.setVisibility(v.VISIBLE);
                 break;
             case R.id.m_sns_result:
                 finish();
