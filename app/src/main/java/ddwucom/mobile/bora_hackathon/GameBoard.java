@@ -446,7 +446,6 @@ public class GameBoard extends AppCompatActivity {
                             break;
                     }
                     ch += 3;
-
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
