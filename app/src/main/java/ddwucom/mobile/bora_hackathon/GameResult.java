@@ -50,7 +50,7 @@ public class GameResult extends AppCompatActivity {
                 //setContentView(R.layout.activity_game_result_w);
                 Glide.with(this)
                         .load(R.drawable.gameresult_m)
-                        .into(img_resultM);
+                        .into(img_result);
                 break;
         }
         percent = intent.getStringExtra("percent");
