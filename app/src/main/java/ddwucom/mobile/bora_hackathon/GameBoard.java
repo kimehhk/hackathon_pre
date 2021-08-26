@@ -21,6 +21,7 @@ public class GameBoard extends AppCompatActivity {
     ImageView image;
     ImageView characterImg;
     ImageView sns_result;
+    ImageView snsResult;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -319,6 +320,12 @@ public class GameBoard extends AppCompatActivity {
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.btn_game_next:
+                snsResult = findViewById(R.id.sns_result_img);
+                Glide.with(this)
+                        .load(R.drawable.sns_m)
+                        .into(snsResult);
+                snsResult.setVisibility(v.INVISIBLE);
+
                 if (i == Mdata.size()) {
                     if (percent == 0) {
                         percent = 1;
@@ -403,25 +410,26 @@ public class GameBoard extends AppCompatActivity {
 //                                                sns.putExtra("sex", sex);
 //                                                sns.putExtra("which", Integer.toString(which));
 //                                                startActivity(sns);
-                                                setContentView(R.layout.activity_sns_result);
-                                                ImageView imageView = findViewById(R.id.m_sns_result);
+                                                //setContentView(R.layout.activity_sns_result);
+                                                //snsResult = findViewById(R.id.sns_result_img);
                                                 switch (which) {
                                                     case 0:
                                                         Glide.with(v)
                                                                 .load(R.drawable.m1)
-                                                                .into(imageView);
+                                                                .into(snsResult);
                                                         break;
                                                     case 1:
                                                         Glide.with(v)
                                                                 .load(R.drawable.m2)
-                                                                .into(imageView);
+                                                                .into(snsResult);
                                                         break;
                                                     case 2:
                                                         Glide.with(v)
                                                                 .load(R.drawable.m3)
-                                                                .into(imageView);
+                                                                .into(snsResult);
                                                         break;
                                                 }
+                                                snsResult.setVisibility(v.VISIBLE);
                                             } else {
                                                 ment.setText(mItems[which]);
                                                 Mdata.set(i + 1, wRes[which].toString());
@@ -450,8 +458,9 @@ public class GameBoard extends AppCompatActivity {
 //                                                sns.putExtra("sex", sex);
 //                                                sns.putExtra("which", Integer.toString(which));
 //                                                startActivity(sns);
-                                                setContentView(R.layout.activity_sns_result);
-                                                ImageView imageView = findViewById(R.id.m_sns_result);
+                                                //setContentView(R.layout.activity_sns_result);
+                                                ImageView imageView = findViewById(R.id.sns_result_img);
+
                                                 switch (which) {
                                                     case 0:
                                                         Glide.with(v)
