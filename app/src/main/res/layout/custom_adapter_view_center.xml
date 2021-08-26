@@ -13,13 +13,22 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp">
 
             <TextView
                 android:id="@+id/tv_receptionContent"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center"
                 android:hint="접수내용" />
 
@@ -27,7 +36,9 @@
                 android:id="@+id/tv_institution"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_gravity="center"
                 android:layout_weight="1"
+                android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center"
                 android:hint="관련기관" />
 
@@ -35,8 +46,10 @@
                 android:id="@+id/tv_number"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:fontFamily="@font/kopub_dotum_medium"
+                android:gravity="center|left"
                 android:hint="전화번호" />
 
         </TableRow>
