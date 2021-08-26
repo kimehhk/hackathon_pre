@@ -34,6 +34,7 @@
         <activity android:name=".GameBoard" />
         <activity android:name=".GameResult"/>
         <activity android:name=".GameSns"/>
+        <activity android:name=".SnsResult"/>
     </application>
 
 </manifest>

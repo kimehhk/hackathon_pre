@@ -24,30 +24,26 @@ public class GameSns extends AppCompatActivity {
         next = 0;
 
         ImageView image = findViewById(R.id.sns_image);
-        ImageView sns_result = findViewById(R.id.m_sns_result);
 
         Glide.with(this)
                 .load(R.drawable.sns_m)
                 .into(image);
-//        Glide.with(this)
-//                .load(R.drawable.sns_m)
-//                .into(sns_result);
-//
-//        Intent intent = getIntent();
-//        sex = intent.getStringExtra("sex");
 
-//        switch (sex) {
-//            case "man" :
-//                Glide.with(this)
-//                        .load(R.drawable.sns_m)
-//                        .into(image);
-//                break;
-//            case "woman" :
-//                Glide.with(this)
-//                        .load(R.drawable.sns_w)
-//                        .into(image);
-//                break;
-//        }
+        Intent intent = getIntent();
+        sex = intent.getStringExtra("sex");
+
+        switch (sex) {
+            case "man" :
+                Glide.with(this)
+                        .load(R.drawable.sns_m)
+                        .into(image);
+                break;
+            case "woman" :
+                Glide.with(this)
+                        .load(R.drawable.sns_w)
+                        .into(image);
+                break;
+        }
     }
 
     public void onClick(View v) {
