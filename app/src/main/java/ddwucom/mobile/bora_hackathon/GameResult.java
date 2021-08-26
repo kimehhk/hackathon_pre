@@ -15,7 +15,6 @@ public class GameResult extends AppCompatActivity {
     TextView m_result;
     String percent;
     ImageView img_result;
-    ImageView img_resultM;
     ImageButton center_btn;
     ImageButton exit_btn;
 
@@ -41,13 +40,11 @@ public class GameResult extends AppCompatActivity {
 
         switch (sex) {
             case "man":
-                //setContentView(R.layout.activity_game_result_m);
                 Glide.with(this)
                         .load(R.drawable.gameresult_w)
                         .into(img_result);
                 break;
             case "woman":
-                //setContentView(R.layout.activity_game_result_w);
                 Glide.with(this)
                         .load(R.drawable.gameresult_m)
                         .into(img_result);
