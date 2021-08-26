@@ -398,14 +398,30 @@ public class GameBoard extends AppCompatActivity {
                                             }
                                             if (s == 1) {
                                                 s = 0;
-                                                image.setVisibility(v.INVISIBLE);
-                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
-                                                sns.putExtra("sex", sex);
-                                                sns.putExtra("which", Integer.toString(which));
-                                                startActivity(sns);
-//                                                Glide.with(v)
-//                                                        .load(R.drawable.cafe)
-//                                                        .into(image);
+//                                                image.setVisibility(v.INVISIBLE);
+//                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
+//                                                sns.putExtra("sex", sex);
+//                                                sns.putExtra("which", Integer.toString(which));
+//                                                startActivity(sns);
+                                                setContentView(R.layout.activity_sns_result);
+                                                ImageView imageView = findViewById(R.id.m_sns_result);
+                                                switch (which) {
+                                                    case 0:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.m1)
+                                                                .into(imageView);
+                                                        break;
+                                                    case 1:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.m2)
+                                                                .into(imageView);
+                                                        break;
+                                                    case 2:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.m3)
+                                                                .into(imageView);
+                                                        break;
+                                                }
                                             } else {
                                                 ment.setText(mItems[which]);
                                                 Mdata.set(i + 1, wRes[which].toString());
@@ -429,12 +445,30 @@ public class GameBoard extends AppCompatActivity {
                                             }
                                             if (s == 1) {
                                                 s = 0;
-                                                image.setVisibility(v.INVISIBLE);
-                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
-                                                sns.putExtra("sex", sex);
-                                                sns.putExtra("which", Integer.toString(which));
-                                                startActivity(sns);
-
+//                                                image.setVisibility(v.INVISIBLE);
+//                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
+//                                                sns.putExtra("sex", sex);
+//                                                sns.putExtra("which", Integer.toString(which));
+//                                                startActivity(sns);
+                                                setContentView(R.layout.activity_sns_result);
+                                                ImageView imageView = findViewById(R.id.m_sns_result);
+                                                switch (which) {
+                                                    case 0:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.w1)
+                                                                .into(imageView);
+                                                        break;
+                                                    case 1:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.w2)
+                                                                .into(imageView);
+                                                        break;
+                                                    case 2:
+                                                        Glide.with(v)
+                                                                .load(R.drawable.w3)
+                                                                .into(imageView);
+                                                        break;
+                                                }
                                             } else {
                                                 ment.setText(wItems[which]);
                                                 Mdata.set(i + 1, mRes[which].toString());
@@ -446,11 +480,10 @@ public class GameBoard extends AppCompatActivity {
                             break;
                     }
                     ch += 3;
-
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
-                image.setVisibility(v.VISIBLE);
+//                image.setVisibility(v.VISIBLE);
                 break;
             case R.id.m_sns_result:
                 finish();
