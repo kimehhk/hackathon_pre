@@ -21,8 +21,6 @@ public class GameBoard extends AppCompatActivity {
     ImageView image;
     ImageView characterImg;
     ImageView sns_result;
-    ImageView choice;
-    ImageView response;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -31,7 +29,6 @@ public class GameBoard extends AppCompatActivity {
     int ch;
     int percent;
     int s;
-    int where;
 
     String sex;
     String first_name;
@@ -53,7 +50,6 @@ public class GameBoard extends AppCompatActivity {
         i = 1;
         ch = 0;
         percent = 0;
-        where = 0;
         s = 0;
 
         Intent intent = getIntent();
@@ -65,8 +61,6 @@ public class GameBoard extends AppCompatActivity {
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
         characterImg = findViewById(R.id.character_img);
-        choice = findViewById(R.id.sns_choice);
-        response = findViewById(R.id.sns_response);
         sns_result = findViewById(R.id.m_sns_result);
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
@@ -75,9 +69,6 @@ public class GameBoard extends AppCompatActivity {
         Glide.with(this)
                 .load(R.drawable.cafe)
                 .into(image);
-//        Glide.with(this)
-//                .load(R.drawable.sns_m)
-//                .into(sns_result);
 
         if (sex.equals("man")) {
             Glide.with(this)
@@ -95,38 +86,38 @@ public class GameBoard extends AppCompatActivity {
     }
 
     public void data_insert() {
-        String girl_name = "여주";
-        String boy_name = "남주";
+        String girl_name = "신아영";
+        String boy_name = "권다온";
         String full_name = "나";
 
         bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-            Mdata.add("background1");
-            Mdata.add(girl_name);
-            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
+            Mdata.add("background2");
             Mdata.add(full_name);
-            Mdata.add("미안해 수업 중이었어.");
+            Mdata.add("아영아 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
-            Mdata.add("나한테 관심이 있긴 한거지?");
+            Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
             Mdata.add(full_name);
-            Mdata.add("당연한 소리를 하고 그래");
+            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아 \n다음부터는 미리 연락 좀 해줘");
             Mdata.add(girl_name);
-            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
+            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 \n내가 사과도 했는데 너무 예민한 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
             Mdata.add("response");
 
             Mdata.add("sns");
-//            Mdata.add(full_name);
-//            Mdata.add("여주야 왜 이렇게 늦었어? ");
 //            Mdata.add(girl_name);
-//            Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
+//            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
 //            Mdata.add(full_name);
-//            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아 \n다음부터는 미리 연락 좀 해줘");
+//            Mdata.add("미안해 수업 중이었어.");
 //            Mdata.add(girl_name);
-//            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 \n내가 사과도 했는데 너무 예민한 거 아니야?");
+//            Mdata.add("나한테 관심이 있긴 한거지?");
+//            Mdata.add(full_name);
+//            Mdata.add("당연한 소리를 하고 그래");
+//            Mdata.add(girl_name);
+//            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -256,12 +247,12 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add("response");
         }
         m_choice = new ArrayList<String>();
+        m_choice.add("내가 예민했네 미안해 아영아 화풀어");
+        m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
+        m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
         m_choice.add("미안해 앞으로 5분에 한번씩 카톡 확인할게.");
         m_choice.add("그냥 오늘은 정신이 좀 없었어 더 신경쓸게");
         m_choice.add("내가 매일 그러는 것도 아니고 너도 연락에 너무 집착하는 것 같아");
-        m_choice.add("내가 예민했네 미안해 여주야 화풀어");
-        m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
-        m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
         m_choice.add("그래 내가 대출받아서 살게");
         m_choice.add("물론 있으면 좋겠지만... 알겠어 일단 노력해볼게");
         m_choice.add("나도 아직 학생이잖아 현실적으로 차는 못 살 것 같아");
@@ -273,12 +264,12 @@ public class GameBoard extends AppCompatActivity {
         m_choice.add("담배 하루 아침에 끊기 힘든 거 알잖아 이해 좀 해줘");
 
         w_response = new ArrayList<String>();
-        w_response.add("역시 우리 " + first_name + "(이) 최고~ 앞으로 무조건 칼답해!");
-        w_response.add("응 주의 좀 해줘 부탁할게~");
-        w_response.add("내가 이상하단거야? 몰라 나는 연락 안 되면 불안하니까 어떻게든 빨리 답장해줘");
         w_response.add("알았어 맛있는 거 먹으러 가자");
         w_response.add(first_name + "(이)가 나한테 그럴리가 없는데 어쩐지~ 다크써클이 심해졌다 했어.");
         w_response.add("아니 알았어.. 다음부터는 꼭 연락할게");
+        w_response.add("역시 우리 " + first_name + "(이) 최고~ 앞으로 무조건 칼답해!");
+        w_response.add("응 주의 좀 해줘 부탁할게~");
+        w_response.add("내가 이상하단거야? 몰라 나는 연락 안 되면 불안하니까 어떻게든 빨리 답장해줘");
         w_response.add("좋아!! 빨리 사서 매일매일 여행 가자~");
         w_response.add("응응 최대한 빨리 사면 좋겠다!");
         w_response.add("그래 알겠어 어쩔 수 없겠네 계속 이런 데이트 하자");
@@ -290,19 +281,19 @@ public class GameBoard extends AppCompatActivity {
         w_response.add("그래도 나랑 만날 때만큼은 금연해줬으면 좋겠어 남들은 다 하던데 좀 더 노력해봐");
 
         w_choice = new ArrayList<String>();
-        w_choice.add("남주 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려");
+        w_choice.add("다온이 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려");
         w_choice.add("음...그런가? 다시 한 번 생각해볼게");
         w_choice.add("난 타투 너무 멋있어 보이는데... 내가 하고싶음 하는 거지 뭐 말리지마~");
-        w_choice.add("역시 우리 남주 너무 세심해 고마워 남주");
+        w_choice.add("역시 우리 다온이 너무 세심해 고마워 다온아");
         w_choice.add("치.. 알겠어");
         w_choice.add("나랑 잘 맞는다고 해서 이거 산건데.. 산거니까 일단 바를래");
-        w_choice.add("미안해 남주야 내가 더 조심할게");
+        w_choice.add("미안해 다온아. 내가 더 조심할게");
         w_choice.add("아...그런건가?");
         w_choice.add("나는 일 하는 알바생인데 손님한테 친절하게 대해야지 화를 낼 수는 없잖아");
-        w_choice.add("알았어 남주야 그럼 그냥 삭제할게");
+        w_choice.add("알았어 다온아 그럼 그냥 삭제할게");
         w_choice.add("이게 그렇게 노출이 심한가...?");
         w_choice.add("나는 이 사진 너무 마음에 드는데? 안 지울래");
-        w_choice.add("역시 우리 남주는 내 미래까지 걱정해주네 알았어 자자");
+        w_choice.add("역시 우리 다온이는 내 미래까지 걱정해주네 알았어 자자");
         w_choice.add("그래도 먹고 살려면 취직은 해야하지 않을까?");
         w_choice.add("아니야 난 나중에 꼭 내가 하고 싶은 일 하면서 살거야");
 
@@ -367,7 +358,7 @@ public class GameBoard extends AppCompatActivity {
                                 .into(image);
                         break;
                     case "sns" :
-                        //s = 1;
+                        s = 1;
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);
                         startActivity(sns);
@@ -389,48 +380,26 @@ public class GameBoard extends AppCompatActivity {
                                     .setItems(mItems, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            //where = which;
                                             if (which == 0) {
                                                 percent += 20;
                                             } else if (which == 1) {
                                                 percent += 10;
                                             }
-//                                            if (s == 0) {
-//                                                ment.setText(mItems[which]);
-//                                                Mdata.set(i + 1, wRes[which].toString());
-//                                            }
-                                            ment.setText(mItems[which]);
-                                            Mdata.set(i + 1, wRes[which].toString());
+                                            if (s == 1) {
+                                                s = 0;
+                                                Mdata.set(i + 1, "");
+                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
+                                                sns.putExtra("sex", sex);
+                                                sns.putExtra("which", Integer.toString(which));
+                                                startActivity(sns);
+                                            } else {
+                                                ment.setText(mItems[which]);
+                                                Mdata.set(i + 1, wRes[which].toString());
+                                            }
                                         }
                                     })
                                     .setCancelable(false)
                                     .show();
-//                            if (s == 1) {
-//                                if (where == 0) {
-//                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice1)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response1)
-////                                            .into(response);
-//                                } else if (where == 1) {
-//                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice2)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response2)
-////                                            .into(response);
-//                                } else {
-//                                    Glide.with(this)
-//                                            .load(R.drawable.m_choice3)
-//                                            .into(choice);
-////                                    Glide.with(this)
-////                                            .load(R.drawable.w_response3)
-////                                            .into(response);
-//                                }
-//                                s = 0;
-//                                setContentView(R.layout.activity_m_sns_result);
-//                            }
                             break;
                         case "woman":
                             final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
@@ -444,8 +413,17 @@ public class GameBoard extends AppCompatActivity {
                                             } else if (which == 1) {
                                                 percent += 10;
                                             }
-                                            ment.setText(wItems[which]);
-                                            Mdata.set(i + 1, mRes[which].toString());
+                                            if (s == 1) {
+                                                s = 0;
+                                                Mdata.set(i + 1, "");
+                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
+                                                sns.putExtra("sex", sex);
+                                                sns.putExtra("which", Integer.toString(which));
+                                                startActivity(sns);
+                                            } else {
+                                                ment.setText(wItems[which]);
+                                                Mdata.set(i + 1, mRes[which].toString());
+                                            }
                                         }
                                     })
                                     .setCancelable(false)
