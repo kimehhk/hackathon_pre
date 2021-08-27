@@ -29,14 +29,14 @@ public class GameSns extends AppCompatActivity {
         switch (sex) {
             case "man" :
                 Glide.with(this)
-                        .load(R.drawable.sns_m)
+                        .load(R.drawable.woman_sns)
                         .into(image_m);
                 break;
             case "woman" :
                 setContentView(R.layout.activity_game_sns_w);
                 ImageView image_w = findViewById(R.id.sns_image_w);
                 Glide.with(this)
-                    .load(R.drawable.sns_w)
+                    .load(R.drawable.man_sns)
                     .into(image_w);
 
                 break;
