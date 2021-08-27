@@ -61,18 +61,20 @@
 
     <ImageButton
         android:id="@+id/btn_game_next"
-        android:layout_width="62dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="66dp"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="70dp"
+        android:background="@color/cardview_shadow_end_color"
+        android:minWidth="48dp"
         android:onClick="onClick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.673"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/et_game_ment"
         app:srcCompat="@android:drawable/ic_media_play"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/sns_result_img"
