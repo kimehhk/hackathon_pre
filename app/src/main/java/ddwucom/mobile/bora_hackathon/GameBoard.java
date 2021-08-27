@@ -2,11 +2,13 @@ package ddwucom.mobile.bora_hackathon;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +45,11 @@ public class GameBoard extends AppCompatActivity {
     ArrayList<String> m_response;
     ArrayList<String> m_choice;
     ArrayList<String> w_response;
+
+    SoundManager soundManager;
+    SoundPool soundPool;
+    boolean play;
+    int playSoundId;
 
     Animation animation;
 
@@ -92,6 +99,16 @@ public class GameBoard extends AppCompatActivity {
         data_insert();
         name.setText(Mdata.get(i++));
         ment.setText(Mdata.get(i++));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            soundPool = new SoundPool.Builder().build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundManager = new SoundManager(this, soundPool);
+
+        soundManager.addSound(1, R.raw.nextclick);
     }
 
     public void data_insert() {
@@ -328,6 +345,15 @@ public class GameBoard extends AppCompatActivity {
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.btn_game_next:
+                if (!play) {
+                    playSoundId = soundManager.playSound(1);
+                    play = true;
+                } else {
+                    soundManager.resumeSound(playSoundId);
+                    soundManager.playSound(1);
+                    play = false;
+                }
+
                 snsResult = findViewById(R.id.sns_result_img);
                 /*Glide.with(this)
                         .load(R.drawable.man_sns)
