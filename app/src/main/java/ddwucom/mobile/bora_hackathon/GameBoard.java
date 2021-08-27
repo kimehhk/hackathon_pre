@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +43,8 @@ public class GameBoard extends AppCompatActivity {
     ArrayList<String> m_response;
     ArrayList<String> m_choice;
     ArrayList<String> w_response;
+
+    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -344,13 +348,13 @@ public class GameBoard extends AppCompatActivity {
                 }
 
                 switch (Mdata.get(i++)) {
-                   case "restaurant":
-                       characterImg.setVisibility(v.VISIBLE);
-                       name.setVisibility(v.VISIBLE);
-                       Glide.with(this)
-                               .load(R.drawable.restaurant)
-                               .into(image);
-                       break;
+                    case "restaurant":
+                        characterImg.setVisibility(v.VISIBLE);
+                        name.setVisibility(v.VISIBLE);
+                        Glide.with(this)
+                                .load(R.drawable.restaurant)
+                                .into(image);
+                        break;
                    case "room":
                        characterImg.setVisibility(v.VISIBLE);
                        name.setVisibility(v.VISIBLE);
@@ -359,6 +363,7 @@ public class GameBoard extends AppCompatActivity {
                                .into(image);
                        break;
                     case "cafe":
+                        overridePendingTransition(R.anim.in_right, R.anim.out_left);
                         characterImg.setVisibility(v.VISIBLE);
                         name.setVisibility(v.VISIBLE);
                         Glide.with(this)
