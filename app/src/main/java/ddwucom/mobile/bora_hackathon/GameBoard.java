@@ -23,7 +23,7 @@ public class GameBoard extends AppCompatActivity {
     TextView name;
     ImageView image;
     ImageView characterImg;
-    ImageView sns_result;
+    //ImageView sns_result;
     ImageView snsResult;
     ImageView gameNext;
     ArrayList<String> bgData;
@@ -81,11 +81,11 @@ public class GameBoard extends AppCompatActivity {
 
         if (sex.equals("man")) {
             Glide.with(this)
-                    .load(R.drawable.woman)
+                    .load(R.drawable.woman_character)
                     .into(characterImg);
         } else {
             Glide.with(this)
-                    .load(R.drawable.man)
+                    .load(R.drawable.man_character)
                     .into(characterImg);
         }
 
@@ -329,9 +329,9 @@ public class GameBoard extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btn_game_next:
                 snsResult = findViewById(R.id.sns_result_img);
-                Glide.with(this)
-                        .load(R.drawable.sns_m)
-                        .into(snsResult);
+                /*Glide.with(this)
+                        .load(R.drawable.man_sns)
+                        .into(snsResult);*/
                 snsResult.setVisibility(v.INVISIBLE);
 
                 if (i == Mdata.size()) {
@@ -385,11 +385,11 @@ public class GameBoard extends AppCompatActivity {
 
                                 if (sex.equals("man")) {
                                     Glide.with(v)
-                                            .load(R.drawable.sns_m)
+                                            .load(R.drawable.woman_sns)
                                             .into(image);
                                 } else {
                                     Glide.with(v)
-                                            .load(R.drawable.sns_w)
+                                            .load(R.drawable.man_sns)
                                             .into(image);
                                 }
                             }
