@@ -10,8 +10,9 @@
         android:id="@+id/boardScrollView"
         android:layout_width="389dp"
         android:layout_height="600dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:descendantFocusability="blocksDescendants"
+        app:layout_constraintBottom_toBottomOf="@id/btn_upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +87,7 @@
 
     <Button
         android:id="@+id/btn_center"
-        android:layout_width="45dp"
+        android:layout_width="50dp"
         android:layout_height="47dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
