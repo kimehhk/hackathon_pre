@@ -110,7 +110,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("sns");
 //            Mdata.add(girl_name);
@@ -142,7 +142,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("room");
             Mdata.add(girl_name);
@@ -158,7 +158,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("restaurant");
             Mdata.add(girl_name);
@@ -174,7 +174,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add("");
 
         } else {
             Mdata.add("cafe");
@@ -189,7 +189,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("restaurant");
             Mdata.add(boy_name);
@@ -205,7 +205,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("sns");
 //            Mdata.add(full_name);
@@ -233,7 +233,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add("");
 
             Mdata.add("room");
             Mdata.add(boy_name);
@@ -249,7 +249,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add("");
         }
         m_choice = new ArrayList<String>();
         m_choice.add("내가 예민했네 미안해 아영아 화풀어");
