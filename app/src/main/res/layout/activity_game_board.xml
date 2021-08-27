@@ -54,6 +54,9 @@
         android:paddingRight="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:letterSpacing="0.1"
+        android:lineSpacingMultiplier="1.2
+"
         app:layout_constraintEnd_toEndOf="@id/game_image"
         app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="@id/game_image"
