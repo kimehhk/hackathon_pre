@@ -40,7 +40,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center"
-                android:hint="관련기관" />
+                android:hint="관련기관"
+                android:textColor="#3F51B5" />
 
             <TextView
                 android:id="@+id/tv_number"
@@ -50,7 +51,8 @@
                 android:layout_weight="4"
                 android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center|left"
-                android:hint="전화번호" />
+                android:hint="전화번호"
+                android:textColor="#3F51B5" />
 
         </TableRow>
 

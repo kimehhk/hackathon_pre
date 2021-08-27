@@ -3,7 +3,9 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +63,7 @@ public class MyAdapter_center extends BaseAdapter {
         }
 
         holder.receptionContent.setText(myDataArrayList.get(pos).getReceptionContent());
-        holder.institution.setText(myDataArrayList.get(pos).getInstitution());
+        holder.institution.setText(Html.fromHtml("<u>" + myDataArrayList.get(pos).getInstitution() + "</u>"));
         holder.number.setText(myDataArrayList.get(pos).getNumber());
 
         holder.institution.setOnClickListener(new View.OnClickListener() {
