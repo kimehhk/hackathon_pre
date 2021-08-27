@@ -108,9 +108,9 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add("미안해 오늘 일이 좀 있어서 늦었어");
             Mdata.add(full_name);
-            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아 \n다음부터는 미리 연락 좀 해줘");
+            Mdata.add("그러면 일 끝나고 오는 길에라도 연락주지 기다렸잖아\n다음부터는 미리 연락 좀 해줘");
             Mdata.add(girl_name);
-            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 \n내가 사과도 했는데 너무 예민한 거 아니야?");
+            Mdata.add("말을 왜 그런식으로 해 나도 내가 늦을 줄 몰랐어 내가 사과도 했는데 너무 예민한 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -174,7 +174,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("...미안해");
             Mdata.add(girl_name);
-            Mdata.add("내가 내 생각해서 담배 끊으라는게 아니라 네 건강 생각해서 끊으란거잖아\n 이게 그렇게 힘든 일이야? 내 친구 남친은 금방 끊었다는데 이건 그냥 의지가 부족한 거 아니야?");
+            Mdata.add("내가 내 생각해서 담배 끊으라는게 아니라 네 건강 생각해서 끊으란거잖아\n이게 그렇게 힘든 일이야? 내 친구 남친은 금방 끊었다는데 이건 그냥 의지가 부족한 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
@@ -205,7 +205,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("이것도 예쁘기만 한데... 별로야?");
             Mdata.add(boy_name);
-            Mdata.add(first_name + "(이)야 뭐 다 예쁘지만 나는 " + first_name + "(이)한테 제일 어울리는 걸 찾아주고 싶어서 그런거지! \n그런 의미에서 앞으로 쇼핑은 나랑만 가는걸로 약속해 " + first_name + "야(아)");
+            Mdata.add(first_name + "(이)야 뭐 다 예쁘지만 나는 " + first_name + "(이)한테 제일 어울리는 걸 찾아주고 싶어서 그런거지! 그런 의미에서 앞으로 쇼핑은 나랑만 가는걸로 약속해 " + first_name + "야(아)");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
@@ -233,7 +233,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("이 사진이 왜? 잘 나오지 않았어?");
             Mdata.add(boy_name);
-            Mdata.add("노출이 너무 심하잖아 바지랑 블라우스가 너무 짧아\n 나랑 데이트할 때는 상관없는데 이걸 사람들 다 보는데에 올리는 건 좀 그렇지 않아?");
+            Mdata.add("노출이 너무 심하잖아 바지랑 블라우스가 너무 짧아\n나랑 데이트할 때는 상관없는데 이걸 사람들 다 보는데에 올리는 건 좀 그렇지 않아?");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
@@ -501,7 +501,6 @@ public class GameBoard extends AppCompatActivity {
                 break;
         }
     }
-
 //    public void onStop() {
 //        super.onStop();
 //        finish();

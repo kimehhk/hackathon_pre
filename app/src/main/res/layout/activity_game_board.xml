@@ -37,6 +37,7 @@
         android:fontFamily="@font/kopub_dotum_bold"
         android:gravity="center_horizontal"
         android:text="남주"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/game_image"
         app:layout_constraintTop_toTopOf="@id/game_image" />
 
