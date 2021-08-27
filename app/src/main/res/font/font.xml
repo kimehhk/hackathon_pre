@@ -3,4 +3,7 @@
     <font android:font="@font/kopub_dotum_medium"/>
     <font android:font="@font/kopub_dotum_bold"/>
     <font android:font="@font/kopub_dotum_light"/>
+    <font android:font="@font/gmarketsans_ttf_medium"/>
+    <font android:font="@font/gmarketsans_ttf_bold"/>
+    <font android:font="@font/gmarketsans_ttf_light"/>
 </font-family>
