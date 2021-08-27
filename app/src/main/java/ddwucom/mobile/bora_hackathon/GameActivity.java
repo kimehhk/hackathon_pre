@@ -1,6 +1,9 @@
 package ddwucom.mobile.bora_hackathon;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +25,11 @@ public class GameActivity extends AppCompatActivity {
     String last_name;
     ImageView img;
 
+    SoundManager soundManager;
+    SoundPool soundPool;
+    boolean play;
+    int playSoundId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +40,16 @@ public class GameActivity extends AppCompatActivity {
                 .load(R.drawable.gamebackground)
                 .into(img);
                 //.override(200, 200);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            soundPool = new SoundPool.Builder().build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundManager = new SoundManager(this, soundPool);
+
+        soundManager.addSound(0, R.raw.click1);
     }
 
     public void user_setting() {
@@ -49,6 +67,15 @@ public class GameActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_gameName_ok:
+                if (!play) {
+                    playSoundId = soundManager.playSound(0);
+                    play = true;
+                } else {
+                    soundManager.resumeSound(playSoundId);
+                    soundManager.playSound(0);
+                    play = false;
+                }
+
                 user_setting();
 
                 if (!btn_m.isChecked() && !btn_w.isChecked()) {
