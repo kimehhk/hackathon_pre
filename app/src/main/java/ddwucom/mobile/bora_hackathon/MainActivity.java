@@ -71,13 +71,21 @@ public class MainActivity extends AppCompatActivity {
                     play = true;
                 } else {
                     soundManager.resumeSound(playSoundId);
-                    soundManager.playSound(0);
+                    //soundManager.playSound(0);
                     play = false;
                 }
                 Intent intentG = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(intentG);
                 break;
             case R.id.button_board:
+                if (!play) {
+                    playSoundId = soundManager.playSound(0);
+                    play = true;
+                } else {
+                    soundManager.resumeSound(playSoundId);
+                    //soundManager.playSound(0);
+                    play = false;
+                }
                 Intent intent = new Intent(this, BoardActivity.class);
                 if (id != null)
                     intent.putExtra("user_id", id);

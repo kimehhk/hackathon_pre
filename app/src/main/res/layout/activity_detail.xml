@@ -144,6 +144,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="24dp"
+            android:background="#AAAAAA"
             android:ems="13"
             android:fontFamily="@font/gmarketsans_ttf_medium"
             android:hint="댓글 입력"
