@@ -16,7 +16,6 @@ public class GameResult extends AppCompatActivity {
     String percent;
     ImageView img_result;
     ImageButton center_btn;
-    ImageButton exit_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +24,11 @@ public class GameResult extends AppCompatActivity {
 
         img_result = findViewById(R.id.img_game_result_w);
         center_btn = findViewById(R.id.button_game_center);
-        exit_btn = findViewById(R.id.button_game_exit);
 
         Glide.with(this)
                 .load(R.drawable.centerbutton)
                 //.override(600, 200)
                 .into(center_btn);
-        Glide.with(this)
-                .load(R.drawable.main_exitbutton)
-                .into(exit_btn);
 
         Intent intent = getIntent();
         String sex = intent.getStringExtra("sex");
