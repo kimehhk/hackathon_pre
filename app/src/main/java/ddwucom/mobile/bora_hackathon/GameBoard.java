@@ -3,6 +3,7 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +22,8 @@ public class GameBoard extends AppCompatActivity {
     ImageView image;
     ImageView characterImg;
     ImageView sns_result;
+    ImageView snsResult;
+    ImageView gameNext;
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
@@ -61,7 +64,9 @@ public class GameBoard extends AppCompatActivity {
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
         characterImg = findViewById(R.id.character_img);
-        sns_result = findViewById(R.id.m_sns_result);
+        gameNext = findViewById(R.id.btn_game_next);
+
+        gameNext.bringToFront();
         //image.setImageResource(R.drawable.restaurant_w);
         //image.setImageResource(R.drawable.main);
         //grGlide.with(this)
@@ -93,7 +98,7 @@ public class GameBoard extends AppCompatActivity {
         bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-            Mdata.add("background2");
+            Mdata.add("restaurant");
             Mdata.add(full_name);
             Mdata.add("아영아 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
@@ -105,7 +110,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
             Mdata.add("sns");
 //            Mdata.add(girl_name);
@@ -120,10 +125,10 @@ public class GameBoard extends AppCompatActivity {
 //            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
-            Mdata.add(girl_name);
-            Mdata.add("response");
+//            Mdata.add(girl_name);
+//            Mdata.add("response");
 
-            Mdata.add("background3");
+            Mdata.add("cafe");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 조금만 쉬었다가 가자 나 발이 너무 아파");
             Mdata.add(full_name);
@@ -137,9 +142,9 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
-            Mdata.add("background4");
+            Mdata.add("room");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 여자는 누구야? 왜 너 sns에 댓글을 달아?");
             Mdata.add(full_name);
@@ -153,9 +158,9 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
-            Mdata.add("background5");
+            Mdata.add("restaurant");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 냄새 뭐야 혹시 담배 폈어?");
             Mdata.add(full_name);
@@ -169,10 +174,10 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(girl_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
         } else {
-            Mdata.add("background1");
+            Mdata.add("cafe");
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
             Mdata.add(boy_name);
@@ -184,9 +189,9 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
-            Mdata.add("background2");
+            Mdata.add("restaurant");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 립스틱은 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른색 같아");
             Mdata.add(full_name);
@@ -200,7 +205,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
             Mdata.add("sns");
 //            Mdata.add(full_name);
@@ -213,10 +218,10 @@ public class GameBoard extends AppCompatActivity {
 //            Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
             Mdata.add("choice");
-            Mdata.add(boy_name);
-            Mdata.add("response");
+//            Mdata.add(boy_name);
+//            Mdata.add("response");
 
-            Mdata.add("background4");
+            Mdata.add("cafe");
             Mdata.add(full_name);
             Mdata.add("오랜만에 올렸는데 좋아요 많이 받았네 기분 좋다");
             Mdata.add(boy_name);
@@ -228,9 +233,9 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add(" ");
 
-            Mdata.add("background5");
+            Mdata.add("room");
             Mdata.add(boy_name);
             Mdata.add(first_name + "야(아) 너무 늦었다 내일 일어나서 과제 마무리하는 걸로 하고 이제 자자 너무 피곤해보여");
             Mdata.add(full_name);
@@ -244,7 +249,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
-            Mdata.add("response");
+            Mdata.add(" ");
         }
         m_choice = new ArrayList<String>();
         m_choice.add("내가 예민했네 미안해 아영아 화풀어");
@@ -319,6 +324,12 @@ public class GameBoard extends AppCompatActivity {
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.btn_game_next:
+                snsResult = findViewById(R.id.sns_result_img);
+                Glide.with(this)
+                        .load(R.drawable.sns_m)
+                        .into(snsResult);
+                snsResult.setVisibility(v.INVISIBLE);
+
                 if (i == Mdata.size()) {
                     if (percent == 0) {
                         percent = 1;
@@ -333,28 +344,25 @@ public class GameBoard extends AppCompatActivity {
                 }
 
                 switch (Mdata.get(i++)) {
-                   case "background1":
-                       //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
-                       //image.setImageResource(R.drawable.restaurant_w);
-                       break;
-                   case "background2":
+                   case "restaurant":
+                       characterImg.setVisibility(v.VISIBLE);
+                       name.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.restaurant)
                                .into(image);
                        break;
-                   case "background3":
+                   case "room":
+                       characterImg.setVisibility(v.VISIBLE);
+                       name.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
                                .into(image);
                        break;
-                    case "background4":
+                    case "cafe":
+                        characterImg.setVisibility(v.VISIBLE);
+                        name.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
-                                .into(image);
-                        break;
-                    case "background5":
-                        Glide.with(this)
-                                .load(R.drawable.restaurant)
                                 .into(image);
                         break;
                     case "sns" :
@@ -362,6 +370,25 @@ public class GameBoard extends AppCompatActivity {
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);
                         startActivity(sns);
+
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                characterImg.setVisibility(v.GONE);
+                                name.setVisibility(v.INVISIBLE);
+
+                                if (sex.equals("man")) {
+                                    Glide.with(v)
+                                            .load(R.drawable.sns_m)
+                                            .into(image);
+                                } else {
+                                    Glide.with(v)
+                                            .load(R.drawable.sns_w)
+                                            .into(image);
+                                }
+                            }
+                        }, 300);
                         break;
                     default:
                         i--;
@@ -371,72 +398,101 @@ public class GameBoard extends AppCompatActivity {
                 if (Mdata.get(i).equals("choice")) {
                     i++;
                     ment.setText("");
-                    AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
-                    switch (sex) {
-                        case "man":
-                            final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
-                            final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
-                            oDialog.setTitle("나의 답변")
-                                    .setItems(mItems, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (which == 0) {
-                                                percent += 20;
-                                            } else if (which == 1) {
-                                                percent += 10;
-                                            }
-                                            if (s == 1) {
-                                                s = 0;
-                                                Mdata.set(i + 1, "");
-                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
-                                                sns.putExtra("sex", sex);
-                                                sns.putExtra("which", Integer.toString(which));
-                                                startActivity(sns);
-                                            } else {
-                                                ment.setText(mItems[which]);
-                                                Mdata.set(i + 1, wRes[which].toString());
-                                            }
-                                        }
-                                    })
-                                    .setCancelable(false)
-                                    .show();
-                            break;
-                        case "woman":
-                            final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
-                            final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-                            oDialog.setTitle("나의 답변")
-                                    .setItems(wItems, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            if (which == 0) {
-                                                percent += 20;
-                                            } else if (which == 1) {
-                                                percent += 10;
-                                            }
-                                            if (s == 1) {
-                                                s = 0;
-                                                Mdata.set(i + 1, "");
-                                                Intent sns = new Intent(GameBoard.this, SnsResult.class);
-                                                sns.putExtra("sex", sex);
-                                                sns.putExtra("which", Integer.toString(which));
-                                                startActivity(sns);
-                                            } else {
-                                                ment.setText(wItems[which]);
-                                                Mdata.set(i + 1, mRes[which].toString());
-                                            }
-                                        }
-                                    })
-                                    .setCancelable(false)
-                                    .show();
-                            break;
-                    }
-                    ch += 3;
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
+                            switch (sex) {
+                                case "man":
+                                    final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
+                                    final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
+                                    oDialog.setTitle("나의 답변")
+                                            .setItems(mItems, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    if (which == 0) {
+                                                        percent += 20;
+                                                    } else if (which == 1) {
+                                                        percent += 10;
+                                                    }
+                                                    if (s == 1) {
+                                                        s = 0;
+                                                        switch (which) {
+                                                            case 0:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.m1)
+                                                                        .into(snsResult);
+                                                                break;
+                                                            case 1:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.m2)
+                                                                        .into(snsResult);
+                                                                break;
+                                                            case 2:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.m3)
+                                                                        .into(snsResult);
+                                                                break;
+                                                        }
+                                                        snsResult.setVisibility(v.VISIBLE);
+                                                    } else {
+                                                        ment.setText(mItems[which]);
+                                                        Mdata.set(i + 1, wRes[which].toString());
+                                                    }
+                                                }
+                                            })
+                                            .setCancelable(false)
+                                            .show();
+                                    break;
+                                case "woman":
+                                    final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
+                                    final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
+                                    oDialog.setTitle("나의 답변")
+                                            .setItems(wItems, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    if (which == 0) {
+                                                        percent += 20;
+                                                    } else if (which == 1) {
+                                                        percent += 10;
+                                                    }
+                                                    if (s == 1) {
+                                                        s = 0;
+                                                        switch (which) {
+                                                            case 0:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.w1)
+                                                                        .into(snsResult);
+                                                                break;
+                                                            case 1:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.w2)
+                                                                        .into(snsResult);
+                                                                break;
+                                                            case 2:
+                                                                Glide.with(v)
+                                                                        .load(R.drawable.w3)
+                                                                        .into(snsResult);
+                                                                break;
+                                                        }
+                                                        snsResult.setVisibility(v.VISIBLE);
+                                                    } else {
+                                                        ment.setText(wItems[which]);
+                                                        Mdata.set(i + 1, mRes[which].toString());
+                                                    }
+                                                }
+                                            })
+                                            .setCancelable(false)
+                                            .show();
+                                    break;
+                            } ch += 3;
+                        }
+                    }, 300);
+
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
-                break;
-            case R.id.m_sns_result:
-                finish();
                 break;
         }
     }

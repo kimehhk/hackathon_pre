@@ -10,7 +10,7 @@
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/font/kopubdotumbold.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/font/kopubdotummedium.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_add.xml" value="0.4" />
-        <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_board.xml" value="0.264" />
+        <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_board.xml" value="0.4" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_center.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/Users/kujinhee/hackathon_pre/app/src/main/res/layout/activity_detail_simple.xml" value="0.25364583333333335" />
@@ -42,16 +42,8 @@
         <entry key="..\:/Work/hackathon/app/src/main/res/layout/activity_register.xml" value="0.3515625" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_board.xml" value="0.21197916666666666" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_detail.xml" value="0.17552083333333332" />
-
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_main.xml" value="0.4" />
-
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_sns_result.xml" value="0.184375" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_w_sns_result.xml" value="0.1859375" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_board.xml" value="0.16770833333333332" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_choice.xml" value="0.264" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_game_usersex.xml" value="0.16770833333333332" />
-
       </map>
     </option>
   </component>

@@ -15,7 +15,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/text1"
@@ -27,8 +28,8 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sns_image_m"
+        app:layout_constraintTop_toTopOf="@id/sns_image_m"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -41,7 +42,7 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/sns_image_m"
         app:layout_constraintTop_toBottomOf="@+id/text1"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -55,7 +56,7 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sns_image_m"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -69,7 +70,7 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/sns_image_m"
         app:layout_constraintTop_toBottomOf="@+id/text3"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -83,7 +84,7 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sns_image_m"
         app:layout_constraintTop_toBottomOf="@+id/text4"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -97,7 +98,7 @@
         android:background="#E9D0FF"
         android:text="                     "
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sns_image_m"
         app:layout_constraintTop_toBottomOf="@+id/text5"
         tools:ignore="SpeakableTextPresentCheck" />
 
