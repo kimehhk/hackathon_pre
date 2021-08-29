@@ -44,7 +44,6 @@ public class GameActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(R.drawable.gamebackground)
                 .into(img);
-                //.override(200, 200);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             soundPool = new SoundPool.Builder().build();
@@ -53,7 +52,6 @@ public class GameActivity extends AppCompatActivity {
         }
 
         soundManager = new SoundManager(this, soundPool);
-
         soundManager.addSound(0, R.raw.click1);
     }
 
