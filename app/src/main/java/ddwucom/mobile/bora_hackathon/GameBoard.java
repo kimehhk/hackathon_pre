@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -203,7 +204,7 @@ public class GameBoard extends AppCompatActivity {
         } else {
             Mdata.add("cafe");
             Mdata.add(full_name);
-            Mdata.add("저 여자분 타투 너무 멋있어. 나도 나중에 타투하고 싶어.");
+            Mdata.add("저 여자분 타투 너무 멋있다. 나도 나중에 타투하고 싶어!");
             Mdata.add(boy_name);
             Mdata.add("갑자기 타투? " + first_name + "(이) 타투하고 싶어? 후회하지 않을까?");
             Mdata.add(full_name);
@@ -217,7 +218,7 @@ public class GameBoard extends AppCompatActivity {
 
             Mdata.add("restaurant");
             Mdata.add(boy_name);
-            Mdata.add(first_name + "야(아) 립스틱은 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른색 같아");
+            Mdata.add(first_name + "야(아) 립스틱 새로 산거야? 예쁜데 평소에 바르는거랑 좀 다른 것 같아");
             Mdata.add(full_name);
             Mdata.add("응 이번에 올뤄뷰용 세일할때 같이 간 친구들이 이거 추천해줘서 샀어");
             Mdata.add(boy_name);
@@ -269,7 +270,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("나도 취직해서 직접 돈 벌면서 살고 싶은데?");
             Mdata.add(boy_name);
-            Mdata.add("나는 " + first_name + "(이) 사회생활하면서 힘든거 싫단 말이야... 그냥 취직 안 했으면 좋겠어");
+            Mdata.add("나는 " + first_name + "(이) 사회생활하느라 힘든거 싫단 말이야... 그냥 취직 안 했으면 좋겠어");
             Mdata.add(full_name);
             Mdata.add("choice");
             Mdata.add(boy_name);
@@ -304,10 +305,10 @@ public class GameBoard extends AppCompatActivity {
         w_response.add("그래 알겠어 어쩔 수 없겠네 계속 이런 데이트 하자");
         w_response.add("우리 " + first_name +  "(이) 말 잘듣고 너무 착하다~ " + first_name + "(은)는 나랑만 연락해");
         w_response.add("응 " + first_name + "(은)는 나랑만 연락했으면 좋겠어");
-        w_response.add("그래 알겠어 그래도 조금 기분이 나쁘다 천천히 지워줬으면 좋겠어");
+        w_response.add("그래 알겠어 그래도 좀 기분 나쁘다 천천히 지워줬으면 좋겠어");
         w_response.add("그래 우리 " + first_name + "(이) 금연 파이팅! 내가 금연껌 사줄게!!!");
         w_response.add("긍정적인 방향으로 생각해봐");
-        w_response.add("그래도 나랑 만날 때만큼은 금연해줬으면 좋겠어 남들은 다 하던데 좀 더 노력해봐");
+        w_response.add("그래도 나랑 만날 때만큼은 금연해줘 남들은 다 하던데 좀 더 노력해봐");
 
         w_choice = new ArrayList<String>();
         w_choice.add("다온이 말이 맞는 것 같아. 내가 무슨 타투야~ 나는 타투랑 안 어울려");
@@ -392,7 +393,7 @@ public class GameBoard extends AppCompatActivity {
                                .into(image);
                        break;
                     case "cafe":
-                        overridePendingTransition(R.anim.in_right, R.anim.out_left);
+                        //overridePendingTransition(R.anim.in_right, R.anim.out_left);
                         characterImg.setVisibility(v.VISIBLE);
                         name.setVisibility(v.VISIBLE);
                         Glide.with(this)
