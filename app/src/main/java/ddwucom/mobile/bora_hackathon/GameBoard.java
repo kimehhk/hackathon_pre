@@ -411,11 +411,11 @@ public class GameBoard extends AppCompatActivity {
 
                                 if (sex.equals("man")) {
                                     Glide.with(v)
-                                            .load(R.drawable.woman_sns)
+                                            .load(R.drawable.m_sns6)
                                             .into(image);
                                 } else {
                                     Glide.with(v)
-                                            .load(R.drawable.man_sns)
+                                            .load(R.drawable.w_sns6)
                                             .into(image);
                                 }
                             }
