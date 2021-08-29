@@ -108,7 +108,10 @@ public class GameBoard extends AppCompatActivity {
 
         soundManager = new SoundManager(this, soundPool);
 
-        soundManager.addSound(1, R.raw.nextclick);
+        soundManager.addSound(1, R.raw.page1);
+        soundManager.addSound(2, R.raw.page2);
+        soundManager.addSound(3, R.raw.page3);
+        soundManager.addSound(4, R.raw.kakaotalk);
     }
 
     public void data_insert() {
@@ -350,7 +353,7 @@ public class GameBoard extends AppCompatActivity {
                     play = true;
                 } else {
                     soundManager.resumeSound(playSoundId);
-                    soundManager.playSound(1);
+                    //soundManager.playSound(playSoundId);
                     play = false;
                 }
 
@@ -397,6 +400,14 @@ public class GameBoard extends AppCompatActivity {
                                 .into(image);
                         break;
                     case "sns" :
+                        if (!play) {
+                            playSoundId = soundManager.playSound(4);
+                            play = true;
+                        } else {
+                            soundManager.resumeSound(playSoundId);
+                            //soundManager.playSound(playSoundId);
+                            play = false;
+                        }
                         s = 1;
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);
@@ -411,11 +422,11 @@ public class GameBoard extends AppCompatActivity {
 
                                 if (sex.equals("man")) {
                                     Glide.with(v)
-                                            .load(R.drawable.woman_sns)
+                                            .load(R.drawable.m_sns6)
                                             .into(image);
                                 } else {
                                     Glide.with(v)
-                                            .load(R.drawable.man_sns)
+                                            .load(R.drawable.w_sns6)
                                             .into(image);
                                 }
                             }
