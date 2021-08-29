@@ -1,7 +1,10 @@
 package ddwucom.mobile.bora_hackathon;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
@@ -10,6 +13,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.TransitionOptions;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
 
@@ -26,7 +32,6 @@ public class GameBoard extends AppCompatActivity {
     TextView name;
     ImageView image;
     ImageView characterImg;
-    //ImageView sns_result;
     ImageView snsResult;
     ImageView gameNext;
     ArrayList<String> bgData;
@@ -59,9 +64,6 @@ public class GameBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
 
-        //gameBoardLayout = findViewById(R.id.gameBoard_layout);
-        //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
-
         i = 1;
         ch = 0;
         percent = 0;
@@ -79,9 +81,6 @@ public class GameBoard extends AppCompatActivity {
         gameNext = findViewById(R.id.btn_game_next);
 
         gameNext.bringToFront();
-        //image.setImageResource(R.drawable.restaurant_w);
-        //image.setImageResource(R.drawable.main);
-        //grGlide.with(this)
 
         Glide.with(this)
                 .load(R.drawable.cafe)
@@ -108,7 +107,6 @@ public class GameBoard extends AppCompatActivity {
         }
 
         soundManager = new SoundManager(this, soundPool);
-
         soundManager.addSound(1, R.raw.nextclick);
     }
 
@@ -135,20 +133,8 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(" ");
 
             Mdata.add("sns");
-//            Mdata.add(girl_name);
-//            Mdata.add(first_name + "야(아) 뭐하는데 이렇게 연락이 안 돼?");
-//            Mdata.add(full_name);
-//            Mdata.add("미안해 수업 중이었어.");
-//            Mdata.add(girl_name);
-//            Mdata.add("나한테 관심이 있긴 한거지?");
-//            Mdata.add(full_name);
-//            Mdata.add("당연한 소리를 하고 그래");
-//            Mdata.add(girl_name);
-//            Mdata.add("그럼 수업 끝나고 바로 나한테 카톡 한 번 해줄 수 있잖아. 사귀는 사이에 연락은 기본 예의지. 배려가 너무 없는 거 아니야?");
             Mdata.add(full_name);
             Mdata.add("choice");
-//            Mdata.add(girl_name);
-//            Mdata.add("response");
 
             Mdata.add("cafe");
             Mdata.add(girl_name);
@@ -230,18 +216,8 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(" ");
 
             Mdata.add("sns");
-//            Mdata.add(full_name);
-//            Mdata.add("남주야 나 카페 알바하는데 아까 어떤 손님이 알바 끝나고 뭐하냐고 물어보더니 남자친구 있다고 했는데도 계속 번호 달라고 하다가 가셨어\n나 좀 무서운데 퇴근할 때 데리러 와주면 안 될까?");
-//            Mdata.add(boy_name);
-//            Mdata.add("너무 친절하게 대해서 그 사람이 오해한 거 아냐?");
-//            Mdata.add(full_name);
-//            Mdata.add("난 알바생이니까 그냥 친절하게 대했지...");
-//            Mdata.add(boy_name);
-//            Mdata.add("남자들은 좀만 친절하게 대해도 오해 많이 해. 오늘은 일단 내가 데리러 갈게 \n너무 걱정하지 말구 다음부턴 조심하자!");
             Mdata.add(full_name);
             Mdata.add("choice");
-//            Mdata.add(boy_name);
-//            Mdata.add("response");
 
             Mdata.add("cafe");
             Mdata.add(full_name);
@@ -356,9 +332,6 @@ public class GameBoard extends AppCompatActivity {
                 }
 
                 snsResult = findViewById(R.id.sns_result_img);
-                /*Glide.with(this)
-                        .load(R.drawable.man_sns)
-                        .into(snsResult);*/
                 snsResult.setVisibility(v.INVISIBLE);
 
                 if (i == Mdata.size()) {
@@ -378,23 +351,28 @@ public class GameBoard extends AppCompatActivity {
                     case "restaurant":
                         characterImg.setVisibility(v.VISIBLE);
                         name.setVisibility(v.VISIBLE);
+                        ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.restaurant)
+                                .transition(withCrossFade(300))
                                 .into(image);
                         break;
                    case "room":
                        characterImg.setVisibility(v.VISIBLE);
                        name.setVisibility(v.VISIBLE);
+                       ment.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
+                               .transition(withCrossFade(300))
                                .into(image);
                        break;
                     case "cafe":
-                        //overridePendingTransition(R.anim.in_right, R.anim.out_left);
                         characterImg.setVisibility(v.VISIBLE);
                         name.setVisibility(v.VISIBLE);
+                        ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
+                                .transition(withCrossFade(300))
                                 .into(image);
                         break;
                     case "sns" :
@@ -409,6 +387,7 @@ public class GameBoard extends AppCompatActivity {
                             public void run() {
                                 characterImg.setVisibility(v.GONE);
                                 name.setVisibility(v.INVISIBLE);
+                                ment.setVisibility(v.INVISIBLE);
 
                                 if (sex.equals("man")) {
                                     Glide.with(v)
