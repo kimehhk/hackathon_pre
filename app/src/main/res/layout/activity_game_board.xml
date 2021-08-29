@@ -10,6 +10,7 @@
         android:id="@+id/game_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,39 +22,25 @@
         android:id="@+id/character_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/ch_name"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp"
-        android:background="#FFFFFF"
-        android:fontFamily="@font/kopub_dotum_bold"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="남주"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/et_game_ment"
-        app:layout_constraintStart_toStartOf="@id/game_image" />
-
-    <TextView
         android:id="@+id/et_game_ment"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="136dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="32dp"
         android:background="#80000000"
         android:fontFamily="@font/kopub_dotum_medium"
         android:gravity="center_vertical"
-        android:letterSpacing="0.1"
+        android:letterSpacing="0.05"
         android:lineSpacingMultiplier="1.2
 "
         android:paddingLeft="8dp"
@@ -66,20 +53,33 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/game_image" />
 
+    <TextView
+        android:id="@+id/ch_name"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="116dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/kopub_dotum_bold"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="남주"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_game_ment"
+        app:layout_constraintStart_toStartOf="@id/game_image" />
+
     <ImageButton
         android:id="@+id/btn_game_next"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:layout_marginStart="270dp"
-        android:layout_marginLeft="270dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/cardview_shadow_end_color"
         android:minWidth="48dp"
         android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="@+id/et_game_ment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_game_ment"
         app:srcCompat="@android:drawable/ic_media_play"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

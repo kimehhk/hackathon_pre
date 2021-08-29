@@ -63,6 +63,11 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // 타이틀바 로고 넣기
+        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         Intent board = getIntent();
         board_post_id = board.getStringExtra("post_id");
         board_title = board.getStringExtra("title");
