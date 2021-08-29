@@ -64,7 +64,7 @@ public class GameBoard extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        i = 1;
+        i = 0;
         ch = 0;
         percent = 0;
         s = 0;
@@ -122,7 +122,6 @@ public class GameBoard extends AppCompatActivity {
         bgData = new ArrayList<String>();
         Mdata = new ArrayList<String>();
         if (sex.equals("man")) {
-            Mdata.add("restaurant");
             Mdata.add(full_name);
             Mdata.add("아영아 왜 이렇게 늦었어? ");
             Mdata.add(girl_name);
@@ -140,7 +139,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(full_name);
             Mdata.add("choice");
 
-            Mdata.add("cafe");
+            Mdata.add("restaurant");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 조금만 쉬었다가 가자 나 발이 너무 아파");
             Mdata.add(full_name);
@@ -172,7 +171,7 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(girl_name);
             Mdata.add(" ");
 
-            Mdata.add("restaurant");
+            Mdata.add("cafe");
             Mdata.add(girl_name);
             Mdata.add(first_name + "야(아) 이 냄새 뭐야 혹시 담배 폈어?");
             Mdata.add(full_name);
@@ -189,7 +188,6 @@ public class GameBoard extends AppCompatActivity {
             Mdata.add(" ");
 
         } else {
-            Mdata.add("cafe");
             Mdata.add(full_name);
             Mdata.add("저 여자분 타투 너무 멋있다. 나도 나중에 타투하고 싶어!");
             Mdata.add(boy_name);

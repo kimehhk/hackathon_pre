@@ -1,6 +1,7 @@
 package ddwucom.mobile.bora_hackathon;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,6 +17,7 @@ public class GameResult extends AppCompatActivity {
     String percent;
     ImageView img_result;
     ImageButton center_btn;
+    int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,15 @@ public class GameResult extends AppCompatActivity {
         Intent intent;
         switch (v.getId()) {
             case R.id.m_result:
+                int per = Integer.parseInt(percent);
+                if (per < 25)
+                    color = Color.GREEN;
+                else if (per < 75)
+                    color = Color.YELLOW;
+                else
+                    color = Color.RED;
                 m_result.setText("당신은 데이트 폭력 위험에\n약 " + percent + "% 노출되어있습니다.");
+                m_result.setTextColor(color);
                 break;
             case R.id.button_game_center:
                 intent = new Intent(this, CenterActivity.class);
