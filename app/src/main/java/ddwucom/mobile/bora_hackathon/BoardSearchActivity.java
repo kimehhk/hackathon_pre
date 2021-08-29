@@ -49,6 +49,9 @@ public class BoardSearchActivity extends AppCompatActivity {
         searchBoard = findViewById(R.id.et_searchBoard);
         searchView = (ListView)findViewById(R.id.searchView);
 
+        Intent gIntent = getIntent();
+        String user_id = gIntent.getStringExtra("user_id");
+
         dataList = new ArrayList<HashMap<String, Object>>();
 
         searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,6 +60,10 @@ public class BoardSearchActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(BoardSearchActivity.this, DetailActivity.class);
                 intent.putExtra("post_id",dataList.get(position).get("post_id").toString());
+                intent.putExtra("title", dataList.get(position).get("title").toString());
+                intent.putExtra("context", dataList.get(position).get("context").toString());
+                intent.putExtra("date", dataList.get(position).get("date").toString());
+                intent.putExtra("user_id", user_id);
                 startActivity(intent);
             }
         });
