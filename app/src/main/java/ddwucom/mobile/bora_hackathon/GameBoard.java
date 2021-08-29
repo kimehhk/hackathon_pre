@@ -354,7 +354,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.restaurant)
-                                .transition(withCrossFade(300))
+                                .transition(withCrossFade())
                                 .into(image);
                         break;
                    case "room":
@@ -363,7 +363,7 @@ public class GameBoard extends AppCompatActivity {
                        ment.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
-                               .transition(withCrossFade(300))
+                               .transition(withCrossFade())
                                .into(image);
                        break;
                     case "cafe":
@@ -372,7 +372,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
-                                .transition(withCrossFade(300))
+                                .transition(withCrossFade())
                                 .into(image);
                         break;
                     case "sns" :
