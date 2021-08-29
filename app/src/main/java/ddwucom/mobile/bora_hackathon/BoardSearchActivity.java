@@ -46,6 +46,11 @@ public class BoardSearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        // 타이틀바 로고 넣기
+        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         searchBoard = findViewById(R.id.et_searchBoard);
         searchView = (ListView)findViewById(R.id.searchView);
 

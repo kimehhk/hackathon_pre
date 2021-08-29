@@ -58,6 +58,11 @@ public class GameBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
 
+        // 타이틀바 로고 넣기
+        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         //gameBoardLayout = findViewById(R.id.gameBoard_layout);
         //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
 
