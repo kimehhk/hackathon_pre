@@ -108,7 +108,9 @@ public class GameBoard extends AppCompatActivity {
 
         soundManager = new SoundManager(this, soundPool);
 
-        soundManager.addSound(1, R.raw.nextclick);
+        soundManager.addSound(1, R.raw.page1);
+        soundManager.addSound(2, R.raw.page2);
+        soundManager.addSound(3, R.raw.page3);
     }
 
     public void data_insert() {
@@ -350,7 +352,7 @@ public class GameBoard extends AppCompatActivity {
                     play = true;
                 } else {
                     soundManager.resumeSound(playSoundId);
-                    soundManager.playSound(1);
+                    //soundManager.playSound(playSoundId);
                     play = false;
                 }
 
