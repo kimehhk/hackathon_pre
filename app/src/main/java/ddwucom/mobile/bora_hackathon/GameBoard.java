@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,9 +62,6 @@ public class GameBoard extends AppCompatActivity {
         getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        //gameBoardLayout = findViewById(R.id.gameBoard_layout);
-        //gameBoardLayout.setBackgroundResource(R.drawable.restaurant_w);
 
         i = 1;
         ch = 0;
