@@ -29,6 +29,11 @@ public class BoardAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        // 타이틀바 로고 넣기
+        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         et_boardTitle = findViewById(R.id.et_boardTitle);
         et_boardContext = findViewById(R.id.et_boardContext);
         button_ok = findViewById(R.id.button_ok);

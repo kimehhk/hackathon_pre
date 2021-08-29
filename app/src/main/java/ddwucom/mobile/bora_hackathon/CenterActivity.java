@@ -24,6 +24,11 @@ public class CenterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_center);
 
+        // 타이틀바 로고 넣기
+        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         centerDBManager = new CenterDBManager(this);
         centerList = centerDBManager.getAllCenter();
         myAdapter_center = new MyAdapter_center(this, R.layout.custom_adapter_view_center, centerList);
