@@ -111,6 +111,7 @@ public class GameBoard extends AppCompatActivity {
         soundManager.addSound(1, R.raw.page1);
         soundManager.addSound(2, R.raw.page2);
         soundManager.addSound(3, R.raw.page3);
+        soundManager.addSound(4, R.raw.kakaotalk);
     }
 
     public void data_insert() {
@@ -399,6 +400,14 @@ public class GameBoard extends AppCompatActivity {
                                 .into(image);
                         break;
                     case "sns" :
+                        if (!play) {
+                            playSoundId = soundManager.playSound(4);
+                            play = true;
+                        } else {
+                            soundManager.resumeSound(playSoundId);
+                            //soundManager.playSound(playSoundId);
+                            play = false;
+                        }
                         s = 1;
                         Intent sns = new Intent(GameBoard.this, GameSns.class);
                         sns.putExtra("sex", sex);

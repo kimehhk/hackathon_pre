@@ -39,6 +39,7 @@ public class GameSns extends AppCompatActivity {
                     .into(image);
                 break;
         }
+
     }
 
     public void onClick(View v) {
