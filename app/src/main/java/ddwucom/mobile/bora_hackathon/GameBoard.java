@@ -417,6 +417,7 @@ public class GameBoard extends AppCompatActivity {
                 }
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
+                    gameNext.setVisibility(v.INVISIBLE);
                     i++;
                     ment.setText("");
                     Handler handler = new Handler();
@@ -514,6 +515,7 @@ public class GameBoard extends AppCompatActivity {
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
+                gameNext.setVisibility(v.VISIBLE);
                 break;
         }
     }
