@@ -31,12 +31,12 @@
     <TextView
         android:id="@+id/et_game_ment"
         android:layout_width="0dp"
-        android:layout_height="136dp"
+        android:layout_height="144dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="28dp"
         android:background="#80000000"
         android:fontFamily="@font/kopub_dotum_medium"
         android:gravity="center_vertical"
@@ -124,7 +124,7 @@
             <ImageView
                 android:id="@+id/snsTop"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="56dp"
                 android:background="#C27DFF"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
