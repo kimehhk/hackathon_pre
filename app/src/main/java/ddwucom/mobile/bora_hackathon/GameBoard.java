@@ -92,6 +92,7 @@ public class GameBoard extends AppCompatActivity {
 
         Glide.with(this)
                 .load(R.drawable.cafe)
+                .placeholder(R.drawable.loading)
                 .into(image);
 
         if (sex.equals("man")) {
@@ -371,6 +372,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.restaurant)
+                                .placeholder(R.drawable.loading)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -380,6 +382,7 @@ public class GameBoard extends AppCompatActivity {
                        ment.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
+                               .placeholder(R.drawable.loading)
                                .transition(withCrossFade())
                                .into(image);
                        break;
@@ -389,6 +392,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
+                                .placeholder(R.drawable.loading)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -418,10 +422,12 @@ public class GameBoard extends AppCompatActivity {
                                 if (sex.equals("man")) {
                                     Glide.with(v)
                                             .load(R.drawable.m_sns6)
+                                            .placeholder(R.drawable.loading)
                                             .into(image);
                                 } else {
                                     Glide.with(v)
                                             .load(R.drawable.w_sns6)
+                                            .placeholder(R.drawable.loading)
                                             .into(image);
                                 }
                             }
@@ -433,6 +439,7 @@ public class GameBoard extends AppCompatActivity {
                 }
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
+                    gameNext.setClickable(false);
                     i++;
                     ment.setText("");
                     Handler handler = new Handler();
@@ -459,16 +466,19 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m1)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m2)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m3)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
@@ -500,16 +510,19 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w1)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w2)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w3)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
@@ -530,6 +543,7 @@ public class GameBoard extends AppCompatActivity {
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
+                gameNext.setClickable(true);
                 break;
         }
     }
