@@ -32,6 +32,9 @@ public class GameBoard extends AppCompatActivity {
     ArrayList<String> bgData;
     ArrayList<String> Mdata;
     ConstraintLayout gameBoardLayout;
+    ConstraintLayout snsresLayout;
+    ImageView snsTop;
+    ImageView snsBottom;
 
     int i;
     int ch;
@@ -74,6 +77,11 @@ public class GameBoard extends AppCompatActivity {
         first_name = intent.getStringExtra("firstName");
         last_name = intent.getStringExtra("lastName");
 
+        snsresLayout = findViewById(R.id.snsresLayout);
+        //snsresLayout.bringToFront();
+        snsresLayout.setVisibility(View.INVISIBLE);
+        snsTop = findViewById(R.id.snsTop);
+
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
         image = findViewById(R.id.game_image);
@@ -90,10 +98,16 @@ public class GameBoard extends AppCompatActivity {
             Glide.with(this)
                     .load(R.drawable.woman_character)
                     .into(characterImg);
+            /*Glide.with(this)
+                    .load(R.drawable.sns_top_w)
+                    .into(snsTop);*/
         } else {
             Glide.with(this)
                     .load(R.drawable.man_character)
                     .into(characterImg);
+            Glide.with(this)
+                    .load(R.drawable.sns_top_m)
+                    .into(snsTop);
         }
 
         data_insert();
@@ -334,7 +348,8 @@ public class GameBoard extends AppCompatActivity {
                 }
 
                 snsResult = findViewById(R.id.sns_result_img);
-                snsResult.setVisibility(v.INVISIBLE);
+                //snsResult.setVisibility(v.INVISIBLE);
+                snsresLayout.setVisibility(v.INVISIBLE);
 
                 if (i == Mdata.size()) {
                     if (percent == 0) {
@@ -398,6 +413,7 @@ public class GameBoard extends AppCompatActivity {
                                 characterImg.setVisibility(v.GONE);
                                 name.setVisibility(v.INVISIBLE);
                                 ment.setVisibility(v.INVISIBLE);
+                                snsresLayout.setVisibility(v.VISIBLE);
 
                                 if (sex.equals("man")) {
                                     Glide.with(v)
@@ -456,7 +472,7 @@ public class GameBoard extends AppCompatActivity {
                                                                         .into(snsResult);
                                                                 break;
                                                         }
-                                                        snsResult.setVisibility(v.VISIBLE);
+                                                        snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
                                                         ment.setText(mItems[which]);
                                                         Mdata.set(i + 1, wRes[which].toString());
@@ -497,7 +513,7 @@ public class GameBoard extends AppCompatActivity {
                                                                         .into(snsResult);
                                                                 break;
                                                         }
-                                                        snsResult.setVisibility(v.VISIBLE);
+                                                        snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
                                                         ment.setText(wItems[which]);
                                                         Mdata.set(i + 1, mRes[which].toString());
