@@ -19,7 +19,14 @@ public class GameSns extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_sns);
+
+        Intent intent = getIntent();
+        sex = intent.getStringExtra("sex");
+
+        if (sex.equals("man"))
+            setContentView(R.layout.activity_game_sns);
+        else
+            setContentView(R.layout.activity_game_sns_m);
 
         // 타이틀바 로고 넣기
         getSupportActionBar().setIcon(R.drawable.logo);
@@ -29,9 +36,6 @@ public class GameSns extends AppCompatActivity {
         next = 0;
 
         image = findViewById(R.id.sns_image);
-
-        Intent intent = getIntent();
-        sex = intent.getStringExtra("sex");
 
         switch (sex) {
             case "man" :

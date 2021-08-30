@@ -43,6 +43,7 @@ public class GameActivity extends AppCompatActivity {
         img = findViewById(R.id.game_nameBg);
         Glide.with(this)
                 .load(R.drawable.gamebackground)
+                .placeholder(R.drawable.loading)
                 .into(img);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
