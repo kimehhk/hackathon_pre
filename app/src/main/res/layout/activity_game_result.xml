@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     android:onClick="onClick">
 
+
+
+
+
     ]]>
 
     <ImageView
@@ -21,52 +25,66 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageButton
-        android:id="@+id/button_game_center"
-        android:layout_width="280dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="440dp"
-        android:background="#00FFFFFF"
-        android:gravity="center"
+    <Button
+        android:id="@+id/btn_game_center"
+        android:layout_width="240dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="400dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/gmarketsans_ttf_medium"
         android:onClick="onClick"
-        android:scaleType="fitCenter"
         android:text="상담센터 연결"
-        android:textIsSelectable="false"
+        android:textColor="@color/black"
         android:textSize="24sp"
+        app:backgroundTint="#80FFFFFF"
+        app:elevation="12dp"
         app:layout_constraintEnd_toEndOf="@id/img_game_result_w"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@id/img_game_result_w"
         app:layout_constraintTop_toTopOf="@id/img_game_result_w" />
 
     <TextView
         android:id="@+id/m_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/kopub_dotum_bold"
+        android:layout_width="280dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/gmarketsans_ttf_bold"
+        android:gravity="center|center_vertical"
         android:letterSpacing="0.1"
         android:lineSpacingExtra="8sp"
         android:onClick="onClick"
         android:text="결과 보기 click"
         android:textColor="#FF5722"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_game_exit"
-        android:layout_width="120dp"
+        android:layout_width="95dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:fontFamily="@font/kopub_dotum_bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:fontFamily="@font/gmarketsans_ttf_medium"
         android:onClick="onClick"
-        android:text="메인화면 가기"
+        android:text="메인가기"
         android:textColor="@color/black"
-        app:backgroundTint="#80838181"
+        app:backgroundTint="#B3CFCFCF"
         app:layout_constraintEnd_toEndOf="@id/img_game_result_w"
         app:layout_constraintTop_toTopOf="@id/img_game_result_w" />
+
+    <TextView
+        android:id="@+id/et_game_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/gmarketsans_ttf_bold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/m_result" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

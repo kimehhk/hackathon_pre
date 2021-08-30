@@ -63,7 +63,7 @@
         android:background="#FFFFFF"
         android:fontFamily="@font/kopub_dotum_bold"
         android:gravity="center_horizontal|center_vertical"
-        android:text="남주"
+        android:text=""
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/et_game_ment"
         app:layout_constraintStart_toStartOf="@id/game_image" />
@@ -85,8 +85,9 @@
 
     <ImageView
         android:id="@+id/sns_result_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/game_image"
         app:layout_constraintEnd_toEndOf="@id/game_image"
         app:layout_constraintStart_toStartOf="@id/game_image"
