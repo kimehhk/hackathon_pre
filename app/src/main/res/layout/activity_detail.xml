@@ -139,15 +139,15 @@
 
         <EditText
             android:id="@+id/et_commentAdd"
-            android:layout_width="242dp"
-            android:layout_height="48dp"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="24dp"
             android:background="#AAAAAA"
             android:ems="13"
             android:fontFamily="@font/gmarketsans_ttf_medium"
-            android:hint="댓글 입력"
+            android:hint="  댓글 입력"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
