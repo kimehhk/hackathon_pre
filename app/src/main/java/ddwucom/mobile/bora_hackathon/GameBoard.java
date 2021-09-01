@@ -526,7 +526,8 @@ public class GameBoard extends AppCompatActivity {
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w3)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.loading
+                                                                        )
                                                                         .into(snsResult);
                                                                 break;
                                                         }
