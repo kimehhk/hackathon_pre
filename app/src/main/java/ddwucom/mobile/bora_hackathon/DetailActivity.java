@@ -84,10 +84,6 @@ public class DetailActivity extends AppCompatActivity {
         date.setText(board_date);
         title.setText(board_title);
         context.setText(board_context);
-
-
-
-
         //commentList = new ArrayList();
         //list = new ArrayList<HashMap<String, String>>();
 
@@ -163,8 +159,6 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-            case R.id.menu_update:
-                return true;
             case R.id.menu_delete:
                 deletePost(board_post_id, user_idNow);
                 if (user_idNow != null)
