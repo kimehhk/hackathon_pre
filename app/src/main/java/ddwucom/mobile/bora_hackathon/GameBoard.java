@@ -2,17 +2,22 @@ package ddwucom.mobile.bora_hackathon;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,8 +59,6 @@ public class GameBoard extends AppCompatActivity {
     SoundPool soundPool;
     boolean play;
     int playSoundId;
-
-    Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -335,7 +338,6 @@ public class GameBoard extends AppCompatActivity {
         m_response.add("그래 그래도 꼭 다시 잘 생각해봐");
     }
 
-
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.btn_game_next:
@@ -447,11 +449,22 @@ public class GameBoard extends AppCompatActivity {
                         @Override
                         public void run() {
                             AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
+
+                            TextView title = new TextView(GameBoard.this);
+                            title.setText("나의 답변");
+                            title.setWidth(0);
+                            title.setHeight(100);
+                            title.setGravity(Gravity.CENTER);
+                            title.setTextColor(Color.BLACK);
+                            title.setTextSize(16);
+                            title.setBackgroundColor(Color.rgb(197, 180, 239));
+
                             switch (sex) {
                                 case "man":
                                     final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
                                     final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+
+                                    oDialog.setCustomTitle(title)
                                             .setItems(mItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -495,7 +508,7 @@ public class GameBoard extends AppCompatActivity {
                                 case "woman":
                                     final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
                                     final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+                                    oDialog.setCustomTitle(title)
                                             .setItems(wItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -546,6 +559,7 @@ public class GameBoard extends AppCompatActivity {
                 gameNext.setClickable(true);
                 break;
         }
+
     }
 //    public void onStop() {
 //        super.onStop();
