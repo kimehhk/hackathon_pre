@@ -1,11 +1,10 @@
 package ddwucom.mobile.bora_hackathon;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
@@ -13,12 +12,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -446,22 +444,26 @@ public class GameBoard extends AppCompatActivity {
                     ment.setText("");
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void run() {
-                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
+                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this, R.style.MyAlertDialogStyle);
+
+                            Typeface tf = getResources().getFont(R.font.gmarketsans_ttf_medium);
 
                             TextView title = new TextView(GameBoard.this);
                             title.setText("나의 답변");
                             title.setWidth(0);
-                            title.setHeight(100);
+                            title.setHeight(150);
                             title.setGravity(Gravity.CENTER);
                             title.setTextColor(Color.BLACK);
-                            title.setTextSize(16);
+                            title.setTextSize(20);
+                            title.setTypeface(tf);
                             title.setBackgroundColor(Color.rgb(197, 180, 239));
 
                             switch (sex) {
                                 case "man":
-                                    final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
+                                    final CharSequence[] mItems = {"● " + m_choice.get(ch), "● " + m_choice.get(ch + 1), "● " +m_choice.get(ch + 2)};
                                     final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
 
                                     oDialog.setCustomTitle(title)
@@ -497,7 +499,7 @@ public class GameBoard extends AppCompatActivity {
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(mItems[which]);
+                                                        ment.setText(m_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, wRes[which].toString());
                                                     }
                                                 }
@@ -506,7 +508,7 @@ public class GameBoard extends AppCompatActivity {
                                             .show();
                                     break;
                                 case "woman":
-                                    final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
+                                    final CharSequence[] wItems = {"● " + w_choice.get(ch), "● " + w_choice.get(ch + 1), "● " + w_choice.get(ch +2)};
                                     final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
                                     oDialog.setCustomTitle(title)
                                             .setItems(wItems, new DialogInterface.OnClickListener() {
@@ -541,7 +543,7 @@ public class GameBoard extends AppCompatActivity {
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(wItems[which]);
+                                                        ment.setText(w_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, mRes[which].toString());
                                                     }
                                                 }
