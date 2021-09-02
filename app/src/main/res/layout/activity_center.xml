@@ -4,44 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/center_customListView">
-
-        <Button
-            android:id="@+id/btn_centerCancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape"
-            android:onClick="onClick"
-            android:text="확인"
-            app:backgroundTint="@color/purple_700"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <include  layout="@layout/toolbar_main"/>
+    ​
     <ListView
         android:id="@+id/center_customListView"
         android:layout_width="413dp"
         android:layout_height="569dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_centerCancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" >
-    </ListView>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    ​
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        ​
 
         <TextView
             android:id="@+id/textView5"
@@ -51,6 +37,7 @@
             android:fontFamily="@font/kopub_dotum_bold"
             android:gravity="center"
             android:text="접수내용" />
+        ​
 
         <TextView
             android:id="@+id/textView6"
@@ -60,6 +47,7 @@
             android:fontFamily="@font/kopub_dotum_bold"
             android:gravity="center"
             android:text="관련기관" />
+        ​
 
         <TextView
             android:id="@+id/textView7"
@@ -69,7 +57,23 @@
             android:fontFamily="@font/kopub_dotum_bold"
             android:gravity="center"
             android:text="전화번호" />
-
+        ​
     </LinearLayout>
+    ​
 
+    <Button
+        android:id="@+id/btn_centerCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/shape"
+        android:onClick="onClick"
+        android:text="확인"
+        app:backgroundTint="#8924E2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/center_customListView" />
+    ​
 </androidx.constraintlayout.widget.ConstraintLayout>
