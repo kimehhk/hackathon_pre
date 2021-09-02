@@ -29,10 +29,6 @@ public class GameSns extends AppCompatActivity {
         else
             setContentView(R.layout.activity_game_sns_m);
 
-        /*// 타이틀바 로고 넣기
-        getSupportActionBar().setIcon(R.drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
