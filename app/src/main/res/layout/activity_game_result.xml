@@ -3,15 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"><![CDATA[
-    android:layout_height="match_parent"
-    android:onClick="onClick">
-
-
-
-
-
-    ]]>
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/img_game_result_w"
@@ -25,29 +17,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_game_center"
-        android:layout_width="180dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="460dp"
-        android:background="#FFFFFF"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="480dp"
+        android:background="#00FFFFFF"
         android:fontFamily="@font/gmarketsans_ttf_medium"
         android:onClick="onClick"
+        android:scaleType="centerInside"
+        android:src="@drawable/center_btn"
         android:text="상담센터 "
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:backgroundTint="#80FFFFFF"
+        app:backgroundTint="#00FFFFFF"
         app:elevation="12dp"
         app:layout_constraintEnd_toEndOf="@id/img_game_result_w"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@id/img_game_result_w"
         app:layout_constraintTop_toTopOf="@id/img_game_result_w" />
 
     <TextView
         android:id="@+id/m_result"
-        android:layout_width="300dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="90dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
         android:fontFamily="@font/gmarketsans_ttf_bold"
         android:gravity="center|center_vertical"
         android:letterSpacing="0.1"
@@ -55,8 +48,9 @@
         android:onClick="onClick"
         android:text="결과 보기 click"
         android:textColor="#FF5722"
-        android:textSize="38sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +74,7 @@
         android:id="@+id/et_game_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/gmarketsans_ttf_bold"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

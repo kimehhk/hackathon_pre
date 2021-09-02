@@ -125,7 +125,7 @@
             android:id="@+id/btn_commentAdd"
             style="?attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="24dp"
@@ -133,13 +133,13 @@
             android:fontFamily="@font/gmarketsans_ttf_medium"
             android:onClick="onClick"
             android:text="입력"
-            app:backgroundTint="@color/purple_700"
+            app:backgroundTint="#8924E2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/et_commentAdd"
-            android:layout_width="300dp"
+            android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
