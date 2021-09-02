@@ -35,7 +35,7 @@ public class GameBoard extends AppCompatActivity {
     ConstraintLayout gameBoardLayout;
     ConstraintLayout snsresLayout;
     ImageView snsTop;
-    ImageView snsBottom;
+    ImageView next_btn;
 
     int i;
     int ch;
@@ -85,6 +85,7 @@ public class GameBoard extends AppCompatActivity {
         //snsresLayout.bringToFront();
         snsresLayout.setVisibility(View.INVISIBLE);
         snsTop = findViewById(R.id.snsTop);
+        next_btn = findViewById(R.id.btn_game_next);
 
         ment = findViewById(R.id.et_game_ment);
         name = findViewById(R.id.ch_name);
@@ -418,17 +419,20 @@ public class GameBoard extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                next_btn.setVisibility(View.INVISIBLE);
                                 characterImg.setVisibility(v.GONE);
                                 name.setVisibility(v.INVISIBLE);
                                 ment.setVisibility(v.INVISIBLE);
                                 snsresLayout.setVisibility(v.VISIBLE);
 
                                 if (sex.equals("man")) {
+                                    next_btn.setVisibility(View.INVISIBLE);
                                     Glide.with(v)
                                             .load(R.drawable.m_sns6)
                                             .placeholder(R.drawable.load)
                                             .into(image);
                                 } else {
+                                    next_btn.setVisibility(View.INVISIBLE);
                                     Glide.with(v)
                                             .load(R.drawable.w_sns6)
                                             .placeholder(R.drawable.load)
@@ -465,6 +469,7 @@ public class GameBoard extends AppCompatActivity {
                                                         percent += 10;
                                                     }
                                                     if (s == 1) {
+                                                        next_btn.setVisibility(View.VISIBLE);
                                                         s = 0;
                                                         switch (which) {
                                                             case 0:
@@ -509,6 +514,7 @@ public class GameBoard extends AppCompatActivity {
                                                         percent += 10;
                                                     }
                                                     if (s == 1) {
+                                                        next_btn.setVisibility(View.VISIBLE);
                                                         s = 0;
                                                         switch (which) {
                                                             case 0:
@@ -543,7 +549,6 @@ public class GameBoard extends AppCompatActivity {
                             } ch += 3;
                         }
                     }, 300);
-
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
