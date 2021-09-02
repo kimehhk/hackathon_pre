@@ -19,8 +19,8 @@
 
     <ImageButton
         android:id="@+id/btn_game_center"
-        android:layout_width="240dp"
-        android:layout_height="55dp"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="460dp"
@@ -34,13 +34,13 @@
         app:backgroundTint="#80FFFFFF"
         app:elevation="12dp"
         app:layout_constraintEnd_toEndOf="@id/img_game_result_w"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="@id/img_game_result_w"
         app:layout_constraintTop_toTopOf="@id/img_game_result_w" />
 
     <TextView
         android:id="@+id/m_result"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="140dp"
         android:layout_marginTop="88dp"
         android:fontFamily="@font/gmarketsans_ttf_bold"
@@ -50,7 +50,7 @@
         android:onClick="onClick"
         android:text="결과 보기 click"
         android:textColor="#FF5722"
-        android:textSize="35sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
