@@ -94,7 +94,7 @@ public class GameBoard extends AppCompatActivity {
 
         Glide.with(this)
                 .load(R.drawable.cafe)
-                .placeholder(R.drawable.loading)
+                .placeholder(R.drawable.load)
                 .into(image);
 
         if (sex.equals("man")) {
@@ -373,7 +373,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.restaurant)
-                                .placeholder(R.drawable.loading)
+                                .placeholder(R.drawable.load)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -383,7 +383,7 @@ public class GameBoard extends AppCompatActivity {
                        ment.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
-                               .placeholder(R.drawable.loading)
+                               .placeholder(R.drawable.load)
                                .transition(withCrossFade())
                                .into(image);
                        break;
@@ -393,7 +393,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
-                                .placeholder(R.drawable.loading)
+                                .placeholder(R.drawable.load)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -425,13 +425,13 @@ public class GameBoard extends AppCompatActivity {
                                     next_btn.setVisibility(View.INVISIBLE);
                                     Glide.with(v)
                                             .load(R.drawable.m_sns6)
-                                            .placeholder(R.drawable.loading)
+                                            .placeholder(R.drawable.load)
                                             .into(image);
                                 } else {
                                     next_btn.setVisibility(View.INVISIBLE);
                                     Glide.with(v)
                                             .load(R.drawable.w_sns6)
-                                            .placeholder(R.drawable.loading)
+                                            .placeholder(R.drawable.load)
                                             .into(image);
                                 }
                             }
@@ -486,19 +486,19 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m1)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m2)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m3)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
@@ -531,19 +531,19 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w1)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w2)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w3)
-                                                                        .placeholder(R.drawable.loading)
+                                                                        .placeholder(R.drawable.load)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
