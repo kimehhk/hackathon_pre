@@ -4,16 +4,20 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -275,7 +279,7 @@ public class GameBoard extends AppCompatActivity {
         m_choice.add("내가 예민했네 미안해 아영아 화풀어");
         m_choice.add("그래... 내가 요새 좀 피곤해서 그런가보다");
         m_choice.add("미리 연락 좀 해달라는게 예민한거야?");
-        m_choice.add("미안해 앞으로 5분에 한번씩 카톡 확인할게.");
+        m_choice.add("미안해 앞으로 5분에 한번씩 카톡 확인할게");
         m_choice.add("그냥 오늘은 정신이 좀 없었어 더 신경쓸게");
         m_choice.add("내가 매일 그러는 것도 아니고 너도 연락에 너무 집착하는 것 같아");
         m_choice.add("그래 내가 대출받아서 살게");
@@ -447,19 +451,33 @@ public class GameBoard extends AppCompatActivity {
                 }
                 name.setText(Mdata.get(i++));
                 if (Mdata.get(i).equals("choice")) {
-                    gameNext.setClickable(false);
                     i++;
                     ment.setText("");
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void run() {
-                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
+                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this, R.style.MyAlertDialogStyle);
+
+                            Typeface tf = getResources().getFont(R.font.sc_dream7);
+
+                            TextView title = new TextView(GameBoard.this);
+                            title.setText("나의 답변");
+                            title.setWidth(0);
+                            title.setHeight(150);
+                            title.setGravity(Gravity.CENTER);
+                            title.setTextColor(Color.BLACK);
+                            title.setTextSize(20);
+                            title.setTypeface(tf);
+                            title.setBackgroundColor(Color.rgb(197, 180, 239));
+
                             switch (sex) {
                                 case "man":
-                                    final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
+                                    final CharSequence[] mItems = {"· " + m_choice.get(ch), "· " + m_choice.get(ch + 1), "· " +m_choice.get(ch + 2)};
                                     final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+
+                                    oDialog.setCustomTitle(title)
                                             .setItems(mItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -493,7 +511,7 @@ public class GameBoard extends AppCompatActivity {
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(mItems[which]);
+                                                        ment.setText(m_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, wRes[which].toString());
                                                     }
                                                 }
@@ -502,9 +520,9 @@ public class GameBoard extends AppCompatActivity {
                                             .show();
                                     break;
                                 case "woman":
-                                    final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
+                                    final CharSequence[] wItems = {"· " + w_choice.get(ch), "· " + w_choice.get(ch + 1), "· " + w_choice.get(ch +2)};
                                     final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+                                    oDialog.setCustomTitle(title)
                                             .setItems(wItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -538,7 +556,7 @@ public class GameBoard extends AppCompatActivity {
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(wItems[which]);
+                                                        ment.setText(w_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, mRes[which].toString());
                                                     }
                                                 }
@@ -549,12 +567,13 @@ public class GameBoard extends AppCompatActivity {
                             } ch += 3;
                         }
                     }, 300);
+
                 } else {
                     ment.setText(Mdata.get(i++));
                 }
-                gameNext.setClickable(true);
                 break;
         }
+
     }
 //    public void onStop() {
 //        super.onStop();
