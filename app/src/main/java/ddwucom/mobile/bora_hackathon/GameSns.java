@@ -3,7 +3,6 @@ package ddwucom.mobile.bora_hackathon;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.ActionBar;
@@ -13,7 +12,6 @@ import com.bumptech.glide.Glide;
 
 public class GameSns extends AppCompatActivity {
     ImageView image;
-    ImageButton next_btn;
 
     int next;
     int percent;
@@ -31,10 +29,6 @@ public class GameSns extends AppCompatActivity {
         else
             setContentView(R.layout.activity_game_sns_m);
 
-        /*// 타이틀바 로고 넣기
-        getSupportActionBar().setIcon(R.drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
@@ -42,8 +36,6 @@ public class GameSns extends AppCompatActivity {
         next = 0;
 
         image = findViewById(R.id.sns_image);
-        next_btn = findViewById(R.id.btn_game_next);
-        //next_btn.setVisibility(View.INVISIBLE);
 
         switch (sex) {
             case "man" :
