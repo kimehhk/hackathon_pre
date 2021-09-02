@@ -1,20 +1,22 @@
 package ddwucom.mobile.bora_hackathon;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -56,20 +58,15 @@ public class GameBoard extends AppCompatActivity {
     boolean play;
     int playSoundId;
 
-    Animation animation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
-/*
+
         // 타이틀바 로고 넣기
         getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
-
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         i = 0;
         ch = 0;
@@ -96,7 +93,7 @@ public class GameBoard extends AppCompatActivity {
 
         Glide.with(this)
                 .load(R.drawable.cafe)
-                .placeholder(R.drawable.load)
+                .placeholder(R.drawable.loading)
                 .into(image);
 
         if (sex.equals("man")) {
@@ -339,7 +336,6 @@ public class GameBoard extends AppCompatActivity {
         m_response.add("그래 그래도 꼭 다시 잘 생각해봐");
     }
 
-
     public void onClick (View v) {
         switch (v.getId()) {
             case R.id.btn_game_next:
@@ -376,7 +372,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.restaurant)
-                                .placeholder(R.drawable.load)
+                                .placeholder(R.drawable.loading)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -386,7 +382,7 @@ public class GameBoard extends AppCompatActivity {
                        ment.setVisibility(v.VISIBLE);
                        Glide.with(this)
                                .load(R.drawable.room)
-                               .placeholder(R.drawable.load)
+                               .placeholder(R.drawable.loading)
                                .transition(withCrossFade())
                                .into(image);
                        break;
@@ -396,7 +392,7 @@ public class GameBoard extends AppCompatActivity {
                         ment.setVisibility(v.VISIBLE);
                         Glide.with(this)
                                 .load(R.drawable.cafe)
-                                .placeholder(R.drawable.load)
+                                .placeholder(R.drawable.loading)
                                 .transition(withCrossFade())
                                 .into(image);
                         break;
@@ -426,12 +422,12 @@ public class GameBoard extends AppCompatActivity {
                                 if (sex.equals("man")) {
                                     Glide.with(v)
                                             .load(R.drawable.m_sns6)
-                                            .placeholder(R.drawable.load)
+                                            .placeholder(R.drawable.loading)
                                             .into(image);
                                 } else {
                                     Glide.with(v)
                                             .load(R.drawable.w_sns6)
-                                            .placeholder(R.drawable.load)
+                                            .placeholder(R.drawable.loading)
                                             .into(image);
                                 }
                             }
@@ -448,14 +444,29 @@ public class GameBoard extends AppCompatActivity {
                     ment.setText("");
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @RequiresApi(api = Build.VERSION_CODES.O)
                         @Override
                         public void run() {
-                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this);
+                            AlertDialog.Builder oDialog = new AlertDialog.Builder(GameBoard.this, R.style.MyAlertDialogStyle);
+
+                            Typeface tf = getResources().getFont(R.font.gmarketsans_ttf_medium);
+
+                            TextView title = new TextView(GameBoard.this);
+                            title.setText("나의 답변");
+                            title.setWidth(0);
+                            title.setHeight(150);
+                            title.setGravity(Gravity.CENTER);
+                            title.setTextColor(Color.BLACK);
+                            title.setTextSize(20);
+                            title.setTypeface(tf);
+                            title.setBackgroundColor(Color.rgb(197, 180, 239));
+
                             switch (sex) {
                                 case "man":
-                                    final CharSequence[] mItems = {m_choice.get(ch), m_choice.get(ch + 1), m_choice.get(ch + 2)};
+                                    final CharSequence[] mItems = {"· " + m_choice.get(ch), "· " + m_choice.get(ch + 1), "· " +m_choice.get(ch + 2)};
                                     final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+
+                                    oDialog.setCustomTitle(title)
                                             .setItems(mItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -470,25 +481,25 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m1)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m2)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.m3)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(mItems[which]);
+                                                        ment.setText(m_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, wRes[which].toString());
                                                     }
                                                 }
@@ -497,9 +508,9 @@ public class GameBoard extends AppCompatActivity {
                                             .show();
                                     break;
                                 case "woman":
-                                    final CharSequence[] wItems = {w_choice.get(ch), w_choice.get(ch + 1), w_choice.get(ch +2)};
+                                    final CharSequence[] wItems = {"· " + w_choice.get(ch), "· " + w_choice.get(ch + 1), "· " + w_choice.get(ch +2)};
                                     final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
-                                    oDialog.setTitle("나의 답변")
+                                    oDialog.setCustomTitle(title)
                                             .setItems(wItems, new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -514,25 +525,25 @@ public class GameBoard extends AppCompatActivity {
                                                             case 0:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w1)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 1:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w2)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                             case 2:
                                                                 Glide.with(v)
                                                                         .load(R.drawable.w3)
-                                                                        .placeholder(R.drawable.load)
+                                                                        .placeholder(R.drawable.loading)
                                                                         .into(snsResult);
                                                                 break;
                                                         }
                                                         snsresLayout.setVisibility(v.VISIBLE);
                                                     } else {
-                                                        ment.setText(wItems[which]);
+                                                        ment.setText(w_choice.get(ch + which - 3));
                                                         Mdata.set(i + 1, mRes[which].toString());
                                                     }
                                                 }
@@ -550,6 +561,7 @@ public class GameBoard extends AppCompatActivity {
                 gameNext.setClickable(true);
                 break;
         }
+
     }
 //    public void onStop() {
 //        super.onStop();
