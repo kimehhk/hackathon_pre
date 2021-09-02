@@ -10,9 +10,8 @@
         android:id="@+id/boardScrollView"
         android:layout_width="389dp"
         android:layout_height="600dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:descendantFocusability="blocksDescendants"
-        app:layout_constraintBottom_toBottomOf="@id/btn_upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +25,7 @@
             <ListView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"/>
+                android:layout_height="600dp"></ListView>
 
         </LinearLayout>
     </ScrollView>
@@ -35,7 +34,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="@font/gmarketsans_ttf_bold"
         android:text="게시판"
         android:textSize="34sp"
@@ -45,21 +44,18 @@
 
     <Button
         android:id="@+id/btn_upload"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:background="@drawable/shape"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/write_button"
         android:fontFamily="@font/gmarketsans_ttf_medium"
         android:onClick="onClick"
         android:splitMotionEvents="false"
-        android:text="글쓰기"
         app:backgroundTint="#8924E2"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardScrollView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_cancel"
@@ -75,9 +71,9 @@
 
     <ImageButton
         android:id="@+id/button_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
+        android:layout_width="58dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:onClick="onClick"
@@ -89,14 +85,16 @@
         android:id="@+id/btn_center"
         android:layout_width="50dp"
         android:layout_height="47dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="@drawable/center_phone"
         android:fontFamily="@font/gmarketsans_ttf_medium"
         android:onClick="onClick"
         android:splitMotionEvents="true"
         android:textColor="@color/white"
         app:backgroundTint="#8924E2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="372dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_upload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
