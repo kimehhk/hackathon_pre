@@ -80,6 +80,7 @@
         android:background="@color/cardview_shadow_end_color"
         android:minWidth="48dp"
         android:onClick="onClick"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/et_game_ment"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_media_play"
