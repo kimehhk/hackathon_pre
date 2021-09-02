@@ -15,4 +15,7 @@
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
     </style>
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="fontFamily">@font/kopub_dotum_bold</item>
+    </style>
 </resources>
