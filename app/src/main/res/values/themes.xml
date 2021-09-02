@@ -16,6 +16,6 @@
         <item name="windowNoTitle">false</item>
     </style>
     <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-        <item name="fontFamily">@font/gmarketsans_ttf_medium</item>
+        <item name="fontFamily">@font/kopub_dotum_medium</item>
     </style>
 </resources>

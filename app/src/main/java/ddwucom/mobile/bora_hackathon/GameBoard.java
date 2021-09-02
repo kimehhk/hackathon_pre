@@ -463,7 +463,7 @@ public class GameBoard extends AppCompatActivity {
 
                             switch (sex) {
                                 case "man":
-                                    final CharSequence[] mItems = {"● " + m_choice.get(ch), "● " + m_choice.get(ch + 1), "● " +m_choice.get(ch + 2)};
+                                    final CharSequence[] mItems = {"· " + m_choice.get(ch), "· " + m_choice.get(ch + 1), "· " +m_choice.get(ch + 2)};
                                     final CharSequence[] wRes = {w_response.get(ch), w_response.get(ch + 1), w_response.get(ch + 2)};
 
                                     oDialog.setCustomTitle(title)
@@ -508,7 +508,7 @@ public class GameBoard extends AppCompatActivity {
                                             .show();
                                     break;
                                 case "woman":
-                                    final CharSequence[] wItems = {"● " + w_choice.get(ch), "● " + w_choice.get(ch + 1), "● " + w_choice.get(ch +2)};
+                                    final CharSequence[] wItems = {"· " + w_choice.get(ch), "· " + w_choice.get(ch + 1), "· " + w_choice.get(ch +2)};
                                     final CharSequence[] mRes = {m_response.get(ch), m_response.get(ch + 1), m_response.get(ch + 2)};
                                     oDialog.setCustomTitle(title)
                                             .setItems(wItems, new DialogInterface.OnClickListener() {
