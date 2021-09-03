@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -24,14 +23,9 @@ public class GameResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_result);
-/*
-        // 타이틀바 로고 넣기
-        getSupportActionBar().setIcon(R.drawable.logo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
 
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+        /*ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();*/
 
         img_result = findViewById(R.id.img_game_result_w);
 //        center_btn = findViewById(R.id.btn_game_center);

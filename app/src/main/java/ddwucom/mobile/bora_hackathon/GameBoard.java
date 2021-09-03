@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -68,8 +67,8 @@ public class GameBoard extends AppCompatActivity {
         setContentView(R.layout.activity_game_board);
 
 
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+        /*ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();*/
 
         i = 0;
         ch = 0;
