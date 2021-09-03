@@ -30,7 +30,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center"
-                android:hint="접수내용" />
+                android:hint="접수내용"
+                android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_institution"
@@ -48,7 +49,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 android:fontFamily="@font/kopub_dotum_medium"
                 android:gravity="center|left"
                 android:hint="전화번호"
