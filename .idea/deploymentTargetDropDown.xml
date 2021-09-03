@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
-    <targetSelectedWithDropDown>
+    <runningDeviceTargetSelectedWithDropDown>
       <Target>
-        <type value="QUICK_BOOT_TARGET" />
+        <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
+<<<<<<< HEAD
             <type value="VIRTUAL_DEVICE_PATH" />
             <value value="C:\Users\UserK\.android\avd\Pixel_4_API_30.avd" />
           </Key>
@@ -13,5 +14,14 @@
       </Target>
     </targetSelectedWithDropDown>
     <timeTargetWasSelectedWithDropDown value="2021-09-01T16:46:42.422973300Z" />
+=======
+            <type value="SERIAL_NUMBER" />
+            <value value="5200f192c034c49f" />
+          </Key>
+        </deviceKey>
+      </Target>
+    </runningDeviceTargetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2021-09-01T15:04:49.518603500Z" />
+>>>>>>> 984c14fd59317fcbd106a1ad0a575d407a378329
   </component>
 </project>
