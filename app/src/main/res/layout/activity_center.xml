@@ -59,17 +59,24 @@
                 android:text="전화번호" />
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/center_customListView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ListView
+                android:id="@+id/center_customListView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,4 +101,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
