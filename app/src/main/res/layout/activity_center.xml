@@ -11,7 +11,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    ​
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -30,7 +29,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-            ​
 
             <TextView
                 android:id="@+id/textView5"
@@ -40,7 +38,6 @@
                 android:fontFamily="@font/kopub_dotum_bold"
                 android:gravity="center"
                 android:text="접수내용" />
-            ​
 
             <TextView
                 android:id="@+id/textView6"
@@ -50,7 +47,6 @@
                 android:fontFamily="@font/kopub_dotum_bold"
                 android:gravity="center"
                 android:text="관련기관" />
-            ​
 
             <TextView
                 android:id="@+id/textView7"
@@ -60,16 +56,16 @@
                 android:fontFamily="@font/kopub_dotum_bold"
                 android:gravity="center"
                 android:text="전화번호" />
-            ​
         </LinearLayout>
 
         <ListView
             android:id="@+id/center_customListView"
-            android:layout_width="0dp"
-            android:layout_height="550dp"
-            android:layout_marginTop="4dp"
+            android:layout_width="413dp"
+            android:layout_height="569dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_centerCancel"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -95,17 +91,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout><![CDATA[
-
-
-
-    ​
-
-
-    ​
-
-    ​
->>>>>>> 984c14fd59317fcbd106a1ad0a575d407a378329
-
-]]>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
