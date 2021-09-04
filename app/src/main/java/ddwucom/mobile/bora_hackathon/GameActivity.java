@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -36,8 +35,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_username);
 
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+        /*ActionBar actionbar = getSupportActionBar();
+        actionbar.hide();*/
 
         img = findViewById(R.id.game_nameBg);
         Glide.with(this)
