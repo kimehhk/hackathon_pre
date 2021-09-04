@@ -135,6 +135,7 @@
             android:fontFamily="@font/gmarketsans_ttf_medium"
             android:onClick="onClick"
             android:text="입력"
+            android:textColor="@color/white"
             app:backgroundTint="#8924E2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
