@@ -36,10 +36,12 @@
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_sns_m.xml" value="0.14666666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_game_username.xml" value="0.16666666666666666" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_search.xml" value="0.3333333333333333" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/activity_sns_result.xml" value="0.10104166666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/custom_adapter_view.xml" value="0.22" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/custom_adapter_view_center.xml" value="0.1" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/custom_adapter_view_comment.xml" value="0.22" />
+        <entry key="..\:/Work/BORA_hackathon/app/src/main/res/layout/toolbar_main.xml" value="0.22" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/menu/menu_board.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/BORA_hackathon/app/src/main/res/menu/menu_game_usersex.xml" value="0.17916666666666667" />
         <entry key="..\:/Work/hackathon/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
@@ -59,7 +61,6 @@
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19739583333333333" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_add.xml" value="0.1640625" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_board.xml" value="0.21197916666666666" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_center.xml" value="0.19583333333333333" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_detail.xml" value="0.17552083333333332" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_game_board.xml" value="0.2" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_game_choice.xml" value="0.13518518518518519" />
@@ -71,9 +72,6 @@
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_game_username.xml" value="0.264" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_main.xml" value="0.4" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/activity_search.xml" value="0.2" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/custom_adapter_view_center.xml" value="0.25364583333333335" />
-        <entry key="..\:/work/android/hackathon_pre/app/src/main/res/layout/custom_adapter_view_comment.xml" value="0.25364583333333335" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_board.xml" value="0.16770833333333332" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_choice.xml" value="0.264" />
         <entry key="..\:/work/android/hackathon_pre/app/src/main/res/menu/menu_game_usersex.xml" value="0.16770833333333332" />
